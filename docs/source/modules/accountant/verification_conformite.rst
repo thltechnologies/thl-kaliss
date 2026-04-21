@@ -1,0 +1,369 @@
+.. _verification-conformite-sfd-umoa:
+
+Rapport de Vérification de Conformité - Réglementation SFD UMOA
+===============================================================
+
+**Date:** 2025-01-27
+**Référence:** `Commission Bancaire de l'UMOA <https://cb-umoa.org/fr/sfd>`_
+**Système:** Core Banking Backend
+
+📋 Vue d'ensemble
+-----------------
+
+Documents Réglementaires de Référence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Selon la Commission Bancaire de l'UMOA, les documents suivants régissent les SFD :
+
+1. **Référentiel comptable spécifique des Systèmes Financiers Décentralisés de l'UMOA** (17/05/2022)
+2. **Instruction n°025-02-2009** - Instituant un référentiel comptable spécifique des SFD de l'UMOA
+3. **Instruction n°026-02-2009** - Conditions de mise en œuvre du plan de comptes
+4. **Instruction n°030-02-2009** - Modalités d'établissement et de conservation des états financiers
+5. **Instruction n°010-08-2010** - Règles prudentielles applicables aux SFD
+6. **Instruction n°020-12-2010** - Indicateurs périodiques à transmettre
+7. **Instruction n°017-12-2010** - Organisation du contrôle interne
+8. **Instruction n°018-12-2010** - Obligation de produire un rapport annuel
+
+État Actuel du Système
+~~~~~~~~~~~~~~~~~~~~~~
+
+Le système Core Banking dispose actuellement de :
+
+- ✅ Plan comptable (``ChartOfAccount``)
+- ✅ Écritures comptables (``JournalEntry``, ``JournalLine``)
+- ✅ Périodes comptables (``AccountingPeriod``, ``FiscalYear``)
+- ✅ Grand livre général (``GeneralLedger``)
+- ⚠️ États financiers réglementaires (Partiellement implémentés : Bilan et Compte de Résultat)
+- ❌ Indicateurs périodiques réglementaires (non implémentés)
+- ❌ Rapport annuel automatisé (non implémentés)
+
+Référentiel Comptable Spécifique des SFD
+----------------------------------------
+
+Vérification Requise
+~~~~~~~~~~~~~~~~~~~~
+
+**Document de référence:** Référentiel comptable spécifique des SFD de l'UMOA (17/05/2022)
+
+**État:** ⚠️ **À VÉRIFIER**
+
+Le système utilise actuellement un plan comptable générique. Il est nécessaire de vérifier si :
+
+- Le plan comptable actuel respecte la structure imposée par le référentiel SFD
+- Les classes comptables correspondent aux exigences UMOA
+- Les comptes spécifiques aux SFD sont présents
+
+**Action requise:**
+
+- Télécharger et analyser le référentiel comptable spécifique des SFD
+- Comparer la structure actuelle avec les exigences
+- Adapter le plan comptable si nécessaire
+
+Plan de Comptes
+---------------
+
+Instruction n°026-02-2009
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Plan de comptes conforme au référentiel SFD
+- Structure hiérarchique respectée
+- Codes comptables normalisés
+
+**État Actuel:** ✅ **PARTIELLEMENT CONFORME**
+
+**Éléments présents:**
+
+- ✅ Structure hiérarchique (``ChartOfAccount`` avec parent/enfants)
+- ✅ Codes comptables (``code`` field)
+- ✅ Libellés (``label`` field)
+- ✅ Types de comptes (``AccountType``: ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE)
+- ✅ Niveaux hiérarchiques (``level`` field)
+
+**Éléments à vérifier:**
+
+- ⚠️ Correspondance exacte avec le plan de comptes SFD UMOA
+- ⚠️ Codes comptables conformes à la nomenclature UMOA
+- ⚠️ Comptes obligatoires pour SFD présents
+
+**Recommandation:**
+
+.. code-block:: java
+
+    // Vérifier que le plan comptable initialisé correspond au référentiel SFD
+    // Voir: src/main/java/com/thltechnologies/corebanking/config/SetupLoaderData.java
+
+États Financiers
+----------------
+
+Instruction n°030-02-2009
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Établissement des états financiers selon modalités définies
+- Conservation des états financiers
+- Publication selon modalités réglementaires
+
+**État Actuel:** ⚠️ **CONFORME PARTIELLEMENT**
+
+**Éléments présents:**
+
+- ✅ Bilan (Balance Sheet)
+- ✅ Compte de résultat (Income Statement)
+- ⚠️ Tableau des flux de trésorerie (Squelette implémenté)
+
+**Éléments manquants:**
+
+- ❌ État des variations des capitaux propres
+- ⚠️ Système de conservation des états financiers (Gestion des états présente)
+- ❌ Publication automatisée
+
+**Action requise:**
+
+1. Finaliser le tableau de flux de trésorerie
+2. Implémenter l'état des variations des capitaux propres
+3. Ajouter la fonctionnalité d'archivage/publication
+
+Règles Prudentielles
+--------------------
+
+Instruction n°010-08-2010
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Respect des ratios prudentiels
+- Calcul automatique des indicateurs
+- Alertes en cas de non-respect
+
+**État Actuel:** ❌ **NON CONFORME**
+
+**Éléments manquants:**
+
+- ❌ Calcul des ratios prudentiels (ex: ratio de solvabilité, ratio de liquidité)
+- ❌ Surveillance des limites réglementaires
+- ❌ Système d'alertes automatiques
+- ❌ Rapports de conformité prudentielle
+
+**Action requise:**
+
+1. Identifier les ratios prudentiels applicables aux SFD
+2. Implémenter le calcul automatique
+3. Créer un système de surveillance et d'alertes
+4. Générer des rapports de conformité
+
+Indicateurs Périodiques
+-----------------------
+
+Instruction n°020-12-2010
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Transmission périodique d'indicateurs au Ministre en charge des Finances, à la BCEAO et à la Commission Bancaire de l'UMOA
+- Format et fréquence définis par l'instruction
+
+**État Actuel:** ❌ **NON CONFORME**
+
+**Éléments manquants:**
+
+- ❌ Calcul des indicateurs périodiques réglementaires
+- ❌ Format de transmission conforme
+- ❌ Automatisation de la transmission
+- ❌ Traçabilité des transmissions
+
+**Action requise:**
+
+1. Analyser l'instruction n°020-12-2010 pour identifier les indicateurs requis
+2. Implémenter le calcul de chaque indicateur
+3. Créer le format de transmission conforme
+4. Automatiser la génération et la transmission périodique
+5. Ajouter un système de traçabilité
+
+**Indicateurs typiques à vérifier:**
+
+- Actif total
+- Passif total
+- Capitaux propres
+- Crédits accordés
+- Dépôts collectés
+- Résultat net
+- Ratios de solvabilité
+- Ratios de liquidité
+- Provisions pour créances douteuses
+
+Contrôle Interne
+----------------
+
+Instruction n°017-12-2010
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Organisation du contrôle interne au sein des SFD
+- Procédures de contrôle
+- Documentation du contrôle interne
+
+**État Actuel:** ⚠️ **PARTIELLEMENT CONFORME**
+
+**Éléments présents:**
+
+- ✅ Système d'audit trail (via ``@CreatedDate``, ``EntityListeners``)
+- ✅ Gestion des états (``State`` enum)
+- ✅ Contrôles de validation dans les services
+
+**Éléments à améliorer:**
+
+- ⚠️ Documentation des procédures de contrôle interne
+- ⚠️ Rapports de contrôle interne automatisés
+- ⚠️ Séparation des fonctions (maker-checker)
+- ⚠️ Contrôles d'accès renforcés
+
+**Recommandation:**
+
+- Implémenter un système maker-checker pour les opérations sensibles
+- Documenter les procédures de contrôle interne
+- Générer des rapports périodiques de contrôle interne
+
+Rapport Annuel
+--------------
+
+Instruction n°018-12-2010
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Exigences:**
+
+- Production d'un rapport annuel
+- Contenu défini par l'instruction
+- Publication selon modalités réglementaires
+
+**État Actuel:** ❌ **NON CONFORME**
+
+**Éléments manquants:**
+
+- ❌ Génération automatique du rapport annuel
+- ❌ Contenu conforme à l'instruction
+- ❌ Publication automatisée
+
+**Action requise:**
+
+1. Analyser l'instruction n°018-12-2010 pour identifier le contenu requis
+2. Implémenter la génération automatique du rapport annuel
+3. Inclure tous les éléments requis (états financiers, indicateurs, etc.)
+4. Automatiser la publication
+
+Recommandations
+---------------
+
+Priorité 1 - Critique
+~~~~~~~~~~~~~~~~~~~~~
+
+1. **Analyser le Référentiel Comptable SFD**
+   - Télécharger le référentiel comptable spécifique des SFD
+   - Comparer avec le plan comptable actuel
+   - Adapter si nécessaire
+
+2. **Implémenter les États Financiers**
+   - Bilan
+   - Compte de résultat
+   - Tableau des flux de trésorerie
+   - Conformité à l'instruction n°030-02-2009
+
+3. **Implémenter les Indicateurs Périodiques**
+   - Analyser l'instruction n°020-12-2010
+   - Calculer tous les indicateurs requis
+   - Automatiser la transmission
+
+Priorité 2 - Important
+~~~~~~~~~~~~~~~~~~~~~~
+
+4. **Règles Prudentielles**
+   - Implémenter le calcul des ratios
+   - Système d'alertes
+   - Rapports de conformité
+
+5. **Rapport Annuel**
+   - Génération automatique
+   - Contenu conforme
+   - Publication automatisée
+
+6. **Contrôle Interne**
+   - Documentation des procédures
+   - Système maker-checker
+   - Rapports de contrôle interne
+
+Priorité 3 - Souhaitable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+7. **Optimisations**
+   - Performance des calculs
+   - Cache des indicateurs
+   - Export automatisé
+
+Plan d'Action Immédiat
+----------------------
+
+Étape 1: Analyse des Documents Réglementaires
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Télécharger le référentiel comptable spécifique des SFD
+- [ ] Télécharger toutes les instructions mentionnées
+- [ ] Analyser les exigences détaillées
+
+Étape 2: Audit du Plan Comptable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Comparer le plan comptable actuel avec le référentiel SFD
+- [ ] Identifier les écarts
+- [ ] Planifier les adaptations nécessaires
+
+Étape 3: Implémentation des États Financiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Créer les modèles ``FinancialStatement`` et ``FinancialStatementLine``
+- [ ] Implémenter ``FinancialStatementService``
+- [ ] Générer Bilan, Compte de résultat, Flux de trésorerie
+- [ ] Ajouter la conservation/archivage
+
+Étape 4: Indicateurs Périodiques
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Identifier tous les indicateurs requis
+- [ ] Implémenter le calcul de chaque indicateur
+- [ ] Créer le format de transmission
+- [ ] Automatiser la génération et transmission
+
+Étape 5: Règles Prudentielles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Identifier les ratios à surveiller
+- [ ] Implémenter le calcul
+- [ ] Créer le système d'alertes
+
+Étape 6: Rapport Annuel
+~~~~~~~~~~~~~~~~~~~~~~~
+- [ ] Analyser le contenu requis
+- [ ] Implémenter la génération
+- [ ] Automatiser la publication
+
+Conclusion
+----------
+
+Le système Core Banking dispose d'une base comptable solide avec :
+
+- ✅ Plan comptable hiérarchique
+- ✅ Système d'écritures comptables
+- ✅ Périodes comptables
+
+Cependant, pour être conforme à la réglementation SFD de l'UMOA, il est nécessaire d'implémenter :
+
+- ❌ États financiers réglementaires
+- ❌ Indicateurs périodiques
+- ❌ Règles prudentielles
+- ❌ Rapport annuel automatisé
+- ⚠️ Vérification de la conformité du plan comptable avec le référentiel SFD
+
+**Prochaine étape recommandée:** Télécharger et analyser le référentiel comptable spécifique des SFD pour vérifier la conformité du plan comptable actuel.
+
+---
+
+**Document préparé par:** Assistant IA
+**Date:** 2025-01-27
+**Version:** 1.0

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="fr" x-data="{activeSection: ''}">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="#ffffff" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#030711" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Rapport de Vérification de Conformité - Réglementation SFD UMOA | Documentation THL CoreBanking 0.0.1</title>
+<meta content="Rapport de Vérification de Conformité - Réglementation SFD UMOA | Documentation THL CoreBanking 0.0.1" property="og:title"/>
+<meta content="Rapport de Vérification de Conformité - Réglementation SFD UMOA | Documentation THL CoreBanking 0.0.1" name="twitter:title"/>
+<link href="../../_static/pygments.css?v=e72c8e07" rel="stylesheet" type="text/css"/>
+<link href="../../_static/theme.css?v=c0d22bf5" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=d871b14e" rel="stylesheet" type="text/css"/>
+<link href="../../search.html" rel="search" title="Recherche"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../branch/index.html" rel="next" title="Module Agence"/>
+<link href="plan_comptable_sfd_umoa.html" rel="prev" title="Plan Comptable SFD - UMOA"/>
+</head>
+<body :class="{ 'overflow-hidden': showSidebar }" @scroll.window="showScrollTop = pageYOffset &gt; 100" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
+<div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
+      Skip to content
+    </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border bg-background/90 backdrop-blur"><div class="container flex items-center h-14">
+<div class="hidden mr-4 md:flex">
+<a class="flex items-center mr-6" href="../../index.html"><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">Documentation THL CoreBanking 0.0.1</span>
+</a><nav class="flex items-center gap-6 text-sm font-medium">
+<a class="transition-colors hover:text-foreground/80 text-foreground/60" href="https://github.com/THLTechnologies/CID-CoreBanking" rel="noopener nofollow">GitHub</a>
+</nav></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
+</svg>
+<span class="sr-only">Toggle navigation menu</span>
+</button>
+<div class="flex items-center justify-between flex-1 gap-2 sm:gap-4 md:justify-end">
+<div class="flex-1 w-full md:w-auto md:flex-none"><form @keydown.k.window.meta="$refs.search.focus()" action="../../search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+</div>
+<nav class="flex items-center gap-1">
+<a href="https://github.com/THLTechnologies/CID-CoreBanking" rel="noopener nofollow" title="Visit GitHub">
+<div class="inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9">
+            fa-brands fa-github
+          </div>
+</a>
+</nav>
+</div>
+</div>
+</header>
+<div class="flex-1"><div class="container md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
+<a class="justify-start text-sm md:!hidden bg-background" href="../../index.html"><span class="font-bold text-clip whitespace-nowrap">Documentation THL CoreBanking 0.0.1</span>
+</a>
+<div class="relative overflow-hidden md:overflow-auto my-4 md:my-0">
+<div class="overflow-y-auto h-full w-full relative pr-6"><form @keydown.k.window.meta="$refs.search.focus()" action="../../search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+<h3><a href="../../index.html">Table des matières</a></h3>
+<p class="caption" role="heading"><span class="caption-text">📚 Sommaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#thl-core-banking"><strong>THL Core Banking</strong></a></li>
+<li class="toctree-l1 current" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../index.html">Modules<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul class="current" x-show="expanded">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#statistiques-de-documentation">📊 <strong>Statistiques de Documentation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#guide-de-navigation">📋 <strong>Guide de Navigation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#documentation-specialisee-du-module-comptable">📚 <strong>Documentation Spécialisée du Module Comptable</strong></a></li>
+</ul>
+</li>
+</ul>
+<div>
+<h3><a href="../../index.html">Table des matières</a></h3>
+<ul>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#vue-d-ensemble">📋 Vue d’ensemble<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#documents-reglementaires-de-reference">Documents Réglementaires de Référence</a></li>
+<li><a class="reference internal" href="#etat-actuel-du-systeme">État Actuel du Système</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#referentiel-comptable-specifique-des-sfd">Référentiel Comptable Spécifique des SFD<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#verification-requise">Vérification Requise</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#plan-de-comptes">Plan de Comptes<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n026-02-2009">Instruction n°026-02-2009</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#etats-financiers">États Financiers<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n030-02-2009">Instruction n°030-02-2009</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#regles-prudentielles">Règles Prudentielles<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n010-08-2010">Instruction n°010-08-2010</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#indicateurs-periodiques">Indicateurs Périodiques<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n020-12-2010">Instruction n°020-12-2010</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#controle-interne">Contrôle Interne<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n017-12-2010">Instruction n°017-12-2010</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#rapport-annuel">Rapport Annuel<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#instruction-n018-12-2010">Instruction n°018-12-2010</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#recommandations">Recommandations<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#priorite-1-critique">Priorité 1 - Critique</a></li>
+<li><a class="reference internal" href="#priorite-2-important">Priorité 2 - Important</a></li>
+<li><a class="reference internal" href="#priorite-3-souhaitable">Priorité 3 - Souhaitable</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#plan-d-action-immediat">Plan d’Action Immédiat<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#etape-1-analyse-des-documents-reglementaires">Étape 1: Analyse des Documents Réglementaires</a></li>
+<li><a class="reference internal" href="#etape-2-audit-du-plan-comptable">Étape 2: Audit du Plan Comptable</a></li>
+<li><a class="reference internal" href="#etape-3-implementation-des-etats-financiers">Étape 3: Implémentation des États Financiers</a></li>
+<li><a class="reference internal" href="#etape-4-indicateurs-periodiques">Étape 4: Indicateurs Périodiques</a></li>
+<li><a class="reference internal" href="#etape-5-regles-prudentielles">Étape 5: Règles Prudentielles</a></li>
+<li><a class="reference internal" href="#etape-6-rapport-annuel">Étape 6: Rapport Annuel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div>
+<h4>Sujet précédent</h4>
+<p class="topless"><a href="plan_comptable_sfd_umoa.html" title="Chapitre précédent">Plan Comptable SFD - UMOA</a></p>
+</div>
+<div>
+<h4>Sujet suivant</h4>
+<p class="topless"><a href="../branch/index.html" title="Chapitre suivant">Module Agence</a></p>
+</div>
+<div aria-label="source link" role="note">
+<h3>Cette page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/modules/accountant/verification_conformite.rst.txt" rel="nofollow">Montrer le code source</a></li>
+</ul>
+</div>
+</div>
+</div>
+<button @click="showSidebar = false" class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100" type="button">
+<svg class="h-4 w-4" fill="currentColor" height="24" stroke="none" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z"></path>
+</svg>
+</button>
+</aside>
+<main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+<div class="w-full min-w-0 mx-auto">
+<nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="../../index.html">
+<span class="hidden md:inline">Documentation THL CoreBanking 0.0.1</span>
+<svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
+</svg>
+</a>
+<div class="mr-1">/</div><a class="hover:text-foreground overflow-hidden text-ellipsis whitespace-nowrap" href="../index.html">Modules</a>
+<div class="mr-1">/</div><a class="hover:text-foreground overflow-hidden text-ellipsis whitespace-nowrap" href="index.html">Comptabilité</a>
+<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Rapport de Vérification de Conformité - Réglementation SFD UMOA</span>
+</nav>
+<div id="content" role="main">
+<section id="rapport-de-verification-de-conformite-reglementation-sfd-umoa">
+<span id="verification-conformite-sfd-umoa"></span><h1>Rapport de Vérification de Conformité - Réglementation SFD UMOA<a class="headerlink" href="#rapport-de-verification-de-conformite-reglementation-sfd-umoa" title="Lien vers cette rubrique"><span>#</span></a></h1>
+<p><strong>Date:</strong> 2025-01-27
+<strong>Référence:</strong> <a class="reference external" href="https://cb-umoa.org/fr/sfd">Commission Bancaire de l’UMOA</a>
+<strong>Système:</strong> Core Banking Backend</p>
+<section id="vue-d-ensemble">
+<h2>📋 Vue d’ensemble<a class="headerlink" href="#vue-d-ensemble" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#vue-d-ensemble'"><span>#</span></a></h2>
+<section id="documents-reglementaires-de-reference">
+<h3>Documents Réglementaires de Référence<a class="headerlink" href="#documents-reglementaires-de-reference" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#documents-reglementaires-de-reference'"><span>#</span></a></h3>
+<p>Selon la Commission Bancaire de l’UMOA, les documents suivants régissent les SFD :</p>
+<ol class="arabic simple">
+<li><p><strong>Référentiel comptable spécifique des Systèmes Financiers Décentralisés de l’UMOA</strong> (17/05/2022)</p></li>
+<li><p><strong>Instruction n°025-02-2009</strong> - Instituant un référentiel comptable spécifique des SFD de l’UMOA</p></li>
+<li><p><strong>Instruction n°026-02-2009</strong> - Conditions de mise en œuvre du plan de comptes</p></li>
+<li><p><strong>Instruction n°030-02-2009</strong> - Modalités d’établissement et de conservation des états financiers</p></li>
+<li><p><strong>Instruction n°010-08-2010</strong> - Règles prudentielles applicables aux SFD</p></li>
+<li><p><strong>Instruction n°020-12-2010</strong> - Indicateurs périodiques à transmettre</p></li>
+<li><p><strong>Instruction n°017-12-2010</strong> - Organisation du contrôle interne</p></li>
+<li><p><strong>Instruction n°018-12-2010</strong> - Obligation de produire un rapport annuel</p></li>
+</ol>
+</section>
+<section id="etat-actuel-du-systeme">
+<h3>État Actuel du Système<a class="headerlink" href="#etat-actuel-du-systeme" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etat-actuel-du-systeme'"><span>#</span></a></h3>
+<p>Le système Core Banking dispose actuellement de :</p>
+<ul class="simple">
+<li><p>✅ Plan comptable (<code class="docutils literal notranslate"><span class="pre">ChartOfAccount</span></code>)</p></li>
+<li><p>✅ Écritures comptables (<code class="docutils literal notranslate"><span class="pre">JournalEntry</span></code>, <code class="docutils literal notranslate"><span class="pre">JournalLine</span></code>)</p></li>
+<li><p>✅ Périodes comptables (<code class="docutils literal notranslate"><span class="pre">AccountingPeriod</span></code>, <code class="docutils literal notranslate"><span class="pre">FiscalYear</span></code>)</p></li>
+<li><p>✅ Grand livre général (<code class="docutils literal notranslate"><span class="pre">GeneralLedger</span></code>)</p></li>
+<li><p>❌ États financiers réglementaires (non implémentés)</p></li>
+<li><p>❌ Indicateurs périodiques réglementaires (non implémentés)</p></li>
+<li><p>❌ Rapport annuel automatisé (non implémenté)</p></li>
+</ul>
+</section>
+</section>
+<section id="referentiel-comptable-specifique-des-sfd">
+<h2>Référentiel Comptable Spécifique des SFD<a class="headerlink" href="#referentiel-comptable-specifique-des-sfd" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#referentiel-comptable-specifique-des-sfd'"><span>#</span></a></h2>
+<section id="verification-requise">
+<h3>Vérification Requise<a class="headerlink" href="#verification-requise" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#verification-requise'"><span>#</span></a></h3>
+<p><strong>Document de référence:</strong> Référentiel comptable spécifique des SFD de l’UMOA (17/05/2022)</p>
+<p><strong>État:</strong> ⚠️ <strong>À VÉRIFIER</strong></p>
+<p>Le système utilise actuellement un plan comptable générique. Il est nécessaire de vérifier si :</p>
+<ul class="simple">
+<li><p>Le plan comptable actuel respecte la structure imposée par le référentiel SFD</p></li>
+<li><p>Les classes comptables correspondent aux exigences UMOA</p></li>
+<li><p>Les comptes spécifiques aux SFD sont présents</p></li>
+</ul>
+<p><strong>Action requise:</strong></p>
+<ul class="simple">
+<li><p>Télécharger et analyser le référentiel comptable spécifique des SFD</p></li>
+<li><p>Comparer la structure actuelle avec les exigences</p></li>
+<li><p>Adapter le plan comptable si nécessaire</p></li>
+</ul>
+</section>
+</section>
+<section id="plan-de-comptes">
+<h2>Plan de Comptes<a class="headerlink" href="#plan-de-comptes" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#plan-de-comptes'"><span>#</span></a></h2>
+<section id="instruction-n026-02-2009">
+<h3>Instruction n°026-02-2009<a class="headerlink" href="#instruction-n026-02-2009" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n026-02-2009'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Plan de comptes conforme au référentiel SFD</p></li>
+<li><p>Structure hiérarchique respectée</p></li>
+<li><p>Codes comptables normalisés</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ✅ <strong>PARTIELLEMENT CONFORME</strong></p>
+<p><strong>Éléments présents:</strong></p>
+<ul class="simple">
+<li><p>✅ Structure hiérarchique (<code class="docutils literal notranslate"><span class="pre">ChartOfAccount</span></code> avec parent/enfants)</p></li>
+<li><p>✅ Codes comptables (<code class="docutils literal notranslate"><span class="pre">code</span></code> field)</p></li>
+<li><p>✅ Libellés (<code class="docutils literal notranslate"><span class="pre">label</span></code> field)</p></li>
+<li><p>✅ Types de comptes (<code class="docutils literal notranslate"><span class="pre">AccountType</span></code>: ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE)</p></li>
+<li><p>✅ Niveaux hiérarchiques (<code class="docutils literal notranslate"><span class="pre">level</span></code> field)</p></li>
+</ul>
+<p><strong>Éléments à vérifier:</strong></p>
+<ul class="simple">
+<li><p>⚠️ Correspondance exacte avec le plan de comptes SFD UMOA</p></li>
+<li><p>⚠️ Codes comptables conformes à la nomenclature UMOA</p></li>
+<li><p>⚠️ Comptes obligatoires pour SFD présents</p></li>
+</ul>
+<p><strong>Recommandation:</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="c1">// Vérifier que le plan comptable initialisé correspond au référentiel SFD</span>
+</span><span id="line-2"><span class="c1">// Voir: src/main/java/com/thltechnologies/corebanking/config/SetupLoaderData.java</span>
+</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="etats-financiers">
+<h2>États Financiers<a class="headerlink" href="#etats-financiers" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etats-financiers'"><span>#</span></a></h2>
+<section id="instruction-n030-02-2009">
+<h3>Instruction n°030-02-2009<a class="headerlink" href="#instruction-n030-02-2009" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n030-02-2009'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Établissement des états financiers selon modalités définies</p></li>
+<li><p>Conservation des états financiers</p></li>
+<li><p>Publication selon modalités réglementaires</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ❌ <strong>NON CONFORME</strong></p>
+<p><strong>Éléments manquants:</strong></p>
+<ul class="simple">
+<li><p>❌ Bilan (Balance Sheet)</p></li>
+<li><p>❌ Compte de résultat (Income Statement)</p></li>
+<li><p>❌ Tableau des flux de trésorerie</p></li>
+<li><p>❌ État des variations des capitaux propres</p></li>
+<li><p>❌ Système de conservation des états financiers</p></li>
+<li><p>❌ Publication automatisée</p></li>
+</ul>
+<p><strong>Action requise:</strong></p>
+<ol class="arabic simple">
+<li><p>Implémenter la génération des états financiers</p></li>
+<li><p>Créer les modèles <code class="docutils literal notranslate"><span class="pre">FinancialStatement</span></code> et <code class="docutils literal notranslate"><span class="pre">FinancialStatementLine</span></code></p></li>
+<li><p>Implémenter le service <code class="docutils literal notranslate"><span class="pre">FinancialStatementService</span></code></p></li>
+<li><p>Ajouter la fonctionnalité de conservation/archivage</p></li>
+<li><p>Implémenter la publication selon modalités réglementaires</p></li>
+</ol>
+</section>
+</section>
+<section id="regles-prudentielles">
+<h2>Règles Prudentielles<a class="headerlink" href="#regles-prudentielles" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#regles-prudentielles'"><span>#</span></a></h2>
+<section id="instruction-n010-08-2010">
+<h3>Instruction n°010-08-2010<a class="headerlink" href="#instruction-n010-08-2010" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n010-08-2010'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Respect des ratios prudentiels</p></li>
+<li><p>Calcul automatique des indicateurs</p></li>
+<li><p>Alertes en cas de non-respect</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ❌ <strong>NON CONFORME</strong></p>
+<p><strong>Éléments manquants:</strong></p>
+<ul class="simple">
+<li><p>❌ Calcul des ratios prudentiels (ex: ratio de solvabilité, ratio de liquidité)</p></li>
+<li><p>❌ Surveillance des limites réglementaires</p></li>
+<li><p>❌ Système d’alertes automatiques</p></li>
+<li><p>❌ Rapports de conformité prudentielle</p></li>
+</ul>
+<p><strong>Action requise:</strong></p>
+<ol class="arabic simple">
+<li><p>Identifier les ratios prudentiels applicables aux SFD</p></li>
+<li><p>Implémenter le calcul automatique</p></li>
+<li><p>Créer un système de surveillance et d’alertes</p></li>
+<li><p>Générer des rapports de conformité</p></li>
+</ol>
+</section>
+</section>
+<section id="indicateurs-periodiques">
+<h2>Indicateurs Périodiques<a class="headerlink" href="#indicateurs-periodiques" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#indicateurs-periodiques'"><span>#</span></a></h2>
+<section id="instruction-n020-12-2010">
+<h3>Instruction n°020-12-2010<a class="headerlink" href="#instruction-n020-12-2010" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n020-12-2010'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Transmission périodique d’indicateurs au Ministre en charge des Finances, à la BCEAO et à la Commission Bancaire de l’UMOA</p></li>
+<li><p>Format et fréquence définis par l’instruction</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ❌ <strong>NON CONFORME</strong></p>
+<p><strong>Éléments manquants:</strong></p>
+<ul class="simple">
+<li><p>❌ Calcul des indicateurs périodiques réglementaires</p></li>
+<li><p>❌ Format de transmission conforme</p></li>
+<li><p>❌ Automatisation de la transmission</p></li>
+<li><p>❌ Traçabilité des transmissions</p></li>
+</ul>
+<p><strong>Action requise:</strong></p>
+<ol class="arabic simple">
+<li><p>Analyser l’instruction n°020-12-2010 pour identifier les indicateurs requis</p></li>
+<li><p>Implémenter le calcul de chaque indicateur</p></li>
+<li><p>Créer le format de transmission conforme</p></li>
+<li><p>Automatiser la génération et la transmission périodique</p></li>
+<li><p>Ajouter un système de traçabilité</p></li>
+</ol>
+<p><strong>Indicateurs typiques à vérifier:</strong></p>
+<ul class="simple">
+<li><p>Actif total</p></li>
+<li><p>Passif total</p></li>
+<li><p>Capitaux propres</p></li>
+<li><p>Crédits accordés</p></li>
+<li><p>Dépôts collectés</p></li>
+<li><p>Résultat net</p></li>
+<li><p>Ratios de solvabilité</p></li>
+<li><p>Ratios de liquidité</p></li>
+<li><p>Provisions pour créances douteuses</p></li>
+</ul>
+</section>
+</section>
+<section id="controle-interne">
+<h2>Contrôle Interne<a class="headerlink" href="#controle-interne" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#controle-interne'"><span>#</span></a></h2>
+<section id="instruction-n017-12-2010">
+<h3>Instruction n°017-12-2010<a class="headerlink" href="#instruction-n017-12-2010" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n017-12-2010'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Organisation du contrôle interne au sein des SFD</p></li>
+<li><p>Procédures de contrôle</p></li>
+<li><p>Documentation du contrôle interne</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ⚠️ <strong>PARTIELLEMENT CONFORME</strong></p>
+<p><strong>Éléments présents:</strong></p>
+<ul class="simple">
+<li><p>✅ Système d’audit trail (via <code class="docutils literal notranslate"><span class="pre">@CreatedDate</span></code>, <code class="docutils literal notranslate"><span class="pre">EntityListeners</span></code>)</p></li>
+<li><p>✅ Gestion des états (<code class="docutils literal notranslate"><span class="pre">State</span></code> enum)</p></li>
+<li><p>✅ Contrôles de validation dans les services</p></li>
+</ul>
+<p><strong>Éléments à améliorer:</strong></p>
+<ul class="simple">
+<li><p>⚠️ Documentation des procédures de contrôle interne</p></li>
+<li><p>⚠️ Rapports de contrôle interne automatisés</p></li>
+<li><p>⚠️ Séparation des fonctions (maker-checker)</p></li>
+<li><p>⚠️ Contrôles d’accès renforcés</p></li>
+</ul>
+<p><strong>Recommandation:</strong></p>
+<ul class="simple">
+<li><p>Implémenter un système maker-checker pour les opérations sensibles</p></li>
+<li><p>Documenter les procédures de contrôle interne</p></li>
+<li><p>Générer des rapports périodiques de contrôle interne</p></li>
+</ul>
+</section>
+</section>
+<section id="rapport-annuel">
+<h2>Rapport Annuel<a class="headerlink" href="#rapport-annuel" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#rapport-annuel'"><span>#</span></a></h2>
+<section id="instruction-n018-12-2010">
+<h3>Instruction n°018-12-2010<a class="headerlink" href="#instruction-n018-12-2010" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#instruction-n018-12-2010'"><span>#</span></a></h3>
+<p><strong>Exigences:</strong></p>
+<ul class="simple">
+<li><p>Production d’un rapport annuel</p></li>
+<li><p>Contenu défini par l’instruction</p></li>
+<li><p>Publication selon modalités réglementaires</p></li>
+</ul>
+<p><strong>État Actuel:</strong> ❌ <strong>NON CONFORME</strong></p>
+<p><strong>Éléments manquants:</strong></p>
+<ul class="simple">
+<li><p>❌ Génération automatique du rapport annuel</p></li>
+<li><p>❌ Contenu conforme à l’instruction</p></li>
+<li><p>❌ Publication automatisée</p></li>
+</ul>
+<p><strong>Action requise:</strong></p>
+<ol class="arabic simple">
+<li><p>Analyser l’instruction n°018-12-2010 pour identifier le contenu requis</p></li>
+<li><p>Implémenter la génération automatique du rapport annuel</p></li>
+<li><p>Inclure tous les éléments requis (états financiers, indicateurs, etc.)</p></li>
+<li><p>Automatiser la publication</p></li>
+</ol>
+</section>
+</section>
+<section id="recommandations">
+<h2>Recommandations<a class="headerlink" href="#recommandations" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#recommandations'"><span>#</span></a></h2>
+<section id="priorite-1-critique">
+<h3>Priorité 1 - Critique<a class="headerlink" href="#priorite-1-critique" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#priorite-1-critique'"><span>#</span></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Analyser le Référentiel Comptable SFD</strong>
+- Télécharger le référentiel comptable spécifique des SFD
+- Comparer avec le plan comptable actuel
+- Adapter si nécessaire</p></li>
+<li><p><strong>Implémenter les États Financiers</strong>
+- Bilan
+- Compte de résultat
+- Tableau des flux de trésorerie
+- Conformité à l’instruction n°030-02-2009</p></li>
+<li><p><strong>Implémenter les Indicateurs Périodiques</strong>
+- Analyser l’instruction n°020-12-2010
+- Calculer tous les indicateurs requis
+- Automatiser la transmission</p></li>
+</ol>
+</section>
+<section id="priorite-2-important">
+<h3>Priorité 2 - Important<a class="headerlink" href="#priorite-2-important" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#priorite-2-important'"><span>#</span></a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Règles Prudentielles</strong>
+- Implémenter le calcul des ratios
+- Système d’alertes
+- Rapports de conformité</p></li>
+<li><p><strong>Rapport Annuel</strong>
+- Génération automatique
+- Contenu conforme
+- Publication automatisée</p></li>
+<li><p><strong>Contrôle Interne</strong>
+- Documentation des procédures
+- Système maker-checker
+- Rapports de contrôle interne</p></li>
+</ol>
+</section>
+<section id="priorite-3-souhaitable">
+<h3>Priorité 3 - Souhaitable<a class="headerlink" href="#priorite-3-souhaitable" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#priorite-3-souhaitable'"><span>#</span></a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Optimisations</strong>
+- Performance des calculs
+- Cache des indicateurs
+- Export automatisé</p></li>
+</ol>
+</section>
+</section>
+<section id="plan-d-action-immediat">
+<h2>Plan d’Action Immédiat<a class="headerlink" href="#plan-d-action-immediat" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#plan-d-action-immediat'"><span>#</span></a></h2>
+<section id="etape-1-analyse-des-documents-reglementaires">
+<h3>Étape 1: Analyse des Documents Réglementaires<a class="headerlink" href="#etape-1-analyse-des-documents-reglementaires" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-1-analyse-des-documents-reglementaires'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Télécharger le référentiel comptable spécifique des SFD</p></li>
+<li><p>[ ] Télécharger toutes les instructions mentionnées</p></li>
+<li><p>[ ] Analyser les exigences détaillées</p></li>
+</ul>
+</section>
+<section id="etape-2-audit-du-plan-comptable">
+<h3>Étape 2: Audit du Plan Comptable<a class="headerlink" href="#etape-2-audit-du-plan-comptable" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-2-audit-du-plan-comptable'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Comparer le plan comptable actuel avec le référentiel SFD</p></li>
+<li><p>[ ] Identifier les écarts</p></li>
+<li><p>[ ] Planifier les adaptations nécessaires</p></li>
+</ul>
+</section>
+<section id="etape-3-implementation-des-etats-financiers">
+<h3>Étape 3: Implémentation des États Financiers<a class="headerlink" href="#etape-3-implementation-des-etats-financiers" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-3-implementation-des-etats-financiers'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Créer les modèles <code class="docutils literal notranslate"><span class="pre">FinancialStatement</span></code> et <code class="docutils literal notranslate"><span class="pre">FinancialStatementLine</span></code></p></li>
+<li><p>[ ] Implémenter <code class="docutils literal notranslate"><span class="pre">FinancialStatementService</span></code></p></li>
+<li><p>[ ] Générer Bilan, Compte de résultat, Flux de trésorerie</p></li>
+<li><p>[ ] Ajouter la conservation/archivage</p></li>
+</ul>
+</section>
+<section id="etape-4-indicateurs-periodiques">
+<h3>Étape 4: Indicateurs Périodiques<a class="headerlink" href="#etape-4-indicateurs-periodiques" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-4-indicateurs-periodiques'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Identifier tous les indicateurs requis</p></li>
+<li><p>[ ] Implémenter le calcul de chaque indicateur</p></li>
+<li><p>[ ] Créer le format de transmission</p></li>
+<li><p>[ ] Automatiser la génération et transmission</p></li>
+</ul>
+</section>
+<section id="etape-5-regles-prudentielles">
+<h3>Étape 5: Règles Prudentielles<a class="headerlink" href="#etape-5-regles-prudentielles" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-5-regles-prudentielles'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Identifier les ratios à surveiller</p></li>
+<li><p>[ ] Implémenter le calcul</p></li>
+<li><p>[ ] Créer le système d’alertes</p></li>
+</ul>
+</section>
+<section id="etape-6-rapport-annuel">
+<h3>Étape 6: Rapport Annuel<a class="headerlink" href="#etape-6-rapport-annuel" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etape-6-rapport-annuel'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>[ ] Analyser le contenu requis</p></li>
+<li><p>[ ] Implémenter la génération</p></li>
+<li><p>[ ] Automatiser la publication</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#conclusion'"><span>#</span></a></h2>
+<p>Le système Core Banking dispose d’une base comptable solide avec :</p>
+<ul class="simple">
+<li><p>✅ Plan comptable hiérarchique</p></li>
+<li><p>✅ Système d’écritures comptables</p></li>
+<li><p>✅ Périodes comptables</p></li>
+</ul>
+<p>Cependant, pour être conforme à la réglementation SFD de l’UMOA, il est nécessaire d’implémenter :</p>
+<ul class="simple">
+<li><p>❌ États financiers réglementaires</p></li>
+<li><p>❌ Indicateurs périodiques</p></li>
+<li><p>❌ Règles prudentielles</p></li>
+<li><p>❌ Rapport annuel automatisé</p></li>
+<li><p>⚠️ Vérification de la conformité du plan comptable avec le référentiel SFD</p></li>
+</ul>
+<p><strong>Prochaine étape recommandée:</strong> Télécharger et analyser le référentiel comptable spécifique des SFD pour vérifier la conformité du plan comptable actuel.</p>
+<p>—</p>
+<p><strong>Document préparé par:</strong> Assistant IA
+<strong>Date:</strong> 2025-01-27
+<strong>Version:</strong> 1.0</p>
+</section>
+</section>
+</div><div class="flex justify-between items-center pt-6 mt-12 border-t border-border gap-4">
+<div class="mr-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="plan_comptable_sfd_umoa.html">
+<svg class="mr-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+        Plan Comptable SFD - UMOA
+      </a>
+</div>
+<div class="ml-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="../branch/index.html">
+        Module Agence
+        <svg class="ml-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</a>
+</div>
+</div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
+<div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<ul>
+<li><a :data-current="activeSection === '#vue-d-ensemble'" class="reference internal" href="#vue-d-ensemble">📋 Vue d’ensemble</a><ul>
+<li><a :data-current="activeSection === '#documents-reglementaires-de-reference'" class="reference internal" href="#documents-reglementaires-de-reference">Documents Réglementaires de Référence</a></li>
+<li><a :data-current="activeSection === '#etat-actuel-du-systeme'" class="reference internal" href="#etat-actuel-du-systeme">État Actuel du Système</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#referentiel-comptable-specifique-des-sfd'" class="reference internal" href="#referentiel-comptable-specifique-des-sfd">Référentiel Comptable Spécifique des SFD</a><ul>
+<li><a :data-current="activeSection === '#verification-requise'" class="reference internal" href="#verification-requise">Vérification Requise</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#plan-de-comptes'" class="reference internal" href="#plan-de-comptes">Plan de Comptes</a><ul>
+<li><a :data-current="activeSection === '#instruction-n026-02-2009'" class="reference internal" href="#instruction-n026-02-2009">Instruction n°026-02-2009</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#etats-financiers'" class="reference internal" href="#etats-financiers">États Financiers</a><ul>
+<li><a :data-current="activeSection === '#instruction-n030-02-2009'" class="reference internal" href="#instruction-n030-02-2009">Instruction n°030-02-2009</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#regles-prudentielles'" class="reference internal" href="#regles-prudentielles">Règles Prudentielles</a><ul>
+<li><a :data-current="activeSection === '#instruction-n010-08-2010'" class="reference internal" href="#instruction-n010-08-2010">Instruction n°010-08-2010</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#indicateurs-periodiques'" class="reference internal" href="#indicateurs-periodiques">Indicateurs Périodiques</a><ul>
+<li><a :data-current="activeSection === '#instruction-n020-12-2010'" class="reference internal" href="#instruction-n020-12-2010">Instruction n°020-12-2010</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#controle-interne'" class="reference internal" href="#controle-interne">Contrôle Interne</a><ul>
+<li><a :data-current="activeSection === '#instruction-n017-12-2010'" class="reference internal" href="#instruction-n017-12-2010">Instruction n°017-12-2010</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#rapport-annuel'" class="reference internal" href="#rapport-annuel">Rapport Annuel</a><ul>
+<li><a :data-current="activeSection === '#instruction-n018-12-2010'" class="reference internal" href="#instruction-n018-12-2010">Instruction n°018-12-2010</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#recommandations'" class="reference internal" href="#recommandations">Recommandations</a><ul>
+<li><a :data-current="activeSection === '#priorite-1-critique'" class="reference internal" href="#priorite-1-critique">Priorité 1 - Critique</a></li>
+<li><a :data-current="activeSection === '#priorite-2-important'" class="reference internal" href="#priorite-2-important">Priorité 2 - Important</a></li>
+<li><a :data-current="activeSection === '#priorite-3-souhaitable'" class="reference internal" href="#priorite-3-souhaitable">Priorité 3 - Souhaitable</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#plan-d-action-immediat'" class="reference internal" href="#plan-d-action-immediat">Plan d’Action Immédiat</a><ul>
+<li><a :data-current="activeSection === '#etape-1-analyse-des-documents-reglementaires'" class="reference internal" href="#etape-1-analyse-des-documents-reglementaires">Étape 1: Analyse des Documents Réglementaires</a></li>
+<li><a :data-current="activeSection === '#etape-2-audit-du-plan-comptable'" class="reference internal" href="#etape-2-audit-du-plan-comptable">Étape 2: Audit du Plan Comptable</a></li>
+<li><a :data-current="activeSection === '#etape-3-implementation-des-etats-financiers'" class="reference internal" href="#etape-3-implementation-des-etats-financiers">Étape 3: Implémentation des États Financiers</a></li>
+<li><a :data-current="activeSection === '#etape-4-indicateurs-periodiques'" class="reference internal" href="#etape-4-indicateurs-periodiques">Étape 4: Indicateurs Périodiques</a></li>
+<li><a :data-current="activeSection === '#etape-5-regles-prudentielles'" class="reference internal" href="#etape-5-regles-prudentielles">Étape 5: Règles Prudentielles</a></li>
+<li><a :data-current="activeSection === '#etape-6-rapport-annuel'" class="reference internal" href="#etape-6-rapport-annuel">Étape 6: Rapport Annuel</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#conclusion'" class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+</aside>
+</main>
+</div>
+</div><footer class="py-6 border-t border-border md:py-0">
+<div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2025, THL Technologies Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.1.3</a></p>
+</div>
+</div>
+</footer>
+</div><button :class="{'opacity-0 invisible' : !showScrollTop}" @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 p-2 z-10 rounded-sm bg-gray-700 text-xs text-white transition-all duration-1000 hover:bg-gray-950 focus:bg-gray-950" id="scrolltop" x-cloak="">
+<svg aria-hidden="true" class="inline fill-current mb-[2px]" height="14" viewbox="0 96 960 960" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"></path>
+</svg>
+  Back to top
+</button>
+<script src="../../_static/documentation_options.js?v=718f2d82"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/js/target-blank.js?v=4e58104d"></script>
+<script defer="defer" src="../../_static/theme.js?v=e14a7d8a"></script>
+<script src="../../_static/translations.js?v=e6b791cb"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

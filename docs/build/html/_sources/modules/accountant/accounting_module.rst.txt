@@ -1,0 +1,1057 @@
+.. _accounting-module-summary:
+
+Résumé Complet - Module Comptable
+=================================
+
+**Date:** 2025
+**Version:** 1.0
+**Système:** Core Banking Backend - Finance Islamique
+
+📋 Vue d'ensemble
+-----------------
+
+Objectif
+~~~~~~~~
+
+Intégrer un **module comptable complet** dans le système de finance islamique existant, permettant :
+
+- La gestion de la comptabilité en partie double
+- La génération automatique des écritures comptables
+- La production des états financiers conformes aux normes AAOIFI
+- La séparation des fonds islamiques et conventionnels
+- Le suivi des comptes par classe comptable
+- La réconciliation bancaire
+- Les rapports comptables et financiers
+
+Conformité
+~~~~~~~~~~
+
+Le module doit respecter :
+
+- **AAOIFI** (Accounting and Auditing Organization for Islamic Financial Institutions)
+- **IFRS** (International Financial Reporting Standards) adaptés à la finance islamique
+- **Normes locales** de comptabilité bancaire
+- **Principes Sharia** pour la séparation des fonds
+
+État Actuel du Système
+----------------------
+
+Composants Existants ✅
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Backend (Java/Spring Boot)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Modèles existants :**
+
+- ✅ ``JournalEntry`` - Entrées de journal comptable
+- ✅ ``JournalLine`` - Lignes de journal (débit/crédit)
+- ✅ ``AccountingClass`` - Classes comptables
+- ✅ ``InternalAccount`` - Comptes internes (hérite de ``Account``)
+- ✅ ``Account`` - Comptes clients
+- ✅ ``Transaction`` - Transactions bancaires
+- ✅ ``TransactionComponent`` - Composants de transaction (TAF, margin, etc.)
+
+**Services existants :**
+
+- ✅ ``JournalEntryService`` - Service de gestion des écritures
+- ✅ ``AccountingClassService`` - Service des classes comptables
+- ✅ ``InternalAccountService`` - Service des comptes internes
+- ✅ ``TransactionService`` - Service des transactions
+- ✅ ``ChartOfAccountService`` - Service du plan comptable
+
+**Fonctionnalités existantes :**
+
+- ✅ Génération automatique d'écritures comptables depuis les transactions
+- ✅ Export Excel du journal comptable
+- ✅ Export par email
+- ✅ Filtrage par date et compte
+- ✅ Structure de comptes internes avec classes comptables
+- ✅ Consultation du plan comptable (et filtrage par agence pour l'espace Agence)
+
+Frontend (Angular)
+^^^^^^^^^^^^^^^^^^
+
+**Composants existants :**
+
+- ✅ ``accountant`` - Interface comptable de base
+- ✅ ``journal-entry`` - Visualisation des écritures
+- ✅ ``journal-line`` - Détails des lignes
+- ✅ ``shares`` - Gestion des parts
+- ✅ ``blocks/capital-withdrawal`` - Retrait de capital
+
+Fonctionnalités Manquantes ❌
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Comptabilité Générale
+^^^^^^^^^^^^^^^^^^^^^
+
+- ✅ Plan comptable (chart of accounts) – disponible (mode comptable global + mode agence filtré)
+- ❌ Grand livre général (General Ledger)
+- ❌ Balance de vérification (Trial Balance)
+- ❌ Balance des comptes (Account Balance)
+- ❌ Grand livre auxiliaire (Subsidiary Ledger)
+- ❌ Journal auxiliaire par type de transaction
+
+États Financiers
+^^^^^^^^^^^^^^^^
+
+- ❌ Bilan (Balance Sheet)
+- ❌ Compte de résultat (Income Statement / Profit & Loss)
+- ❌ Tableau des flux de trésorerie (Cash Flow Statement)
+- ❌ État des variations des capitaux propres
+- ❌ Rapport de conformité Sharia
+
+Réconciliation
+^^^^^^^^^^^^^^
+
+- ❌ Réconciliation bancaire
+- ❌ Réconciliation des comptes clients
+- ❌ Réconciliation inter-comptes
+- ❌ Pointage automatique
+
+Périodes Comptables
+^^^^^^^^^^^^^^^^^^^
+
+- ❌ Gestion des exercices comptables (Fiscal Year)
+- ❌ Périodes comptables (Accounting Periods)
+- ❌ Clôture d'exercice
+- ❌ Ajustements de fin d'exercice
+
+Contrôles Comptables
+^^^^^^^^^^^^^^^^^^^^
+
+- ❌ Validation de l'équilibre débit/crédit
+- ❌ Contrôles de cohérence
+- ❌ Alertes de non-conformité
+- ❌ Audit trail complet
+
+Rapports Avancés
+^^^^^^^^^^^^^^^^
+
+- ❌ Rapports par classe comptable
+- ❌ Analyse des coûts
+- ❌ Analyse de rentabilité
+- ❌ Tableaux de bord comptables
+- ❌ Rapports réglementaires
+
+Architecture Comptable Proposée
+-------------------------------
+
+Structure Hiérarchique des Comptes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+    Plan Comptable (Chart of Accounts)
+    │
+    ├── Classe 1: Actifs (Assets)
+    │   ├── 1.1 Actifs Courants
+    │   │   ├── 1.1.1 Trésorerie
+    │   │   ├── 1.1.2 Comptes Clients
+    │   │   └── 1.1.3 Stocks
+    │   └── 1.2 Actifs Non Courants
+    │       ├── 1.2.1 Immobilisations
+    │       └── 1.2.2 Investissements
+    │
+    ├── Classe 2: Passifs (Liabilities)
+    │   ├── 2.1 Passifs Courants
+    │   │   ├── 2.1.1 Comptes Fournisseurs
+    │   │   └── 2.1.2 Dettes Court Terme
+    │   └── 2.2 Passifs Non Courants
+    │       └── 2.2.1 Dettes Long Terme
+    │
+    ├── Classe 3: Capitaux Propres (Equity)
+    │   ├── 3.1 Capital Social
+    │   ├── 3.2 Réserves
+    │   └── 3.3 Résultat Net
+    │
+    ├── Classe 4: Produits (Revenue)
+    │   ├── 4.1 Produits d'Exploitation
+    │   │   ├── 4.1.1 Produits Murabaha
+    │   │   ├── 4.1.2 Produits Ijara
+    │   │   └── 4.1.3 Produits Musharaka
+    │   └── 4.2 Produits Financiers
+    │
+    └── Classe 5: Charges (Expenses)
+        ├── 5.1 Charges d'Exploitation
+        └── 5.2 Charges Financières
+
+Modèles de Données à Créer
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ChartOfAccount (Plan Comptable)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class ChartOfAccount {
+        private Long id;
+        private String code;              // Code comptable (ex: "1.1.1")
+        private String label;              // Libellé
+        private AccountType accountType;   // ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE
+        private ChartOfAccount parent;     // Compte parent (hiérarchie)
+        private List<ChartOfAccount> children;
+        private boolean isActive;
+        private boolean isSystemAccount;   // Compte système (non modifiable)
+        private AccountingClass accountingClass;
+        private boolean requiresReconciliation;
+        private LocalDateTime createdAt;
+        private State state;
+    }
+
+FiscalYear (Exercice Comptable)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class FiscalYear {
+        private Long id;
+        private String name;               // "Exercice 2025"
+        private LocalDate startDate;
+        private LocalDate endDate;
+        private boolean isActive;
+        private boolean isClosed;          // Clôturé ou non
+        private LocalDateTime closedAt;
+        private Employee closedBy;
+        private State state;
+    }
+
+AccountingPeriod (Période Comptable)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class AccountingPeriod {
+        private Long id;
+        private FiscalYear fiscalYear;
+        private String name;               // "Janvier 2025"
+        private LocalDate startDate;
+        private LocalDate endDate;
+        private int periodNumber;          // 1-12 pour mensuel
+        private boolean isClosed;
+        private LocalDateTime closedAt;
+        private State state;
+    }
+
+GeneralLedger (Grand Livre)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class GeneralLedger {
+        private Long id;
+        private ChartOfAccount account;
+        private AccountingPeriod period;
+        private LocalDate transactionDate;
+        private JournalEntry journalEntry;
+        private JournalLine journalLine;
+        private double debit;
+        private double credit;
+        private double balance;            // Solde cumulé
+        private String reference;           // Référence transaction
+        private State state;
+    }
+
+TrialBalance (Balance de Vérification)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class TrialBalance {
+        private Long id;
+        private AccountingPeriod period;
+        private ChartOfAccount account;
+        private double openingDebit;
+        private double openingCredit;
+        private double periodDebit;
+        private double periodCredit;
+        private double closingDebit;
+        private double closingCredit;
+        private LocalDate calculatedAt;
+        private State state;
+    }
+
+BankReconciliation (Réconciliation Bancaire)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class BankReconciliation {
+        private Long id;
+        private InternalAccount bankAccount;
+        private AccountingPeriod period;
+        private LocalDate statementDate;
+        private double bankBalance;        // Solde bancaire
+        private double bookBalance;         // Solde comptable
+        private double reconciledAmount;
+        private List<ReconciliationItem> items;
+        private boolean isReconciled;
+        private Employee reconciledBy;
+        private LocalDateTime reconciledAt;
+        private State state;
+    }
+
+ReconciliationItem (Élément de Réconciliation)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class ReconciliationItem {
+        private Long id;
+        private BankReconciliation reconciliation;
+        private Transaction transaction;
+        private ReconciliationType type;   // DEPOSIT, WITHDRAWAL, FEE, INTEREST
+        private double amount;
+        private LocalDate transactionDate;
+        private LocalDate bankDate;
+        private boolean isMatched;
+        private String notes;
+        private State state;
+    }
+
+FinancialStatement (États Financiers)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class FinancialStatement {
+        private Long id;
+        private StatementType type;        // BALANCE_SHEET, INCOME_STATEMENT, CASH_FLOW
+        private FiscalYear fiscalYear;
+        private AccountingPeriod period;
+        private LocalDate statementDate;
+        private String currency;
+        private List<FinancialStatementLine> lines;
+        private boolean isFinal;
+        private boolean isApproved;
+        private Employee approvedBy;
+        private LocalDateTime approvedAt;
+        private State state;
+    }
+
+FinancialStatementLine (Ligne d'État Financier)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class FinancialStatementLine {
+        private Long id;
+        private FinancialStatement statement;
+        private ChartOfAccount account;
+        private String label;
+        private int level;                 // Niveau d'indentation (0, 1, 2...)
+        private double amount;
+        private boolean isBold;            // Ligne en gras (totaux)
+        private boolean isSubtotal;        // Sous-total
+        private int order;                 // Ordre d'affichage
+        private State state;
+    }
+
+AccountingEntry (Écriture Comptable - Amélioration)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    // Extension de JournalEntry existant
+    @Entity
+    public class AccountingEntry extends JournalEntry {
+        private String entryNumber;        // Numéro d'écriture unique
+        private EntryType entryType;       // MANUAL, AUTOMATIC, ADJUSTMENT, CLOSING
+        private AccountingPeriod period;
+        private String description;
+        private String reference;          // Référence document
+        private boolean isReversed;        // Écriture contre-passée
+        private AccountingEntry reversedBy;
+        private boolean isAdjusted;
+        private String adjustmentReason;
+        private Employee createdBy;
+        private Employee approvedBy;
+        private LocalDateTime approvedAt;
+        private ApprovalStatus approvalStatus;
+    }
+
+Services à Créer
+~~~~~~~~~~~~~~~~
+
+ChartOfAccountService
+^^^^^^^^^^^^^^^^^^^^^
+
+- CRUD des comptes du plan comptable
+- Recherche hiérarchique
+- Validation de la structure
+- Import/Export du plan comptable
+
+FiscalYearService
+^^^^^^^^^^^^^^^^^
+
+- Gestion des exercices comptables
+- Création automatique des périodes
+- Clôture d'exercice
+- Validation des dates
+
+GeneralLedgerService
+^^^^^^^^^^^^^^^^^^^^
+
+- Génération du grand livre
+- Calcul des soldes
+- Filtrage par compte/période
+- Export Excel/PDF
+
+TrialBalanceService
+^^^^^^^^^^^^^^^^^^^
+
+- Calcul de la balance de vérification
+- Validation équilibre débit/crédit
+- Export et impression
+
+BankReconciliationService
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Réconciliation bancaire
+- Pointage automatique
+- Génération des écarts
+- Validation de la réconciliation
+
+FinancialStatementService
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Génération du bilan
+- Génération du compte de résultat
+- Génération du tableau de flux de trésorerie
+- Calculs automatiques
+- Export PDF/Excel
+
+AccountingPeriodService
+^^^^^^^^^^^^^^^^^^^^^^^
+
+- Gestion des périodes comptables
+- Ouverture/fermeture de période
+- Validation des transactions par période
+
+AccountingReportService
+^^^^^^^^^^^^^^^^^^^^^^^
+
+- Génération de rapports comptables
+- Rapports personnalisés
+- Tableaux de bord
+- Analyses financières
+
+Composants à Développer
+-----------------------
+
+Backend (Java/Spring Boot)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Modèles (Models)
+^^^^^^^^^^^^^^^^
+
+- [ ] ``ChartOfAccount.java``
+- [ ] ``FiscalYear.java``
+- [ ] ``AccountingPeriod.java``
+- [ ] ``GeneralLedger.java``
+- [ ] ``TrialBalance.java``
+- [ ] ``BankReconciliation.java``
+- [ ] ``ReconciliationItem.java``
+- [ ] ``FinancialStatement.java``
+- [ ] ``FinancialStatementLine.java``
+- [ ] Améliorer ``JournalEntry.java`` → ``AccountingEntry.java``
+
+Repositories
+^^^^^^^^^^^^
+
+- [ ] ``ChartOfAccountRepository.java``
+- [ ] ``FiscalYearRepository.java``
+- [ ] ``AccountingPeriodRepository.java``
+- [ ] ``GeneralLedgerRepository.java``
+- [ ] ``TrialBalanceRepository.java``
+- [ ] ``BankReconciliationRepository.java``
+- [ ] ``ReconciliationItemRepository.java``
+- [ ] ``FinancialStatementRepository.java``
+- [ ] ``FinancialStatementLineRepository.java``
+
+Services
+^^^^^^^^
+
+- [ ] ``ChartOfAccountService.java`` + ``ChartOfAccountServiceImp.java``
+- [ ] ``FiscalYearService.java`` + ``FiscalYearServiceImp.java``
+- [ ] ``AccountingPeriodService.java`` + ``AccountingPeriodServiceImp.java``
+- [ ] ``GeneralLedgerService.java`` + ``GeneralLedgerServiceImp.java``
+- [ ] ``TrialBalanceService.java`` + ``TrialBalanceServiceImp.java``
+- [ ] ``BankReconciliationService.java`` + ``BankReconciliationServiceImp.java``
+- [ ] ``FinancialStatementService.java`` + ``FinancialStatementServiceImp.java``
+- [ ] ``AccountingReportService.java`` + ``AccountingReportServiceImp.java``
+- [ ] Améliorer ``JournalEntryService`` pour intégrer les nouvelles fonctionnalités
+
+Controllers
+^^^^^^^^^^^
+
+- [ ] ``ChartOfAccountController.java``
+- [ ] ``FiscalYearController.java``
+- [ ] ``AccountingPeriodController.java``
+- [ ] ``GeneralLedgerController.java``
+- [ ] ``TrialBalanceController.java``
+- [ ] ``BankReconciliationController.java``
+- [ ] ``FinancialStatementController.java``
+- [ ] ``AccountingReportController.java``
+
+DTOs
+^^^^
+
+- [ ] ``ChartOfAccountRequest.java`` / ``ChartOfAccountResponse.java``
+- [ ] ``FiscalYearRequest.java`` / ``FiscalYearResponse.java``
+- [ ] ``AccountingPeriodRequest.java`` / ``AccountingPeriodResponse.java``
+- [ ] ``GeneralLedgerResponse.java``
+- [ ] ``TrialBalanceResponse.java``
+- [ ] ``BankReconciliationRequest.java`` / ``BankReconciliationResponse.java``
+- [ ] ``FinancialStatementResponse.java``
+- [ ] ``AccountingReportResponse.java``
+
+Mappings
+^^^^^^^^
+
+- [ ] ``ChartOfAccountMapping.java``
+- [ ] ``FiscalYearMapping.java``
+- [ ] ``AccountingPeriodMapping.java``
+- [ ] ``GeneralLedgerMapping.java``
+- [ ] ``TrialBalanceMapping.java``
+- [ ] ``BankReconciliationMapping.java``
+- [ ] ``FinancialStatementMapping.java``
+
+Enums
+^^^^^
+
+- [ ] ``AccountType.java`` (ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE)
+- [ ] ``EntryType.java`` (MANUAL, AUTOMATIC, ADJUSTMENT, CLOSING)
+- [ ] ``StatementType.java`` (BALANCE_SHEET, INCOME_STATEMENT, CASH_FLOW, EQUITY_STATEMENT)
+- [ ] ``ReconciliationType.java`` (DEPOSIT, WITHDRAWAL, FEE, INTEREST, TRANSFER)
+- [ ] ``ApprovalStatus.java`` (PENDING, APPROVED, REJECTED)
+
+Frontend (Angular)
+~~~~~~~~~~~~~~~~~~
+
+Composants
+^^^^^^^^^^
+
+- [ ] ``chart-of-accounts`` - Gestion du plan comptable
+- [ ] ``fiscal-year`` - Gestion des exercices
+- [ ] ``accounting-period`` - Gestion des périodes
+- [ ] ``general-ledger`` - Grand livre général
+- [ ] ``trial-balance`` - Balance de vérification
+- [ ] ``bank-reconciliation`` - Réconciliation bancaire
+- [ ] ``financial-statements`` - États financiers
+  - [ ] ``balance-sheet`` - Bilan
+  - [ ] ``income-statement`` - Compte de résultat
+  - [ ] ``cash-flow`` - Tableau de flux de trésorerie
+- [ ] ``accounting-reports`` - Rapports comptables
+- [ ] ``accounting-dashboard`` - Tableau de bord comptable
+
+Services
+^^^^^^^^
+
+- [ ] ``chart-of-account.service.ts``
+- [ ] ``fiscal-year.service.ts``
+- [ ] ``accounting-period.service.ts``
+- [ ] ``general-ledger.service.ts``
+- [ ] ``trial-balance.service.ts``
+- [ ] ``bank-reconciliation.service.ts``
+- [ ] ``financial-statement.service.ts``
+- [ ] ``accounting-report.service.ts``
+
+Models
+^^^^^^
+
+- [ ] ``chart-of-account.model.ts``
+- [ ] ``fiscal-year.model.ts``
+- [ ] ``accounting-period.model.ts``
+- [ ] ``general-ledger.model.ts``
+- [ ] ``trial-balance.model.ts``
+- [ ] ``bank-reconciliation.model.ts``
+- [ ] ``financial-statement.model.ts``
+
+Base de Données
+~~~~~~~~~~~~~~~
+
+Tables à Créer
+^^^^^^^^^^^^^^
+
+- [ ] ``chart_of_account``
+- [ ] ``fiscal_year``
+- [ ] ``accounting_period``
+- [ ] ``general_ledger``
+- [ ] ``trial_balance``
+- [ ] ``bank_reconciliation``
+- [ ] ``reconciliation_item``
+- [ ] ``financial_statement``
+- [ ] ``financial_statement_line``
+
+Migrations
+^^^^^^^^^^
+
+- [ ] Migration initiale du plan comptable
+- [ ] Migration des données existantes
+- [ ] Index pour performances
+- [ ] Contraintes d'intégrité
+
+Intégration avec Finance Islamique
+----------------------------------
+
+Séparation des Fonds
+~~~~~~~~~~~~~~~~~~~~
+
+Comptes Séparés
+^^^^^^^^^^^^^^^
+
+Le module doit permettre la séparation stricte entre :
+
+- **Fonds Islamiques** (Sharia-compliant)
+- **Fonds Conventionnels** (si applicable)
+
+Structure Proposée
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: text
+
+    Plan Comptable Islamique
+    │
+    ├── Classe 1: Actifs Islamiques
+    │   ├── 1.1.1 Trésorerie - Fonds Islamiques
+    │   ├── 1.1.2 Murabaha Receivables
+    │   ├── 1.1.3 Ijara Assets
+    │   └── 1.1.4 Musharaka Investments
+    │
+    ├── Classe 4: Produits Islamiques
+    │   ├── 4.1.1 Produits Murabaha
+    │   ├── 4.1.2 Revenus Ijara
+    │   ├── 4.1.3 Profits Musharaka
+    │   └── 4.1.4 Revenus Mudaraba
+    │
+    └── Classe 5: Charges Islamiques
+        ├── 5.1.1 Coûts Murabaha
+        └── 5.1.2 Charges Ijara
+
+Conformité AAOIFI
+~~~~~~~~~~~~~~~~~
+
+Normes à Respecter
+^^^^^^^^^^^^^^^^^^
+
+- **FAS 1** - General Presentation and Disclosure
+- **FAS 2** - Concepts of Financial Accounting
+- **FAS 28** - Murabaha and Other Deferred Payment Sales
+- **FAS 8** - Ijarah and Ijarah Muntahia Bittamleek
+- **FAS 4** - Musharakah Financing
+
+Rapports de Conformité
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Rapport de conformité Sharia
+- Séparation des fonds islamiques
+- Traçabilité des transactions islamiques
+- Audit trail complet
+
+Zakat et Charité
+~~~~~~~~~~~~~~~~
+
+Calcul de la Zakat
+^^^^^^^^^^^^^^^^^^
+
+- Calcul automatique sur les comptes éligibles
+- Période de détention (1 an lunaire)
+- Seuil Nisab
+- Rapport de Zakat
+
+Comptes de Charité
+^^^^^^^^^^^^^^^^^^
+
+- Comptes dédiés aux dons
+- Traçabilité des donations
+- Rapports de charité
+
+Produits Islamiques Spécifiques
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Murabaha
+^^^^^^^^
+
+- Comptabilisation de l'achat d'actif
+- Comptabilisation de la vente avec marge
+- Suivi des créances clients
+- Reconnaissance des revenus
+
+Ijara
+^^^^^
+
+- Comptabilisation des actifs en leasing
+- Revenus de location
+- Amortissement des actifs
+- Option d'achat
+
+Musharaka
+^^^^^^^^^
+
+- Comptabilisation des investissements
+- Partage des profits/pertes
+- Suivi des parts de capital
+- Distribution des bénéfices
+
+Mudaraba
+^^^^^^^^
+
+- Comptabilisation des fonds investis
+- Calcul des profits partagés
+- Suivi des performances
+
+Plan d'Implémentation
+---------------------
+
+Phase 1: Fondations (2-3 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Créer la structure de base du plan comptable
+- Implémenter les modèles de données
+- Créer les repositories et services de base
+
+Tâches
+^^^^^^
+
+1. **Modèles de données**
+   - [ ] Créer ``ChartOfAccount``
+   - [ ] Créer ``FiscalYear``
+   - [ ] Créer ``AccountingPeriod``
+   - [ ] Créer les enums nécessaires
+
+2. **Repositories**
+   - [ ] Créer tous les repositories
+   - [ ] Ajouter les méthodes de recherche
+
+3. **Services de base**
+   - [ ] ``ChartOfAccountService``
+   - [ ] ``FiscalYearService``
+   - [ ] ``AccountingPeriodService``
+
+4. **Controllers et DTOs**
+   - [ ] Créer les controllers de base
+   - [ ] Créer les DTOs
+
+5. **Base de données**
+   - [ ] Créer les tables
+   - [ ] Créer les migrations
+   - [ ] Insérer le plan comptable initial
+
+Phase 2: Grand Livre et Balance (2-3 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Implémenter le grand livre général
+- Implémenter la balance de vérification
+- Améliorer le système d'écritures
+
+Tâches
+^^^^^^
+
+1. **Grand Livre**
+   - [ ] Créer ``GeneralLedger`` model
+   - [ ] Implémenter ``GeneralLedgerService``
+   - [ ] Génération automatique depuis ``JournalEntry``
+   - [ ] Calcul des soldes
+
+2. **Balance de Vérification**
+   - [ ] Créer ``TrialBalance`` model
+   - [ ] Implémenter ``TrialBalanceService``
+   - [ ] Calcul automatique
+   - [ ] Validation équilibre
+
+3. **Amélioration JournalEntry**
+   - [ ] Ajouter les champs manquants
+   - [ ] Intégrer avec ``AccountingPeriod``
+   - [ ] Améliorer la génération automatique
+
+4. **Frontend**
+   - [ ] Composant ``general-ledger``
+   - [ ] Composant ``trial-balance``
+   - [ ] Services Angular
+
+Phase 3: États Financiers (3-4 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Générer le bilan
+- Générer le compte de résultat
+- Générer le tableau de flux de trésorerie
+
+Tâches
+^^^^^^
+
+1. **Modèles États Financiers**
+   - [ ] Créer ``FinancialStatement``
+   - [ ] Créer ``FinancialStatementLine``
+   - [ ] Créer les enums ``StatementType``
+
+2. **Service États Financiers**
+   - [ ] Implémenter ``FinancialStatementService``
+   - [ ] Logique de génération du bilan
+   - [ ] Logique de génération du compte de résultat
+   - [ ] Logique de génération du tableau de flux
+
+3. **Templates**
+   - [ ] Templates de présentation
+   - [ ] Calculs automatiques
+   - [ ] Totaux et sous-totaux
+
+4. **Frontend**
+   - [ ] Composant ``balance-sheet``
+   - [ ] Composant ``income-statement``
+   - [ ] Composant ``cash-flow``
+   - [ ] Export PDF/Excel
+
+Phase 4: Réconciliation (2-3 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Implémenter la réconciliation bancaire
+- Pointage automatique
+- Gestion des écarts
+
+Tâches
+^^^^^^
+
+1. **Modèles Réconciliation**
+   - [ ] Créer ``BankReconciliation``
+   - [ ] Créer ``ReconciliationItem``
+   - [ ] Relations avec transactions
+
+2. **Service Réconciliation**
+   - [ ] Implémenter ``BankReconciliationService``
+   - [ ] Pointage automatique
+   - [ ] Calcul des écarts
+   - [ ] Validation
+
+3. **Frontend**
+   - [ ] Composant ``bank-reconciliation``
+   - [ ] Interface de pointage
+   - [ ] Visualisation des écarts
+
+Phase 5: Rapports et Tableaux de Bord (2-3 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Créer les rapports comptables
+- Tableaux de bord
+- Analyses financières
+
+Tâches
+^^^^^^
+
+1. **Service Rapports**
+   - [ ] Implémenter ``AccountingReportService``
+   - [ ] Rapports par classe comptable
+   - [ ] Rapports par période
+   - [ ] Analyses de tendances
+
+2. **Frontend**
+   - [ ] Composant ``accounting-reports``
+   - [ ] Composant ``accounting-dashboard``
+   - [ ] Graphiques et visualisations
+
+3. **Export**
+   - [ ] Export PDF
+   - [ ] Export Excel
+   - [ ] Export CSV
+
+Phase 6: Intégration Finance Islamique (2-3 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Adapter pour finance islamique
+- Séparation des fonds
+- Conformité AAOIFI
+
+Tâches
+^^^^^^
+
+1. **Plan Comptable Islamique**
+   - [ ] Créer structure spécifique
+   - [ ] Comptes par produit islamique
+   - [ ] Séparation fonds islamiques/conventionnels
+
+2. **Rapports Conformité**
+   - [ ] Rapport conformité Sharia
+   - [ ] Traçabilité transactions
+   - [ ] Audit trail
+
+3. **Zakat**
+   - [ ] Calcul automatique
+   - [ ] Rapports Zakat
+
+4. **Tests**
+   - [ ] Tests unitaires
+   - [ ] Tests d'intégration
+   - [ ] Tests de conformité
+
+Phase 7: Optimisation et Documentation (1-2 semaines)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Objectifs
+^^^^^^^^^
+
+- Optimiser les performances
+- Documenter le système
+- Formation utilisateurs
+
+Tâches
+^^^^^^
+
+1. **Optimisation**
+   - [ ] Index base de données
+   - [ ] Cache des calculs
+   - [ ] Optimisation requêtes
+
+2. **Documentation**
+   - [ ] Documentation technique
+   - [ ] Guide utilisateur
+   - [ ] Documentation API
+
+3. **Formation**
+   - [ ] Formation comptables
+   - [ ] Formation développeurs
+   - [ ] Documentation procédures
+
+Estimation Globale
+------------------
+
+Durée Totale
+~~~~~~~~~~~~
+
+**16-22 semaines** (4-5.5 mois)
+
+Ressources Nécessaires
+~~~~~~~~~~~~~~~~~~~~~~
+
+- **2 Développeurs Backend** (Java/Spring Boot)
+- **1 Développeur Frontend** (Angular)
+- **1 Analyste Comptable** (Finance Islamique)
+- **1 Chef de Projet**
+
+Priorités
+~~~~~~~~~
+
+Priorité 1 (Critique)
+^^^^^^^^^^^^^^^^^^^^^
+
+- Plan comptable
+- Grand livre
+- Balance de vérification
+- États financiers de base
+
+Priorité 2 (Important)
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Réconciliation bancaire
+- Rapports comptables
+- Intégration finance islamique
+
+Priorité 3 (Souhaitable)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Tableaux de bord avancés
+- Analyses financières
+- Optimisations
+
+Risques et Mitigation
+---------------------
+
+Risques Techniques
+~~~~~~~~~~~~~~~~~~
+
+- **Complexité des calculs comptables**
+  - Mitigation: Validation avec expert comptable
+- **Performance avec gros volumes**
+  - Mitigation: Index, cache, traitement asynchrone
+- **Intégration avec système existant**
+  - Mitigation: Tests d'intégration continus
+
+Risques Fonctionnels
+~~~~~~~~~~~~~~~~~~~~
+
+- **Conformité réglementaire**
+  - Mitigation: Validation avec régulateur
+- **Conformité AAOIFI**
+  - Mitigation: Consultation experts finance islamique
+
+Risques Projet
+~~~~~~~~~~~~~~
+
+- **Délais**
+  - Mitigation: Planification réaliste, buffer
+- **Ressources**
+  - Mitigation: Formation équipe, documentation
+
+Critères de Succès
+------------------
+
+Fonctionnels
+~~~~~~~~~~~~
+
+- ✅ Génération automatique des écritures
+- ✅ Grand livre complet et précis
+- ✅ Balance de vérification équilibrée
+- ✅ États financiers conformes
+- ✅ Réconciliation bancaire fonctionnelle
+- ✅ Séparation fonds islamiques/conventionnels
+
+Techniques
+~~~~~~~~~~
+
+- ✅ Performance acceptable (< 2s pour rapports)
+- ✅ Disponibilité > 99%
+- ✅ Sécurité des données
+- ✅ Traçabilité complète
+
+Conformité
+~~~~~~~~~~
+
+- ✅ Conformité AAOIFI
+- ✅ Conformité réglementaire locale
+- ✅ Audit trail complet
+- ✅ Rapports de conformité Sharia
+
+Prochaines Étapes
+-----------------
+
+1. **Validation du Résumé**
+   - Révision avec l'équipe
+   - Validation avec experts comptables
+   - Validation avec experts finance islamique
+
+2. **Démarrage Phase 1**
+   - Création des modèles de données
+   - Setup base de données
+   - Création des repositories
+
+3. **Itérations**
+   - Développement itératif
+   - Tests continus
+   - Validation utilisateurs

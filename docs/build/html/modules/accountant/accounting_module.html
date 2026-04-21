@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="fr" x-data="{activeSection: ''}">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="#ffffff" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#030711" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Résumé Complet - Module Comptable | Documentation THL CoreBanking 0.0.1</title>
+<meta content="Résumé Complet - Module Comptable | Documentation THL CoreBanking 0.0.1" property="og:title"/>
+<meta content="Résumé Complet - Module Comptable | Documentation THL CoreBanking 0.0.1" name="twitter:title"/>
+<link href="../../_static/pygments.css?v=e72c8e07" rel="stylesheet" type="text/css"/>
+<link href="../../_static/theme.css?v=c0d22bf5" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=d871b14e" rel="stylesheet" type="text/css"/>
+<link href="../../search.html" rel="search" title="Recherche"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="bank_reconciliation.html" rel="next" title="Guide d’utilisation : Réconciliation Bancaire"/>
+<link href="user_guide.html" rel="prev" title="Guide Utilisateur Complet : Module Comptable"/>
+</head>
+<body :class="{ 'overflow-hidden': showSidebar }" @scroll.window="showScrollTop = pageYOffset &gt; 100" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
+<div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
+      Skip to content
+    </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border bg-background/90 backdrop-blur"><div class="container flex items-center h-14">
+<div class="hidden mr-4 md:flex">
+<a class="flex items-center mr-6" href="../../index.html"><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">Documentation THL CoreBanking 0.0.1</span>
+</a><nav class="flex items-center gap-6 text-sm font-medium">
+<a class="transition-colors hover:text-foreground/80 text-foreground/60" href="https://github.com/THLTechnologies/CID-CoreBanking" rel="noopener nofollow">GitHub</a>
+</nav></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
+</svg>
+<span class="sr-only">Toggle navigation menu</span>
+</button>
+<div class="flex items-center justify-between flex-1 gap-2 sm:gap-4 md:justify-end">
+<div class="flex-1 w-full md:w-auto md:flex-none"><form @keydown.k.window.meta="$refs.search.focus()" action="../../search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+</div>
+<nav class="flex items-center gap-1">
+<a href="https://github.com/THLTechnologies/CID-CoreBanking" rel="noopener nofollow" title="Visit GitHub">
+<div class="inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9">
+            fa-brands fa-github
+          </div>
+</a>
+</nav>
+</div>
+</div>
+</header>
+<div class="flex-1"><div class="container md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
+<a class="justify-start text-sm md:!hidden bg-background" href="../../index.html"><span class="font-bold text-clip whitespace-nowrap">Documentation THL CoreBanking 0.0.1</span>
+</a>
+<div class="relative overflow-hidden md:overflow-auto my-4 md:my-0">
+<div class="overflow-y-auto h-full w-full relative pr-6"><form @keydown.k.window.meta="$refs.search.focus()" action="../../search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+<h3><a href="../../index.html">Table des matières</a></h3>
+<p class="caption" role="heading"><span class="caption-text">📚 Sommaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html#thl-core-banking"><strong>THL Core Banking</strong></a></li>
+<li class="toctree-l1 current" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../index.html">Modules<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul class="current" x-show="expanded">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#statistiques-de-documentation">📊 <strong>Statistiques de Documentation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#guide-de-navigation">📋 <strong>Guide de Navigation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#documentation-specialisee-du-module-comptable">📚 <strong>Documentation Spécialisée du Module Comptable</strong></a></li>
+</ul>
+</li>
+</ul>
+<div>
+<h3><a href="../../index.html">Table des matières</a></h3>
+<ul>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#vue-d-ensemble">📋 Vue d’ensemble<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#objectif">Objectif</a></li>
+<li><a class="reference internal" href="#conformite">Conformité</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#etat-actuel-du-systeme">État Actuel du Système<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#composants-existants">Composants Existants ✅<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#backend-java-spring-boot">Backend (Java/Spring Boot)</a></li>
+<li><a class="reference internal" href="#frontend-angular">Frontend (Angular)</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#fonctionnalites-manquantes">Fonctionnalités Manquantes ❌<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#comptabilite-generale">Comptabilité Générale</a></li>
+<li><a class="reference internal" href="#etats-financiers">États Financiers</a></li>
+<li><a class="reference internal" href="#reconciliation">Réconciliation</a></li>
+<li><a class="reference internal" href="#periodes-comptables">Périodes Comptables</a></li>
+<li><a class="reference internal" href="#controles-comptables">Contrôles Comptables</a></li>
+<li><a class="reference internal" href="#rapports-avances">Rapports Avancés</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#architecture-comptable-proposee">Architecture Comptable Proposée<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#structure-hierarchique-des-comptes">Structure Hiérarchique des Comptes</a></li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#modeles-de-donnees-a-creer">Modèles de Données à Créer<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#chartofaccount-plan-comptable">ChartOfAccount (Plan Comptable)</a></li>
+<li><a class="reference internal" href="#fiscalyear-exercice-comptable">FiscalYear (Exercice Comptable)</a></li>
+<li><a class="reference internal" href="#accountingperiod-periode-comptable">AccountingPeriod (Période Comptable)</a></li>
+<li><a class="reference internal" href="#generalledger-grand-livre">GeneralLedger (Grand Livre)</a></li>
+<li><a class="reference internal" href="#trialbalance-balance-de-verification">TrialBalance (Balance de Vérification)</a></li>
+<li><a class="reference internal" href="#bankreconciliation-reconciliation-bancaire">BankReconciliation (Réconciliation Bancaire)</a></li>
+<li><a class="reference internal" href="#reconciliationitem-element-de-reconciliation">ReconciliationItem (Élément de Réconciliation)</a></li>
+<li><a class="reference internal" href="#financialstatement-etats-financiers">FinancialStatement (États Financiers)</a></li>
+<li><a class="reference internal" href="#financialstatementline-ligne-d-etat-financier">FinancialStatementLine (Ligne d’État Financier)</a></li>
+<li><a class="reference internal" href="#accountingentry-ecriture-comptable-amelioration">AccountingEntry (Écriture Comptable - Amélioration)</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#services-a-creer">Services à Créer<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#chartofaccountservice">ChartOfAccountService</a></li>
+<li><a class="reference internal" href="#fiscalyearservice">FiscalYearService</a></li>
+<li><a class="reference internal" href="#generalledgerservice">GeneralLedgerService</a></li>
+<li><a class="reference internal" href="#trialbalanceservice">TrialBalanceService</a></li>
+<li><a class="reference internal" href="#bankreconciliationservice">BankReconciliationService</a></li>
+<li><a class="reference internal" href="#financialstatementservice">FinancialStatementService</a></li>
+<li><a class="reference internal" href="#accountingperiodservice">AccountingPeriodService</a></li>
+<li><a class="reference internal" href="#accountingreportservice">AccountingReportService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#composants-a-developper">Composants à Développer<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#id1">Backend (Java/Spring Boot)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#modeles-models">Modèles (Models)</a></li>
+<li><a class="reference internal" href="#repositories">Repositories</a></li>
+<li><a class="reference internal" href="#services">Services</a></li>
+<li><a class="reference internal" href="#controllers">Controllers</a></li>
+<li><a class="reference internal" href="#dtos">DTOs</a></li>
+<li><a class="reference internal" href="#mappings">Mappings</a></li>
+<li><a class="reference internal" href="#enums">Enums</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#id2">Frontend (Angular)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#composants">Composants</a></li>
+<li><a class="reference internal" href="#id3">Services</a></li>
+<li><a class="reference internal" href="#models">Models</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#base-de-donnees">Base de Données<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#tables-a-creer">Tables à Créer</a></li>
+<li><a class="reference internal" href="#migrations">Migrations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#integration-avec-finance-islamique">Intégration avec Finance Islamique<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#separation-des-fonds">Séparation des Fonds<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#comptes-separes">Comptes Séparés</a></li>
+<li><a class="reference internal" href="#structure-proposee">Structure Proposée</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#conformite-aaoifi">Conformité AAOIFI<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#normes-a-respecter">Normes à Respecter</a></li>
+<li><a class="reference internal" href="#rapports-de-conformite">Rapports de Conformité</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#zakat-et-charite">Zakat et Charité<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#calcul-de-la-zakat">Calcul de la Zakat</a></li>
+<li><a class="reference internal" href="#comptes-de-charite">Comptes de Charité</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#produits-islamiques-specifiques">Produits Islamiques Spécifiques<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#murabaha">Murabaha</a></li>
+<li><a class="reference internal" href="#ijara">Ijara</a></li>
+<li><a class="reference internal" href="#musharaka">Musharaka</a></li>
+<li><a class="reference internal" href="#mudaraba">Mudaraba</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#plan-d-implementation">Plan d’Implémentation<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-1-fondations-2-3-semaines">Phase 1: Fondations (2-3 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#objectifs">Objectifs</a></li>
+<li><a class="reference internal" href="#taches">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-2-grand-livre-et-balance-2-3-semaines">Phase 2: Grand Livre et Balance (2-3 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id4">Objectifs</a></li>
+<li><a class="reference internal" href="#id5">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-3-etats-financiers-3-4-semaines">Phase 3: États Financiers (3-4 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id6">Objectifs</a></li>
+<li><a class="reference internal" href="#id7">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-4-reconciliation-2-3-semaines">Phase 4: Réconciliation (2-3 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id8">Objectifs</a></li>
+<li><a class="reference internal" href="#id9">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-5-rapports-et-tableaux-de-bord-2-3-semaines">Phase 5: Rapports et Tableaux de Bord (2-3 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id10">Objectifs</a></li>
+<li><a class="reference internal" href="#id11">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-6-integration-finance-islamique-2-3-semaines">Phase 6: Intégration Finance Islamique (2-3 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id12">Objectifs</a></li>
+<li><a class="reference internal" href="#id13">Tâches</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#phase-7-optimisation-et-documentation-1-2-semaines">Phase 7: Optimisation et Documentation (1-2 semaines)<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#id14">Objectifs</a></li>
+<li><a class="reference internal" href="#id15">Tâches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#estimation-globale">Estimation Globale<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#duree-totale">Durée Totale</a></li>
+<li><a class="reference internal" href="#ressources-necessaires">Ressources Nécessaires</a></li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#priorites">Priorités<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#priorite-1-critique">Priorité 1 (Critique)</a></li>
+<li><a class="reference internal" href="#priorite-2-important">Priorité 2 (Important)</a></li>
+<li><a class="reference internal" href="#priorite-3-souhaitable">Priorité 3 (Souhaitable)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#risques-et-mitigation">Risques et Mitigation<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#risques-techniques">Risques Techniques</a></li>
+<li><a class="reference internal" href="#risques-fonctionnels">Risques Fonctionnels</a></li>
+<li><a class="reference internal" href="#risques-projet">Risques Projet</a></li>
+</ul>
+</li>
+<li x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="#criteres-de-succes">Critères de Succès<button @click.prevent.stop="expanded = !expanded" type="button"><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-show="expanded">
+<li><a class="reference internal" href="#fonctionnels">Fonctionnels</a></li>
+<li><a class="reference internal" href="#techniques">Techniques</a></li>
+<li><a class="reference internal" href="#id16">Conformité</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prochaines-etapes">Prochaines Étapes</a></li>
+</ul>
+</div>
+<div>
+<h4>Sujet précédent</h4>
+<p class="topless"><a href="user_guide.html" title="Chapitre précédent">Guide Utilisateur Complet : Module Comptable</a></p>
+</div>
+<div>
+<h4>Sujet suivant</h4>
+<p class="topless"><a href="bank_reconciliation.html" title="Chapitre suivant">Guide d’utilisation : Réconciliation Bancaire</a></p>
+</div>
+<div aria-label="source link" role="note">
+<h3>Cette page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/modules/accountant/accounting_module.rst.txt" rel="nofollow">Montrer le code source</a></li>
+</ul>
+</div>
+</div>
+</div>
+<button @click="showSidebar = false" class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100" type="button">
+<svg class="h-4 w-4" fill="currentColor" height="24" stroke="none" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z"></path>
+</svg>
+</button>
+</aside>
+<main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+<div class="w-full min-w-0 mx-auto">
+<nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="../../index.html">
+<span class="hidden md:inline">Documentation THL CoreBanking 0.0.1</span>
+<svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
+</svg>
+</a>
+<div class="mr-1">/</div><a class="hover:text-foreground overflow-hidden text-ellipsis whitespace-nowrap" href="../index.html">Modules</a>
+<div class="mr-1">/</div><a class="hover:text-foreground overflow-hidden text-ellipsis whitespace-nowrap" href="index.html">Comptabilité</a>
+<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Résumé Complet - Module Comptable</span>
+</nav>
+<div id="content" role="main">
+<section id="resume-complet-module-comptable">
+<span id="accounting-module-summary"></span><h1>Résumé Complet - Module Comptable<a class="headerlink" href="#resume-complet-module-comptable" title="Lien vers cette rubrique"><span>#</span></a></h1>
+<p><strong>Date:</strong> 2025
+<strong>Version:</strong> 1.0
+<strong>Système:</strong> Core Banking Backend - Finance Islamique</p>
+<section id="vue-d-ensemble">
+<h2>📋 Vue d’ensemble<a class="headerlink" href="#vue-d-ensemble" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#vue-d-ensemble'"><span>#</span></a></h2>
+<section id="objectif">
+<h3>Objectif<a class="headerlink" href="#objectif" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#objectif'"><span>#</span></a></h3>
+<p>Intégrer un <strong>module comptable complet</strong> dans le système de finance islamique existant, permettant :</p>
+<ul class="simple">
+<li><p>La gestion de la comptabilité en partie double</p></li>
+<li><p>La génération automatique des écritures comptables</p></li>
+<li><p>La production des états financiers conformes aux normes AAOIFI</p></li>
+<li><p>La séparation des fonds islamiques et conventionnels</p></li>
+<li><p>Le suivi des comptes par classe comptable</p></li>
+<li><p>La réconciliation bancaire</p></li>
+<li><p>Les rapports comptables et financiers</p></li>
+</ul>
+</section>
+<section id="conformite">
+<h3>Conformité<a class="headerlink" href="#conformite" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#conformite'"><span>#</span></a></h3>
+<p>Le module doit respecter :</p>
+<ul class="simple">
+<li><p><strong>AAOIFI</strong> (Accounting and Auditing Organization for Islamic Financial Institutions)</p></li>
+<li><p><strong>IFRS</strong> (International Financial Reporting Standards) adaptés à la finance islamique</p></li>
+<li><p><strong>Normes locales</strong> de comptabilité bancaire</p></li>
+<li><p><strong>Principes Sharia</strong> pour la séparation des fonds</p></li>
+</ul>
+</section>
+</section>
+<section id="etat-actuel-du-systeme">
+<h2>État Actuel du Système<a class="headerlink" href="#etat-actuel-du-systeme" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#etat-actuel-du-systeme'"><span>#</span></a></h2>
+<section id="composants-existants">
+<h3>Composants Existants ✅<a class="headerlink" href="#composants-existants" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#composants-existants'"><span>#</span></a></h3>
+<section id="backend-java-spring-boot">
+<h4>Backend (Java/Spring Boot)<a class="headerlink" href="#backend-java-spring-boot" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<p><strong>Modèles existants :</strong></p>
+<ul class="simple">
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">JournalEntry</span></code> - Entrées de journal comptable</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">JournalLine</span></code> - Lignes de journal (débit/crédit)</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">AccountingClass</span></code> - Classes comptables</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">InternalAccount</span></code> - Comptes internes (hérite de <code class="docutils literal notranslate"><span class="pre">Account</span></code>)</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">Account</span></code> - Comptes clients</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">Transaction</span></code> - Transactions bancaires</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">TransactionComponent</span></code> - Composants de transaction (TAF, margin, etc.)</p></li>
+</ul>
+<p><strong>Services existants :</strong></p>
+<ul class="simple">
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">JournalEntryService</span></code> - Service de gestion des écritures</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">AccountingClassService</span></code> - Service des classes comptables</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">InternalAccountService</span></code> - Service des comptes internes</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">TransactionService</span></code> - Service des transactions</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">ChartOfAccountService</span></code> - Service du plan comptable</p></li>
+</ul>
+<p><strong>Fonctionnalités existantes :</strong></p>
+<ul class="simple">
+<li><p>✅ Génération automatique d’écritures comptables depuis les transactions</p></li>
+<li><p>✅ Export Excel du journal comptable</p></li>
+<li><p>✅ Export par email</p></li>
+<li><p>✅ Filtrage par date et compte</p></li>
+<li><p>✅ Structure de comptes internes avec classes comptables</p></li>
+<li><p>✅ Consultation du plan comptable (et filtrage par agence pour l’espace Agence)</p></li>
+</ul>
+</section>
+<section id="frontend-angular">
+<h4>Frontend (Angular)<a class="headerlink" href="#frontend-angular" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<p><strong>Composants existants :</strong></p>
+<ul class="simple">
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">accountant</span></code> - Interface comptable de base</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">journal-entry</span></code> - Visualisation des écritures</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">journal-line</span></code> - Détails des lignes</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">shares</span></code> - Gestion des parts</p></li>
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">blocks/capital-withdrawal</span></code> - Retrait de capital</p></li>
+</ul>
+</section>
+</section>
+<section id="fonctionnalites-manquantes">
+<h3>Fonctionnalités Manquantes ❌<a class="headerlink" href="#fonctionnalites-manquantes" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#fonctionnalites-manquantes'"><span>#</span></a></h3>
+<section id="comptabilite-generale">
+<h4>Comptabilité Générale<a class="headerlink" href="#comptabilite-generale" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>✅ Plan comptable (chart of accounts) – disponible (mode comptable global + mode agence filtré)</p></li>
+<li><p>❌ Grand livre général (General Ledger)</p></li>
+<li><p>❌ Balance de vérification (Trial Balance)</p></li>
+<li><p>❌ Balance des comptes (Account Balance)</p></li>
+<li><p>❌ Grand livre auxiliaire (Subsidiary Ledger)</p></li>
+<li><p>❌ Journal auxiliaire par type de transaction</p></li>
+</ul>
+</section>
+<section id="etats-financiers">
+<h4>États Financiers<a class="headerlink" href="#etats-financiers" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>❌ Bilan (Balance Sheet)</p></li>
+<li><p>❌ Compte de résultat (Income Statement / Profit &amp; Loss)</p></li>
+<li><p>❌ Tableau des flux de trésorerie (Cash Flow Statement)</p></li>
+<li><p>❌ État des variations des capitaux propres</p></li>
+<li><p>❌ Rapport de conformité Sharia</p></li>
+</ul>
+</section>
+<section id="reconciliation">
+<h4>Réconciliation<a class="headerlink" href="#reconciliation" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>❌ Réconciliation bancaire</p></li>
+<li><p>❌ Réconciliation des comptes clients</p></li>
+<li><p>❌ Réconciliation inter-comptes</p></li>
+<li><p>❌ Pointage automatique</p></li>
+</ul>
+</section>
+<section id="periodes-comptables">
+<h4>Périodes Comptables<a class="headerlink" href="#periodes-comptables" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>❌ Gestion des exercices comptables (Fiscal Year)</p></li>
+<li><p>❌ Périodes comptables (Accounting Periods)</p></li>
+<li><p>❌ Clôture d’exercice</p></li>
+<li><p>❌ Ajustements de fin d’exercice</p></li>
+</ul>
+</section>
+<section id="controles-comptables">
+<h4>Contrôles Comptables<a class="headerlink" href="#controles-comptables" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>❌ Validation de l’équilibre débit/crédit</p></li>
+<li><p>❌ Contrôles de cohérence</p></li>
+<li><p>❌ Alertes de non-conformité</p></li>
+<li><p>❌ Audit trail complet</p></li>
+</ul>
+</section>
+<section id="rapports-avances">
+<h4>Rapports Avancés<a class="headerlink" href="#rapports-avances" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>❌ Rapports par classe comptable</p></li>
+<li><p>❌ Analyse des coûts</p></li>
+<li><p>❌ Analyse de rentabilité</p></li>
+<li><p>❌ Tableaux de bord comptables</p></li>
+<li><p>❌ Rapports réglementaires</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="architecture-comptable-proposee">
+<h2>Architecture Comptable Proposée<a class="headerlink" href="#architecture-comptable-proposee" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#architecture-comptable-proposee'"><span>#</span></a></h2>
+<section id="structure-hierarchique-des-comptes">
+<h3>Structure Hiérarchique des Comptes<a class="headerlink" href="#structure-hierarchique-des-comptes" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#structure-hierarchique-des-comptes'"><span>#</span></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Plan Comptable (Chart of Accounts)
+</span><span id="line-2">│
+</span><span id="line-3">├── Classe 1: Actifs (Assets)
+</span><span id="line-4">│   ├── 1.1 Actifs Courants
+</span><span id="line-5">│   │   ├── 1.1.1 Trésorerie
+</span><span id="line-6">│   │   ├── 1.1.2 Comptes Clients
+</span><span id="line-7">│   │   └── 1.1.3 Stocks
+</span><span id="line-8">│   └── 1.2 Actifs Non Courants
+</span><span id="line-9">│       ├── 1.2.1 Immobilisations
+</span><span id="line-10">│       └── 1.2.2 Investissements
+</span><span id="line-11">│
+</span><span id="line-12">├── Classe 2: Passifs (Liabilities)
+</span><span id="line-13">│   ├── 2.1 Passifs Courants
+</span><span id="line-14">│   │   ├── 2.1.1 Comptes Fournisseurs
+</span><span id="line-15">│   │   └── 2.1.2 Dettes Court Terme
+</span><span id="line-16">│   └── 2.2 Passifs Non Courants
+</span><span id="line-17">│       └── 2.2.1 Dettes Long Terme
+</span><span id="line-18">│
+</span><span id="line-19">├── Classe 3: Capitaux Propres (Equity)
+</span><span id="line-20">│   ├── 3.1 Capital Social
+</span><span id="line-21">│   ├── 3.2 Réserves
+</span><span id="line-22">│   └── 3.3 Résultat Net
+</span><span id="line-23">│
+</span><span id="line-24">├── Classe 4: Produits (Revenue)
+</span><span id="line-25">│   ├── 4.1 Produits d'Exploitation
+</span><span id="line-26">│   │   ├── 4.1.1 Produits Murabaha
+</span><span id="line-27">│   │   ├── 4.1.2 Produits Ijara
+</span><span id="line-28">│   │   └── 4.1.3 Produits Musharaka
+</span><span id="line-29">│   └── 4.2 Produits Financiers
+</span><span id="line-30">│
+</span><span id="line-31">└── Classe 5: Charges (Expenses)
+</span><span id="line-32">    ├── 5.1 Charges d'Exploitation
+</span><span id="line-33">    └── 5.2 Charges Financières
+</span></code></pre></div>
+</div>
+</section>
+<section id="modeles-de-donnees-a-creer">
+<h3>Modèles de Données à Créer<a class="headerlink" href="#modeles-de-donnees-a-creer" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#modeles-de-donnees-a-creer'"><span>#</span></a></h3>
+<section id="chartofaccount-plan-comptable">
+<h4>ChartOfAccount (Plan Comptable)<a class="headerlink" href="#chartofaccount-plan-comptable" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ChartOfAccount</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">;</span><span class="w">              </span><span class="c1">// Code comptable (ex: "1.1.1")</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">label</span><span class="p">;</span><span class="w">              </span><span class="c1">// Libellé</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountType</span><span class="w"> </span><span class="n">accountType</span><span class="p">;</span><span class="w">   </span><span class="c1">// ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChartOfAccount</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span><span class="w">     </span><span class="c1">// Compte parent (hiérarchie)</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChartOfAccount</span><span class="o">&gt;</span><span class="w"> </span><span class="n">children</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isActive</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isSystemAccount</span><span class="p">;</span><span class="w">   </span><span class="c1">// Compte système (non modifiable)</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingClass</span><span class="w"> </span><span class="n">accountingClass</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">requiresReconciliation</span><span class="p">;</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">createdAt</span><span class="p">;</span>
+</span><span id="line-14"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-15"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="fiscalyear-exercice-comptable">
+<h4>FiscalYear (Exercice Comptable)<a class="headerlink" href="#fiscalyear-exercice-comptable" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FiscalYear</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">               </span><span class="c1">// "Exercice 2025"</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">startDate</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">endDate</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isActive</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isClosed</span><span class="p">;</span><span class="w">          </span><span class="c1">// Clôturé ou non</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">closedAt</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">closedBy</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-12"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="accountingperiod-periode-comptable">
+<h4>AccountingPeriod (Période Comptable)<a class="headerlink" href="#accountingperiod-periode-comptable" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AccountingPeriod</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FiscalYear</span><span class="w"> </span><span class="n">fiscalYear</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">               </span><span class="c1">// "Janvier 2025"</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">startDate</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">endDate</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">periodNumber</span><span class="p">;</span><span class="w">          </span><span class="c1">// 1-12 pour mensuel</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isClosed</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">closedAt</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-12"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="generalledger-grand-livre">
+<h4>GeneralLedger (Grand Livre)<a class="headerlink" href="#generalledger-grand-livre" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GeneralLedger</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChartOfAccount</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingPeriod</span><span class="w"> </span><span class="n">period</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">transactionDate</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">JournalEntry</span><span class="w"> </span><span class="n">journalEntry</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">JournalLine</span><span class="w"> </span><span class="n">journalLine</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">debit</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">credit</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span><span class="w">            </span><span class="c1">// Solde cumulé</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reference</span><span class="p">;</span><span class="w">           </span><span class="c1">// Référence transaction</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-14"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="trialbalance-balance-de-verification">
+<h4>TrialBalance (Balance de Vérification)<a class="headerlink" href="#trialbalance-balance-de-verification" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrialBalance</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingPeriod</span><span class="w"> </span><span class="n">period</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChartOfAccount</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">openingDebit</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">openingCredit</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">periodDebit</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">periodCredit</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">closingDebit</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">closingCredit</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">calculatedAt</span><span class="p">;</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-14"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="bankreconciliation-reconciliation-bancaire">
+<h4>BankReconciliation (Réconciliation Bancaire)<a class="headerlink" href="#bankreconciliation-reconciliation-bancaire" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BankReconciliation</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">InternalAccount</span><span class="w"> </span><span class="n">bankAccount</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingPeriod</span><span class="w"> </span><span class="n">period</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">statementDate</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">bankBalance</span><span class="p">;</span><span class="w">        </span><span class="c1">// Solde bancaire</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">bookBalance</span><span class="p">;</span><span class="w">         </span><span class="c1">// Solde comptable</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">reconciledAmount</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ReconciliationItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isReconciled</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">reconciledBy</span><span class="p">;</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">reconciledAt</span><span class="p">;</span>
+</span><span id="line-14"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-15"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="reconciliationitem-element-de-reconciliation">
+<h4>ReconciliationItem (Élément de Réconciliation)<a class="headerlink" href="#reconciliationitem-element-de-reconciliation" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReconciliationItem</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">BankReconciliation</span><span class="w"> </span><span class="n">reconciliation</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Transaction</span><span class="w"> </span><span class="n">transaction</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ReconciliationType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">   </span><span class="c1">// DEPOSIT, WITHDRAWAL, FEE, INTEREST</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">transactionDate</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">bankDate</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isMatched</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">notes</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-13"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="financialstatement-etats-financiers">
+<h4>FinancialStatement (États Financiers)<a class="headerlink" href="#financialstatement-etats-financiers" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FinancialStatement</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StatementType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">        </span><span class="c1">// BALANCE_SHEET, INCOME_STATEMENT, CASH_FLOW</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FiscalYear</span><span class="w"> </span><span class="n">fiscalYear</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingPeriod</span><span class="w"> </span><span class="n">period</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">statementDate</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">currency</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FinancialStatementLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lines</span><span class="p">;</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isFinal</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isApproved</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">approvedBy</span><span class="p">;</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">approvedAt</span><span class="p">;</span>
+</span><span id="line-14"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-15"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="financialstatementline-ligne-d-etat-financier">
+<h4>FinancialStatementLine (Ligne d’État Financier)<a class="headerlink" href="#financialstatementline-ligne-d-etat-financier" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="nd">@Entity</span>
+</span><span id="line-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FinancialStatementLine</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">FinancialStatement</span><span class="w"> </span><span class="n">statement</span><span class="p">;</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ChartOfAccount</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">label</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Niveau d'indentation (0, 1, 2...)</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isBold</span><span class="p">;</span><span class="w">            </span><span class="c1">// Ligne en gras (totaux)</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isSubtotal</span><span class="p">;</span><span class="w">        </span><span class="c1">// Sous-total</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">order</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Ordre d'affichage</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+</span><span id="line-13"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+<section id="accountingentry-ecriture-comptable-amelioration">
+<h4>AccountingEntry (Écriture Comptable - Amélioration)<a class="headerlink" href="#accountingentry-ecriture-comptable-amelioration" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="c1">// Extension de JournalEntry existant</span>
+</span><span id="line-2"><span class="nd">@Entity</span>
+</span><span id="line-3"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AccountingEntry</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JournalEntry</span><span class="w"> </span><span class="p">{</span>
+</span><span id="line-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">entryNumber</span><span class="p">;</span><span class="w">        </span><span class="c1">// Numéro d'écriture unique</span>
+</span><span id="line-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EntryType</span><span class="w"> </span><span class="n">entryType</span><span class="p">;</span><span class="w">       </span><span class="c1">// MANUAL, AUTOMATIC, ADJUSTMENT, CLOSING</span>
+</span><span id="line-6"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingPeriod</span><span class="w"> </span><span class="n">period</span><span class="p">;</span>
+</span><span id="line-7"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">description</span><span class="p">;</span>
+</span><span id="line-8"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reference</span><span class="p">;</span><span class="w">          </span><span class="c1">// Référence document</span>
+</span><span id="line-9"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isReversed</span><span class="p">;</span><span class="w">        </span><span class="c1">// Écriture contre-passée</span>
+</span><span id="line-10"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">AccountingEntry</span><span class="w"> </span><span class="n">reversedBy</span><span class="p">;</span>
+</span><span id="line-11"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isAdjusted</span><span class="p">;</span>
+</span><span id="line-12"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">adjustmentReason</span><span class="p">;</span>
+</span><span id="line-13"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">createdBy</span><span class="p">;</span>
+</span><span id="line-14"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">approvedBy</span><span class="p">;</span>
+</span><span id="line-15"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">approvedAt</span><span class="p">;</span>
+</span><span id="line-16"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ApprovalStatus</span><span class="w"> </span><span class="n">approvalStatus</span><span class="p">;</span>
+</span><span id="line-17"><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="services-a-creer">
+<h3>Services à Créer<a class="headerlink" href="#services-a-creer" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#services-a-creer'"><span>#</span></a></h3>
+<section id="chartofaccountservice">
+<h4>ChartOfAccountService<a class="headerlink" href="#chartofaccountservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>CRUD des comptes du plan comptable</p></li>
+<li><p>Recherche hiérarchique</p></li>
+<li><p>Validation de la structure</p></li>
+<li><p>Import/Export du plan comptable</p></li>
+</ul>
+</section>
+<section id="fiscalyearservice">
+<h4>FiscalYearService<a class="headerlink" href="#fiscalyearservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Gestion des exercices comptables</p></li>
+<li><p>Création automatique des périodes</p></li>
+<li><p>Clôture d’exercice</p></li>
+<li><p>Validation des dates</p></li>
+</ul>
+</section>
+<section id="generalledgerservice">
+<h4>GeneralLedgerService<a class="headerlink" href="#generalledgerservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Génération du grand livre</p></li>
+<li><p>Calcul des soldes</p></li>
+<li><p>Filtrage par compte/période</p></li>
+<li><p>Export Excel/PDF</p></li>
+</ul>
+</section>
+<section id="trialbalanceservice">
+<h4>TrialBalanceService<a class="headerlink" href="#trialbalanceservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Calcul de la balance de vérification</p></li>
+<li><p>Validation équilibre débit/crédit</p></li>
+<li><p>Export et impression</p></li>
+</ul>
+</section>
+<section id="bankreconciliationservice">
+<h4>BankReconciliationService<a class="headerlink" href="#bankreconciliationservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Réconciliation bancaire</p></li>
+<li><p>Pointage automatique</p></li>
+<li><p>Génération des écarts</p></li>
+<li><p>Validation de la réconciliation</p></li>
+</ul>
+</section>
+<section id="financialstatementservice">
+<h4>FinancialStatementService<a class="headerlink" href="#financialstatementservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Génération du bilan</p></li>
+<li><p>Génération du compte de résultat</p></li>
+<li><p>Génération du tableau de flux de trésorerie</p></li>
+<li><p>Calculs automatiques</p></li>
+<li><p>Export PDF/Excel</p></li>
+</ul>
+</section>
+<section id="accountingperiodservice">
+<h4>AccountingPeriodService<a class="headerlink" href="#accountingperiodservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Gestion des périodes comptables</p></li>
+<li><p>Ouverture/fermeture de période</p></li>
+<li><p>Validation des transactions par période</p></li>
+</ul>
+</section>
+<section id="accountingreportservice">
+<h4>AccountingReportService<a class="headerlink" href="#accountingreportservice" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Génération de rapports comptables</p></li>
+<li><p>Rapports personnalisés</p></li>
+<li><p>Tableaux de bord</p></li>
+<li><p>Analyses financières</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="composants-a-developper">
+<h2>Composants à Développer<a class="headerlink" href="#composants-a-developper" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#composants-a-developper'"><span>#</span></a></h2>
+<section id="id1">
+<h3>Backend (Java/Spring Boot)<a class="headerlink" href="#id1" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id1'"><span>#</span></a></h3>
+<section id="modeles-models">
+<h4>Modèles (Models)<a class="headerlink" href="#modeles-models" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccount.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYear.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriod.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedger.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalance.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliation.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ReconciliationItem.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatement.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementLine.java</span></code></p></li>
+<li><p>[ ] Améliorer <code class="docutils literal notranslate"><span class="pre">JournalEntry.java</span></code> → <code class="docutils literal notranslate"><span class="pre">AccountingEntry.java</span></code></p></li>
+</ul>
+</section>
+<section id="repositories">
+<h4>Repositories<a class="headerlink" href="#repositories" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedgerRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalanceRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliationRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ReconciliationItemRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementRepository.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementLineRepository.java</span></code></p></li>
+</ul>
+</section>
+<section id="services">
+<h4>Services<a class="headerlink" href="#services" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">ChartOfAccountServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">FiscalYearServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">AccountingPeriodServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedgerService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">GeneralLedgerServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalanceService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">TrialBalanceServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliationService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">BankReconciliationServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">FinancialStatementServiceImp.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingReportService.java</span></code> + <code class="docutils literal notranslate"><span class="pre">AccountingReportServiceImp.java</span></code></p></li>
+<li><p>[ ] Améliorer <code class="docutils literal notranslate"><span class="pre">JournalEntryService</span></code> pour intégrer les nouvelles fonctionnalités</p></li>
+</ul>
+</section>
+<section id="controllers">
+<h4>Controllers<a class="headerlink" href="#controllers" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedgerController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalanceController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliationController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementController.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingReportController.java</span></code></p></li>
+</ul>
+</section>
+<section id="dtos">
+<h4>DTOs<a class="headerlink" href="#dtos" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountRequest.java</span></code> / <code class="docutils literal notranslate"><span class="pre">ChartOfAccountResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearRequest.java</span></code> / <code class="docutils literal notranslate"><span class="pre">FiscalYearResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodRequest.java</span></code> / <code class="docutils literal notranslate"><span class="pre">AccountingPeriodResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedgerResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalanceResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliationRequest.java</span></code> / <code class="docutils literal notranslate"><span class="pre">BankReconciliationResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementResponse.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingReportResponse.java</span></code></p></li>
+</ul>
+</section>
+<section id="mappings">
+<h4>Mappings<a class="headerlink" href="#mappings" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">GeneralLedgerMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">TrialBalanceMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">BankReconciliationMapping.java</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">FinancialStatementMapping.java</span></code></p></li>
+</ul>
+</section>
+<section id="enums">
+<h4>Enums<a class="headerlink" href="#enums" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">AccountType.java</span></code> (ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">EntryType.java</span></code> (MANUAL, AUTOMATIC, ADJUSTMENT, CLOSING)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">StatementType.java</span></code> (BALANCE_SHEET, INCOME_STATEMENT, CASH_FLOW, EQUITY_STATEMENT)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ReconciliationType.java</span></code> (DEPOSIT, WITHDRAWAL, FEE, INTEREST, TRANSFER)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">ApprovalStatus.java</span></code> (PENDING, APPROVED, REJECTED)</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h3>Frontend (Angular)<a class="headerlink" href="#id2" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id2'"><span>#</span></a></h3>
+<section id="composants">
+<h4>Composants<a class="headerlink" href="#composants" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">chart-of-accounts</span></code> - Gestion du plan comptable</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">fiscal-year</span></code> - Gestion des exercices</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-period</span></code> - Gestion des périodes</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">general-ledger</span></code> - Grand livre général</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">trial-balance</span></code> - Balance de vérification</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">bank-reconciliation</span></code> - Réconciliation bancaire</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">financial-statements</span></code> - États financiers
+- [ ] <code class="docutils literal notranslate"><span class="pre">balance-sheet</span></code> - Bilan
+- [ ] <code class="docutils literal notranslate"><span class="pre">income-statement</span></code> - Compte de résultat
+- [ ] <code class="docutils literal notranslate"><span class="pre">cash-flow</span></code> - Tableau de flux de trésorerie</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-reports</span></code> - Rapports comptables</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-dashboard</span></code> - Tableau de bord comptable</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Services<a class="headerlink" href="#id3" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">chart-of-account.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">fiscal-year.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-period.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">general-ledger.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">trial-balance.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">bank-reconciliation.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">financial-statement.service.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-report.service.ts</span></code></p></li>
+</ul>
+</section>
+<section id="models">
+<h4>Models<a class="headerlink" href="#models" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">chart-of-account.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">fiscal-year.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting-period.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">general-ledger.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">trial-balance.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">bank-reconciliation.model.ts</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">financial-statement.model.ts</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="base-de-donnees">
+<h3>Base de Données<a class="headerlink" href="#base-de-donnees" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#base-de-donnees'"><span>#</span></a></h3>
+<section id="tables-a-creer">
+<h4>Tables à Créer<a class="headerlink" href="#tables-a-creer" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">chart_of_account</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">fiscal_year</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">accounting_period</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">general_ledger</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">trial_balance</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">bank_reconciliation</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">reconciliation_item</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">financial_statement</span></code></p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">financial_statement_line</span></code></p></li>
+</ul>
+</section>
+<section id="migrations">
+<h4>Migrations<a class="headerlink" href="#migrations" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>[ ] Migration initiale du plan comptable</p></li>
+<li><p>[ ] Migration des données existantes</p></li>
+<li><p>[ ] Index pour performances</p></li>
+<li><p>[ ] Contraintes d’intégrité</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="integration-avec-finance-islamique">
+<h2>Intégration avec Finance Islamique<a class="headerlink" href="#integration-avec-finance-islamique" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#integration-avec-finance-islamique'"><span>#</span></a></h2>
+<section id="separation-des-fonds">
+<h3>Séparation des Fonds<a class="headerlink" href="#separation-des-fonds" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#separation-des-fonds'"><span>#</span></a></h3>
+<section id="comptes-separes">
+<h4>Comptes Séparés<a class="headerlink" href="#comptes-separes" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<p>Le module doit permettre la séparation stricte entre :</p>
+<ul class="simple">
+<li><p><strong>Fonds Islamiques</strong> (Sharia-compliant)</p></li>
+<li><p><strong>Fonds Conventionnels</strong> (si applicable)</p></li>
+</ul>
+</section>
+<section id="structure-proposee">
+<h4>Structure Proposée<a class="headerlink" href="#structure-proposee" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Plan Comptable Islamique
+</span><span id="line-2">│
+</span><span id="line-3">├── Classe 1: Actifs Islamiques
+</span><span id="line-4">│   ├── 1.1.1 Trésorerie - Fonds Islamiques
+</span><span id="line-5">│   ├── 1.1.2 Murabaha Receivables
+</span><span id="line-6">│   ├── 1.1.3 Ijara Assets
+</span><span id="line-7">│   └── 1.1.4 Musharaka Investments
+</span><span id="line-8">│
+</span><span id="line-9">├── Classe 4: Produits Islamiques
+</span><span id="line-10">│   ├── 4.1.1 Produits Murabaha
+</span><span id="line-11">│   ├── 4.1.2 Revenus Ijara
+</span><span id="line-12">│   ├── 4.1.3 Profits Musharaka
+</span><span id="line-13">│   └── 4.1.4 Revenus Mudaraba
+</span><span id="line-14">│
+</span><span id="line-15">└── Classe 5: Charges Islamiques
+</span><span id="line-16">    ├── 5.1.1 Coûts Murabaha
+</span><span id="line-17">    └── 5.1.2 Charges Ijara
+</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="conformite-aaoifi">
+<h3>Conformité AAOIFI<a class="headerlink" href="#conformite-aaoifi" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#conformite-aaoifi'"><span>#</span></a></h3>
+<section id="normes-a-respecter">
+<h4>Normes à Respecter<a class="headerlink" href="#normes-a-respecter" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p><strong>FAS 1</strong> - General Presentation and Disclosure</p></li>
+<li><p><strong>FAS 2</strong> - Concepts of Financial Accounting</p></li>
+<li><p><strong>FAS 28</strong> - Murabaha and Other Deferred Payment Sales</p></li>
+<li><p><strong>FAS 8</strong> - Ijarah and Ijarah Muntahia Bittamleek</p></li>
+<li><p><strong>FAS 4</strong> - Musharakah Financing</p></li>
+</ul>
+</section>
+<section id="rapports-de-conformite">
+<h4>Rapports de Conformité<a class="headerlink" href="#rapports-de-conformite" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Rapport de conformité Sharia</p></li>
+<li><p>Séparation des fonds islamiques</p></li>
+<li><p>Traçabilité des transactions islamiques</p></li>
+<li><p>Audit trail complet</p></li>
+</ul>
+</section>
+</section>
+<section id="zakat-et-charite">
+<h3>Zakat et Charité<a class="headerlink" href="#zakat-et-charite" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#zakat-et-charite'"><span>#</span></a></h3>
+<section id="calcul-de-la-zakat">
+<h4>Calcul de la Zakat<a class="headerlink" href="#calcul-de-la-zakat" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Calcul automatique sur les comptes éligibles</p></li>
+<li><p>Période de détention (1 an lunaire)</p></li>
+<li><p>Seuil Nisab</p></li>
+<li><p>Rapport de Zakat</p></li>
+</ul>
+</section>
+<section id="comptes-de-charite">
+<h4>Comptes de Charité<a class="headerlink" href="#comptes-de-charite" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Comptes dédiés aux dons</p></li>
+<li><p>Traçabilité des donations</p></li>
+<li><p>Rapports de charité</p></li>
+</ul>
+</section>
+</section>
+<section id="produits-islamiques-specifiques">
+<h3>Produits Islamiques Spécifiques<a class="headerlink" href="#produits-islamiques-specifiques" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#produits-islamiques-specifiques'"><span>#</span></a></h3>
+<section id="murabaha">
+<h4>Murabaha<a class="headerlink" href="#murabaha" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Comptabilisation de l’achat d’actif</p></li>
+<li><p>Comptabilisation de la vente avec marge</p></li>
+<li><p>Suivi des créances clients</p></li>
+<li><p>Reconnaissance des revenus</p></li>
+</ul>
+</section>
+<section id="ijara">
+<h4>Ijara<a class="headerlink" href="#ijara" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Comptabilisation des actifs en leasing</p></li>
+<li><p>Revenus de location</p></li>
+<li><p>Amortissement des actifs</p></li>
+<li><p>Option d’achat</p></li>
+</ul>
+</section>
+<section id="musharaka">
+<h4>Musharaka<a class="headerlink" href="#musharaka" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Comptabilisation des investissements</p></li>
+<li><p>Partage des profits/pertes</p></li>
+<li><p>Suivi des parts de capital</p></li>
+<li><p>Distribution des bénéfices</p></li>
+</ul>
+</section>
+<section id="mudaraba">
+<h4>Mudaraba<a class="headerlink" href="#mudaraba" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Comptabilisation des fonds investis</p></li>
+<li><p>Calcul des profits partagés</p></li>
+<li><p>Suivi des performances</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="plan-d-implementation">
+<h2>Plan d’Implémentation<a class="headerlink" href="#plan-d-implementation" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#plan-d-implementation'"><span>#</span></a></h2>
+<section id="phase-1-fondations-2-3-semaines">
+<h3>Phase 1: Fondations (2-3 semaines)<a class="headerlink" href="#phase-1-fondations-2-3-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-1-fondations-2-3-semaines'"><span>#</span></a></h3>
+<section id="objectifs">
+<h4>Objectifs<a class="headerlink" href="#objectifs" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Créer la structure de base du plan comptable</p></li>
+<li><p>Implémenter les modèles de données</p></li>
+<li><p>Créer les repositories et services de base</p></li>
+</ul>
+</section>
+<section id="taches">
+<h4>Tâches<a class="headerlink" href="#taches" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Modèles de données</strong>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">ChartOfAccount</span></code>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">FiscalYear</span></code>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">AccountingPeriod</span></code>
+- [ ] Créer les enums nécessaires</p></li>
+<li><p><strong>Repositories</strong>
+- [ ] Créer tous les repositories
+- [ ] Ajouter les méthodes de recherche</p></li>
+<li><p><strong>Services de base</strong>
+- [ ] <code class="docutils literal notranslate"><span class="pre">ChartOfAccountService</span></code>
+- [ ] <code class="docutils literal notranslate"><span class="pre">FiscalYearService</span></code>
+- [ ] <code class="docutils literal notranslate"><span class="pre">AccountingPeriodService</span></code></p></li>
+<li><p><strong>Controllers et DTOs</strong>
+- [ ] Créer les controllers de base
+- [ ] Créer les DTOs</p></li>
+<li><p><strong>Base de données</strong>
+- [ ] Créer les tables
+- [ ] Créer les migrations
+- [ ] Insérer le plan comptable initial</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-2-grand-livre-et-balance-2-3-semaines">
+<h3>Phase 2: Grand Livre et Balance (2-3 semaines)<a class="headerlink" href="#phase-2-grand-livre-et-balance-2-3-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-2-grand-livre-et-balance-2-3-semaines'"><span>#</span></a></h3>
+<section id="id4">
+<h4>Objectifs<a class="headerlink" href="#id4" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Implémenter le grand livre général</p></li>
+<li><p>Implémenter la balance de vérification</p></li>
+<li><p>Améliorer le système d’écritures</p></li>
+</ul>
+</section>
+<section id="id5">
+<h4>Tâches<a class="headerlink" href="#id5" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Grand Livre</strong>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">GeneralLedger</span></code> model
+- [ ] Implémenter <code class="docutils literal notranslate"><span class="pre">GeneralLedgerService</span></code>
+- [ ] Génération automatique depuis <code class="docutils literal notranslate"><span class="pre">JournalEntry</span></code>
+- [ ] Calcul des soldes</p></li>
+<li><p><strong>Balance de Vérification</strong>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">TrialBalance</span></code> model
+- [ ] Implémenter <code class="docutils literal notranslate"><span class="pre">TrialBalanceService</span></code>
+- [ ] Calcul automatique
+- [ ] Validation équilibre</p></li>
+<li><p><strong>Amélioration JournalEntry</strong>
+- [ ] Ajouter les champs manquants
+- [ ] Intégrer avec <code class="docutils literal notranslate"><span class="pre">AccountingPeriod</span></code>
+- [ ] Améliorer la génération automatique</p></li>
+<li><p><strong>Frontend</strong>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">general-ledger</span></code>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">trial-balance</span></code>
+- [ ] Services Angular</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-3-etats-financiers-3-4-semaines">
+<h3>Phase 3: États Financiers (3-4 semaines)<a class="headerlink" href="#phase-3-etats-financiers-3-4-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-3-etats-financiers-3-4-semaines'"><span>#</span></a></h3>
+<section id="id6">
+<h4>Objectifs<a class="headerlink" href="#id6" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Générer le bilan</p></li>
+<li><p>Générer le compte de résultat</p></li>
+<li><p>Générer le tableau de flux de trésorerie</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>Tâches<a class="headerlink" href="#id7" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Modèles États Financiers</strong>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">FinancialStatement</span></code>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">FinancialStatementLine</span></code>
+- [ ] Créer les enums <code class="docutils literal notranslate"><span class="pre">StatementType</span></code></p></li>
+<li><p><strong>Service États Financiers</strong>
+- [ ] Implémenter <code class="docutils literal notranslate"><span class="pre">FinancialStatementService</span></code>
+- [ ] Logique de génération du bilan
+- [ ] Logique de génération du compte de résultat
+- [ ] Logique de génération du tableau de flux</p></li>
+<li><p><strong>Templates</strong>
+- [ ] Templates de présentation
+- [ ] Calculs automatiques
+- [ ] Totaux et sous-totaux</p></li>
+<li><p><strong>Frontend</strong>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">balance-sheet</span></code>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">income-statement</span></code>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">cash-flow</span></code>
+- [ ] Export PDF/Excel</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-4-reconciliation-2-3-semaines">
+<h3>Phase 4: Réconciliation (2-3 semaines)<a class="headerlink" href="#phase-4-reconciliation-2-3-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-4-reconciliation-2-3-semaines'"><span>#</span></a></h3>
+<section id="id8">
+<h4>Objectifs<a class="headerlink" href="#id8" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Implémenter la réconciliation bancaire</p></li>
+<li><p>Pointage automatique</p></li>
+<li><p>Gestion des écarts</p></li>
+</ul>
+</section>
+<section id="id9">
+<h4>Tâches<a class="headerlink" href="#id9" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Modèles Réconciliation</strong>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">BankReconciliation</span></code>
+- [ ] Créer <code class="docutils literal notranslate"><span class="pre">ReconciliationItem</span></code>
+- [ ] Relations avec transactions</p></li>
+<li><p><strong>Service Réconciliation</strong>
+- [ ] Implémenter <code class="docutils literal notranslate"><span class="pre">BankReconciliationService</span></code>
+- [ ] Pointage automatique
+- [ ] Calcul des écarts
+- [ ] Validation</p></li>
+<li><p><strong>Frontend</strong>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">bank-reconciliation</span></code>
+- [ ] Interface de pointage
+- [ ] Visualisation des écarts</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-5-rapports-et-tableaux-de-bord-2-3-semaines">
+<h3>Phase 5: Rapports et Tableaux de Bord (2-3 semaines)<a class="headerlink" href="#phase-5-rapports-et-tableaux-de-bord-2-3-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-5-rapports-et-tableaux-de-bord-2-3-semaines'"><span>#</span></a></h3>
+<section id="id10">
+<h4>Objectifs<a class="headerlink" href="#id10" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Créer les rapports comptables</p></li>
+<li><p>Tableaux de bord</p></li>
+<li><p>Analyses financières</p></li>
+</ul>
+</section>
+<section id="id11">
+<h4>Tâches<a class="headerlink" href="#id11" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Service Rapports</strong>
+- [ ] Implémenter <code class="docutils literal notranslate"><span class="pre">AccountingReportService</span></code>
+- [ ] Rapports par classe comptable
+- [ ] Rapports par période
+- [ ] Analyses de tendances</p></li>
+<li><p><strong>Frontend</strong>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">accounting-reports</span></code>
+- [ ] Composant <code class="docutils literal notranslate"><span class="pre">accounting-dashboard</span></code>
+- [ ] Graphiques et visualisations</p></li>
+<li><p><strong>Export</strong>
+- [ ] Export PDF
+- [ ] Export Excel
+- [ ] Export CSV</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-6-integration-finance-islamique-2-3-semaines">
+<h3>Phase 6: Intégration Finance Islamique (2-3 semaines)<a class="headerlink" href="#phase-6-integration-finance-islamique-2-3-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-6-integration-finance-islamique-2-3-semaines'"><span>#</span></a></h3>
+<section id="id12">
+<h4>Objectifs<a class="headerlink" href="#id12" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Adapter pour finance islamique</p></li>
+<li><p>Séparation des fonds</p></li>
+<li><p>Conformité AAOIFI</p></li>
+</ul>
+</section>
+<section id="id13">
+<h4>Tâches<a class="headerlink" href="#id13" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Plan Comptable Islamique</strong>
+- [ ] Créer structure spécifique
+- [ ] Comptes par produit islamique
+- [ ] Séparation fonds islamiques/conventionnels</p></li>
+<li><p><strong>Rapports Conformité</strong>
+- [ ] Rapport conformité Sharia
+- [ ] Traçabilité transactions
+- [ ] Audit trail</p></li>
+<li><p><strong>Zakat</strong>
+- [ ] Calcul automatique
+- [ ] Rapports Zakat</p></li>
+<li><p><strong>Tests</strong>
+- [ ] Tests unitaires
+- [ ] Tests d’intégration
+- [ ] Tests de conformité</p></li>
+</ol>
+</section>
+</section>
+<section id="phase-7-optimisation-et-documentation-1-2-semaines">
+<h3>Phase 7: Optimisation et Documentation (1-2 semaines)<a class="headerlink" href="#phase-7-optimisation-et-documentation-1-2-semaines" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#phase-7-optimisation-et-documentation-1-2-semaines'"><span>#</span></a></h3>
+<section id="id14">
+<h4>Objectifs<a class="headerlink" href="#id14" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Optimiser les performances</p></li>
+<li><p>Documenter le système</p></li>
+<li><p>Formation utilisateurs</p></li>
+</ul>
+</section>
+<section id="id15">
+<h4>Tâches<a class="headerlink" href="#id15" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Optimisation</strong>
+- [ ] Index base de données
+- [ ] Cache des calculs
+- [ ] Optimisation requêtes</p></li>
+<li><p><strong>Documentation</strong>
+- [ ] Documentation technique
+- [ ] Guide utilisateur
+- [ ] Documentation API</p></li>
+<li><p><strong>Formation</strong>
+- [ ] Formation comptables
+- [ ] Formation développeurs
+- [ ] Documentation procédures</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="estimation-globale">
+<h2>Estimation Globale<a class="headerlink" href="#estimation-globale" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#estimation-globale'"><span>#</span></a></h2>
+<section id="duree-totale">
+<h3>Durée Totale<a class="headerlink" href="#duree-totale" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#duree-totale'"><span>#</span></a></h3>
+<p><strong>16-22 semaines</strong> (4-5.5 mois)</p>
+</section>
+<section id="ressources-necessaires">
+<h3>Ressources Nécessaires<a class="headerlink" href="#ressources-necessaires" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#ressources-necessaires'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p><strong>2 Développeurs Backend</strong> (Java/Spring Boot)</p></li>
+<li><p><strong>1 Développeur Frontend</strong> (Angular)</p></li>
+<li><p><strong>1 Analyste Comptable</strong> (Finance Islamique)</p></li>
+<li><p><strong>1 Chef de Projet</strong></p></li>
+</ul>
+</section>
+<section id="priorites">
+<h3>Priorités<a class="headerlink" href="#priorites" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#priorites'"><span>#</span></a></h3>
+<section id="priorite-1-critique">
+<h4>Priorité 1 (Critique)<a class="headerlink" href="#priorite-1-critique" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Plan comptable</p></li>
+<li><p>Grand livre</p></li>
+<li><p>Balance de vérification</p></li>
+<li><p>États financiers de base</p></li>
+</ul>
+</section>
+<section id="priorite-2-important">
+<h4>Priorité 2 (Important)<a class="headerlink" href="#priorite-2-important" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Réconciliation bancaire</p></li>
+<li><p>Rapports comptables</p></li>
+<li><p>Intégration finance islamique</p></li>
+</ul>
+</section>
+<section id="priorite-3-souhaitable">
+<h4>Priorité 3 (Souhaitable)<a class="headerlink" href="#priorite-3-souhaitable" title="Lien vers cette rubrique"><span>#</span></a></h4>
+<ul class="simple">
+<li><p>Tableaux de bord avancés</p></li>
+<li><p>Analyses financières</p></li>
+<li><p>Optimisations</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="risques-et-mitigation">
+<h2>Risques et Mitigation<a class="headerlink" href="#risques-et-mitigation" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#risques-et-mitigation'"><span>#</span></a></h2>
+<section id="risques-techniques">
+<h3>Risques Techniques<a class="headerlink" href="#risques-techniques" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#risques-techniques'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p><strong>Complexité des calculs comptables</strong>
+- Mitigation: Validation avec expert comptable</p></li>
+<li><p><strong>Performance avec gros volumes</strong>
+- Mitigation: Index, cache, traitement asynchrone</p></li>
+<li><p><strong>Intégration avec système existant</strong>
+- Mitigation: Tests d’intégration continus</p></li>
+</ul>
+</section>
+<section id="risques-fonctionnels">
+<h3>Risques Fonctionnels<a class="headerlink" href="#risques-fonctionnels" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#risques-fonctionnels'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p><strong>Conformité réglementaire</strong>
+- Mitigation: Validation avec régulateur</p></li>
+<li><p><strong>Conformité AAOIFI</strong>
+- Mitigation: Consultation experts finance islamique</p></li>
+</ul>
+</section>
+<section id="risques-projet">
+<h3>Risques Projet<a class="headerlink" href="#risques-projet" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#risques-projet'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p><strong>Délais</strong>
+- Mitigation: Planification réaliste, buffer</p></li>
+<li><p><strong>Ressources</strong>
+- Mitigation: Formation équipe, documentation</p></li>
+</ul>
+</section>
+</section>
+<section id="criteres-de-succes">
+<h2>Critères de Succès<a class="headerlink" href="#criteres-de-succes" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#criteres-de-succes'"><span>#</span></a></h2>
+<section id="fonctionnels">
+<h3>Fonctionnels<a class="headerlink" href="#fonctionnels" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#fonctionnels'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>✅ Génération automatique des écritures</p></li>
+<li><p>✅ Grand livre complet et précis</p></li>
+<li><p>✅ Balance de vérification équilibrée</p></li>
+<li><p>✅ États financiers conformes</p></li>
+<li><p>✅ Réconciliation bancaire fonctionnelle</p></li>
+<li><p>✅ Séparation fonds islamiques/conventionnels</p></li>
+</ul>
+</section>
+<section id="techniques">
+<h3>Techniques<a class="headerlink" href="#techniques" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#techniques'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>✅ Performance acceptable (&lt; 2s pour rapports)</p></li>
+<li><p>✅ Disponibilité &gt; 99%</p></li>
+<li><p>✅ Sécurité des données</p></li>
+<li><p>✅ Traçabilité complète</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Conformité<a class="headerlink" href="#id16" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id16'"><span>#</span></a></h3>
+<ul class="simple">
+<li><p>✅ Conformité AAOIFI</p></li>
+<li><p>✅ Conformité réglementaire locale</p></li>
+<li><p>✅ Audit trail complet</p></li>
+<li><p>✅ Rapports de conformité Sharia</p></li>
+</ul>
+</section>
+</section>
+<section id="prochaines-etapes">
+<h2>Prochaines Étapes<a class="headerlink" href="#prochaines-etapes" title="Lien vers cette rubrique" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#prochaines-etapes'"><span>#</span></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Validation du Résumé</strong>
+- Révision avec l’équipe
+- Validation avec experts comptables
+- Validation avec experts finance islamique</p></li>
+<li><p><strong>Démarrage Phase 1</strong>
+- Création des modèles de données
+- Setup base de données
+- Création des repositories</p></li>
+<li><p><strong>Itérations</strong>
+- Développement itératif
+- Tests continus
+- Validation utilisateurs</p></li>
+</ol>
+</section>
+</section>
+</div><div class="flex justify-between items-center pt-6 mt-12 border-t border-border gap-4">
+<div class="mr-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="user_guide.html">
+<svg class="mr-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+        Guide Utilisateur Complet : Module Comptable
+      </a>
+</div>
+<div class="ml-auto">
+<a class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input hover:bg-accent hover:text-accent-foreground py-2 px-4" href="bank_reconciliation.html">
+        Guide d’utilisation : Réconciliation Bancaire
+        <svg class="ml-2 h-4 w-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</a>
+</div>
+</div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
+<div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<ul>
+<li><a :data-current="activeSection === '#vue-d-ensemble'" class="reference internal" href="#vue-d-ensemble">📋 Vue d’ensemble</a><ul>
+<li><a :data-current="activeSection === '#objectif'" class="reference internal" href="#objectif">Objectif</a></li>
+<li><a :data-current="activeSection === '#conformite'" class="reference internal" href="#conformite">Conformité</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#etat-actuel-du-systeme'" class="reference internal" href="#etat-actuel-du-systeme">État Actuel du Système</a><ul>
+<li><a :data-current="activeSection === '#composants-existants'" class="reference internal" href="#composants-existants">Composants Existants ✅</a><ul>
+<li><a :data-current="activeSection === '#backend-java-spring-boot'" class="reference internal" href="#backend-java-spring-boot">Backend (Java/Spring Boot)</a></li>
+<li><a :data-current="activeSection === '#frontend-angular'" class="reference internal" href="#frontend-angular">Frontend (Angular)</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#fonctionnalites-manquantes'" class="reference internal" href="#fonctionnalites-manquantes">Fonctionnalités Manquantes ❌</a><ul>
+<li><a :data-current="activeSection === '#comptabilite-generale'" class="reference internal" href="#comptabilite-generale">Comptabilité Générale</a></li>
+<li><a :data-current="activeSection === '#etats-financiers'" class="reference internal" href="#etats-financiers">États Financiers</a></li>
+<li><a :data-current="activeSection === '#reconciliation'" class="reference internal" href="#reconciliation">Réconciliation</a></li>
+<li><a :data-current="activeSection === '#periodes-comptables'" class="reference internal" href="#periodes-comptables">Périodes Comptables</a></li>
+<li><a :data-current="activeSection === '#controles-comptables'" class="reference internal" href="#controles-comptables">Contrôles Comptables</a></li>
+<li><a :data-current="activeSection === '#rapports-avances'" class="reference internal" href="#rapports-avances">Rapports Avancés</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#architecture-comptable-proposee'" class="reference internal" href="#architecture-comptable-proposee">Architecture Comptable Proposée</a><ul>
+<li><a :data-current="activeSection === '#structure-hierarchique-des-comptes'" class="reference internal" href="#structure-hierarchique-des-comptes">Structure Hiérarchique des Comptes</a></li>
+<li><a :data-current="activeSection === '#modeles-de-donnees-a-creer'" class="reference internal" href="#modeles-de-donnees-a-creer">Modèles de Données à Créer</a><ul>
+<li><a :data-current="activeSection === '#chartofaccount-plan-comptable'" class="reference internal" href="#chartofaccount-plan-comptable">ChartOfAccount (Plan Comptable)</a></li>
+<li><a :data-current="activeSection === '#fiscalyear-exercice-comptable'" class="reference internal" href="#fiscalyear-exercice-comptable">FiscalYear (Exercice Comptable)</a></li>
+<li><a :data-current="activeSection === '#accountingperiod-periode-comptable'" class="reference internal" href="#accountingperiod-periode-comptable">AccountingPeriod (Période Comptable)</a></li>
+<li><a :data-current="activeSection === '#generalledger-grand-livre'" class="reference internal" href="#generalledger-grand-livre">GeneralLedger (Grand Livre)</a></li>
+<li><a :data-current="activeSection === '#trialbalance-balance-de-verification'" class="reference internal" href="#trialbalance-balance-de-verification">TrialBalance (Balance de Vérification)</a></li>
+<li><a :data-current="activeSection === '#bankreconciliation-reconciliation-bancaire'" class="reference internal" href="#bankreconciliation-reconciliation-bancaire">BankReconciliation (Réconciliation Bancaire)</a></li>
+<li><a :data-current="activeSection === '#reconciliationitem-element-de-reconciliation'" class="reference internal" href="#reconciliationitem-element-de-reconciliation">ReconciliationItem (Élément de Réconciliation)</a></li>
+<li><a :data-current="activeSection === '#financialstatement-etats-financiers'" class="reference internal" href="#financialstatement-etats-financiers">FinancialStatement (États Financiers)</a></li>
+<li><a :data-current="activeSection === '#financialstatementline-ligne-d-etat-financier'" class="reference internal" href="#financialstatementline-ligne-d-etat-financier">FinancialStatementLine (Ligne d’État Financier)</a></li>
+<li><a :data-current="activeSection === '#accountingentry-ecriture-comptable-amelioration'" class="reference internal" href="#accountingentry-ecriture-comptable-amelioration">AccountingEntry (Écriture Comptable - Amélioration)</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#services-a-creer'" class="reference internal" href="#services-a-creer">Services à Créer</a><ul>
+<li><a :data-current="activeSection === '#chartofaccountservice'" class="reference internal" href="#chartofaccountservice">ChartOfAccountService</a></li>
+<li><a :data-current="activeSection === '#fiscalyearservice'" class="reference internal" href="#fiscalyearservice">FiscalYearService</a></li>
+<li><a :data-current="activeSection === '#generalledgerservice'" class="reference internal" href="#generalledgerservice">GeneralLedgerService</a></li>
+<li><a :data-current="activeSection === '#trialbalanceservice'" class="reference internal" href="#trialbalanceservice">TrialBalanceService</a></li>
+<li><a :data-current="activeSection === '#bankreconciliationservice'" class="reference internal" href="#bankreconciliationservice">BankReconciliationService</a></li>
+<li><a :data-current="activeSection === '#financialstatementservice'" class="reference internal" href="#financialstatementservice">FinancialStatementService</a></li>
+<li><a :data-current="activeSection === '#accountingperiodservice'" class="reference internal" href="#accountingperiodservice">AccountingPeriodService</a></li>
+<li><a :data-current="activeSection === '#accountingreportservice'" class="reference internal" href="#accountingreportservice">AccountingReportService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#composants-a-developper'" class="reference internal" href="#composants-a-developper">Composants à Développer</a><ul>
+<li><a :data-current="activeSection === '#id1'" class="reference internal" href="#id1">Backend (Java/Spring Boot)</a><ul>
+<li><a :data-current="activeSection === '#modeles-models'" class="reference internal" href="#modeles-models">Modèles (Models)</a></li>
+<li><a :data-current="activeSection === '#repositories'" class="reference internal" href="#repositories">Repositories</a></li>
+<li><a :data-current="activeSection === '#services'" class="reference internal" href="#services">Services</a></li>
+<li><a :data-current="activeSection === '#controllers'" class="reference internal" href="#controllers">Controllers</a></li>
+<li><a :data-current="activeSection === '#dtos'" class="reference internal" href="#dtos">DTOs</a></li>
+<li><a :data-current="activeSection === '#mappings'" class="reference internal" href="#mappings">Mappings</a></li>
+<li><a :data-current="activeSection === '#enums'" class="reference internal" href="#enums">Enums</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#id2'" class="reference internal" href="#id2">Frontend (Angular)</a><ul>
+<li><a :data-current="activeSection === '#composants'" class="reference internal" href="#composants">Composants</a></li>
+<li><a :data-current="activeSection === '#id3'" class="reference internal" href="#id3">Services</a></li>
+<li><a :data-current="activeSection === '#models'" class="reference internal" href="#models">Models</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#base-de-donnees'" class="reference internal" href="#base-de-donnees">Base de Données</a><ul>
+<li><a :data-current="activeSection === '#tables-a-creer'" class="reference internal" href="#tables-a-creer">Tables à Créer</a></li>
+<li><a :data-current="activeSection === '#migrations'" class="reference internal" href="#migrations">Migrations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#integration-avec-finance-islamique'" class="reference internal" href="#integration-avec-finance-islamique">Intégration avec Finance Islamique</a><ul>
+<li><a :data-current="activeSection === '#separation-des-fonds'" class="reference internal" href="#separation-des-fonds">Séparation des Fonds</a><ul>
+<li><a :data-current="activeSection === '#comptes-separes'" class="reference internal" href="#comptes-separes">Comptes Séparés</a></li>
+<li><a :data-current="activeSection === '#structure-proposee'" class="reference internal" href="#structure-proposee">Structure Proposée</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#conformite-aaoifi'" class="reference internal" href="#conformite-aaoifi">Conformité AAOIFI</a><ul>
+<li><a :data-current="activeSection === '#normes-a-respecter'" class="reference internal" href="#normes-a-respecter">Normes à Respecter</a></li>
+<li><a :data-current="activeSection === '#rapports-de-conformite'" class="reference internal" href="#rapports-de-conformite">Rapports de Conformité</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#zakat-et-charite'" class="reference internal" href="#zakat-et-charite">Zakat et Charité</a><ul>
+<li><a :data-current="activeSection === '#calcul-de-la-zakat'" class="reference internal" href="#calcul-de-la-zakat">Calcul de la Zakat</a></li>
+<li><a :data-current="activeSection === '#comptes-de-charite'" class="reference internal" href="#comptes-de-charite">Comptes de Charité</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#produits-islamiques-specifiques'" class="reference internal" href="#produits-islamiques-specifiques">Produits Islamiques Spécifiques</a><ul>
+<li><a :data-current="activeSection === '#murabaha'" class="reference internal" href="#murabaha">Murabaha</a></li>
+<li><a :data-current="activeSection === '#ijara'" class="reference internal" href="#ijara">Ijara</a></li>
+<li><a :data-current="activeSection === '#musharaka'" class="reference internal" href="#musharaka">Musharaka</a></li>
+<li><a :data-current="activeSection === '#mudaraba'" class="reference internal" href="#mudaraba">Mudaraba</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#plan-d-implementation'" class="reference internal" href="#plan-d-implementation">Plan d’Implémentation</a><ul>
+<li><a :data-current="activeSection === '#phase-1-fondations-2-3-semaines'" class="reference internal" href="#phase-1-fondations-2-3-semaines">Phase 1: Fondations (2-3 semaines)</a><ul>
+<li><a :data-current="activeSection === '#objectifs'" class="reference internal" href="#objectifs">Objectifs</a></li>
+<li><a :data-current="activeSection === '#taches'" class="reference internal" href="#taches">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-2-grand-livre-et-balance-2-3-semaines'" class="reference internal" href="#phase-2-grand-livre-et-balance-2-3-semaines">Phase 2: Grand Livre et Balance (2-3 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id4'" class="reference internal" href="#id4">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id5'" class="reference internal" href="#id5">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-3-etats-financiers-3-4-semaines'" class="reference internal" href="#phase-3-etats-financiers-3-4-semaines">Phase 3: États Financiers (3-4 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id6'" class="reference internal" href="#id6">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id7'" class="reference internal" href="#id7">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-4-reconciliation-2-3-semaines'" class="reference internal" href="#phase-4-reconciliation-2-3-semaines">Phase 4: Réconciliation (2-3 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id8'" class="reference internal" href="#id8">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id9'" class="reference internal" href="#id9">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-5-rapports-et-tableaux-de-bord-2-3-semaines'" class="reference internal" href="#phase-5-rapports-et-tableaux-de-bord-2-3-semaines">Phase 5: Rapports et Tableaux de Bord (2-3 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id10'" class="reference internal" href="#id10">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id11'" class="reference internal" href="#id11">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-6-integration-finance-islamique-2-3-semaines'" class="reference internal" href="#phase-6-integration-finance-islamique-2-3-semaines">Phase 6: Intégration Finance Islamique (2-3 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id12'" class="reference internal" href="#id12">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id13'" class="reference internal" href="#id13">Tâches</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#phase-7-optimisation-et-documentation-1-2-semaines'" class="reference internal" href="#phase-7-optimisation-et-documentation-1-2-semaines">Phase 7: Optimisation et Documentation (1-2 semaines)</a><ul>
+<li><a :data-current="activeSection === '#id14'" class="reference internal" href="#id14">Objectifs</a></li>
+<li><a :data-current="activeSection === '#id15'" class="reference internal" href="#id15">Tâches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#estimation-globale'" class="reference internal" href="#estimation-globale">Estimation Globale</a><ul>
+<li><a :data-current="activeSection === '#duree-totale'" class="reference internal" href="#duree-totale">Durée Totale</a></li>
+<li><a :data-current="activeSection === '#ressources-necessaires'" class="reference internal" href="#ressources-necessaires">Ressources Nécessaires</a></li>
+<li><a :data-current="activeSection === '#priorites'" class="reference internal" href="#priorites">Priorités</a><ul>
+<li><a :data-current="activeSection === '#priorite-1-critique'" class="reference internal" href="#priorite-1-critique">Priorité 1 (Critique)</a></li>
+<li><a :data-current="activeSection === '#priorite-2-important'" class="reference internal" href="#priorite-2-important">Priorité 2 (Important)</a></li>
+<li><a :data-current="activeSection === '#priorite-3-souhaitable'" class="reference internal" href="#priorite-3-souhaitable">Priorité 3 (Souhaitable)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#risques-et-mitigation'" class="reference internal" href="#risques-et-mitigation">Risques et Mitigation</a><ul>
+<li><a :data-current="activeSection === '#risques-techniques'" class="reference internal" href="#risques-techniques">Risques Techniques</a></li>
+<li><a :data-current="activeSection === '#risques-fonctionnels'" class="reference internal" href="#risques-fonctionnels">Risques Fonctionnels</a></li>
+<li><a :data-current="activeSection === '#risques-projet'" class="reference internal" href="#risques-projet">Risques Projet</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#criteres-de-succes'" class="reference internal" href="#criteres-de-succes">Critères de Succès</a><ul>
+<li><a :data-current="activeSection === '#fonctionnels'" class="reference internal" href="#fonctionnels">Fonctionnels</a></li>
+<li><a :data-current="activeSection === '#techniques'" class="reference internal" href="#techniques">Techniques</a></li>
+<li><a :data-current="activeSection === '#id16'" class="reference internal" href="#id16">Conformité</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#prochaines-etapes'" class="reference internal" href="#prochaines-etapes">Prochaines Étapes</a></li>
+</ul>
+</div>
+</aside>
+</main>
+</div>
+</div><footer class="py-6 border-t border-border md:py-0">
+<div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2025, THL Technologies Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.1.3</a></p>
+</div>
+</div>
+</footer>
+</div><button :class="{'opacity-0 invisible' : !showScrollTop}" @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 p-2 z-10 rounded-sm bg-gray-700 text-xs text-white transition-all duration-1000 hover:bg-gray-950 focus:bg-gray-950" id="scrolltop" x-cloak="">
+<svg aria-hidden="true" class="inline fill-current mb-[2px]" height="14" viewbox="0 96 960 960" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"></path>
+</svg>
+  Back to top
+</button>
+<script src="../../_static/documentation_options.js?v=718f2d82"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/js/target-blank.js?v=4e58104d"></script>
+<script defer="defer" src="../../_static/theme.js?v=e14a7d8a"></script>
+<script src="../../_static/translations.js?v=e6b791cb"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

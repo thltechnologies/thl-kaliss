@@ -17,6 +17,8 @@ Le module **Financements** est un système complet de gestion des financements q
    - ✅ Correction des rapports et exports Excel
    - ✅ **Nouveau !** Système de conformité documentaire bancaire (KYC)
    - ✅ **Optimisation** : Centralisation du taux TAF au niveau de la configuration globale
+   - ✅ **Avril 2026** : Export Excel et **Envoi E-mail automatique** (Profil connecté)
+   - ✅ **Avril 2026** : Refonte de l'interface avec barre d'outils horizontale premium
    
    Ces améliorations garantissent une meilleure fiabilité et précision du système.
 
@@ -158,7 +160,8 @@ Procédure
 
       - Export de la liste complète des financements
       - Filtrage par période, client, ou statut
-      - Export au format Excel
+      - Export au format Excel et **Envoi E-mail automatique**
+      - Disposition horizontale pour un accès rapide aux actions d'export
 
    \b. **Rapport des financements en retard**
 

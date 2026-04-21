@@ -6,10 +6,12 @@ Mises à jour d'octobre 2025 - Corrections critiques
 **Version 2.0 - Améliorations majeures et corrections de bugs critiques**
 
 ✅ **Mise à jour d'Avril 2026 - Conformité et TAF**
-   - **Système de conformité KYC** : Nouveau workflow de statut documentaire.
-   - **Validation Bloquante** : Interdiction d'approuver si les pièces obligatoires ne sont pas validées.
-   - **Centralisation TAF** : Taux TAF configuré globalement au niveau système.
-   - **Audit Documentaire** : Traçabilité des validations par agent et par date.
+    - **Système de conformité KYC** : Nouveau workflow de statut documentaire.
+    - **Validation Bloquante** : Interdiction d'approuver si les pièces obligatoires ne sont pas validées.
+    - **Centralisation TAF** : Taux TAF configuré globalement au niveau système.
+    - **Export Excel & Email Auto** : Envoi direct via le profil utilisateur authentifié.
+    - **UI Premium** : Barre d'outils horizontale avec split-buttons pour une ergonomie accrue.
+    - **Stabilisation Backend** : Utilisation de Fetch Joins pour éliminer les `LazyInitializationException`.
 
 ✅ **Migration complète vers les composants de transaction**
    - Suppression de toutes les méthodes dépréciées (``getMarginTransaction()``)

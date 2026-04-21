@@ -37,7 +37,46 @@ Bienvenue sur la documentation de THL Core Banking.
 
 .. toctree::
    :maxdepth: 2
-   :caption: 📚 Sommaire
+   :caption: 🚀 DÉMARRAGE RAPIDE
 
    introduction
-   modules/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 🏢 ORGANISATION & PERSONNEL
+
+   modules/branch/index
+   modules/profile/index
+   modules/security/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 👤 RELATION CLIENT
+
+   modules/client/index
+   modules/client_account/index
+   modules/customer_service/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 🏦 EXPLOITATION BANCAIRE
+
+   modules/cashier/index
+   modules/transaction/index
+   modules/operation_request/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 💰 CRÉDITS & FINANCEMENTS
+
+   modules/loan/index
+   modules/product/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 📊 PILOTAGE & COMPTABILITÉ
+
+   modules/accountant/index
+   modules/internal_account/index
+   modules/report/index
+   modules/log/index

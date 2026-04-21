@@ -73,8 +73,8 @@ Le module **Financements** offre un système complet de gestion des financements
 9. Intégration comptable
 -------------------------
 - **Génération de transactions** : Création automatique des écritures comptables
-- **Composants de transaction** : Gestion des composants marge et TAF
-- **Réconciliation** : Réconciliation avec les comptes internes
+- **Exports et Rapports** : Génération de listes PDF/Excel avec **envoi e-mail automatique**. Rapports détaillés sur les retards et la performance.
+- **Interface Utilisateur** : Design responsive et **barre d'outils horizontale** optimisée pour la gestion rapide (v4.0).
 - **Audit comptable** : Traçabilité des opérations comptables
 
 10. Gestion des garanties

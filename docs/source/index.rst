@@ -40,6 +40,8 @@ Bienvenue sur la documentation de THL Core Banking.
    :caption: 🚀 DÉMARRAGE RAPIDE
 
    introduction
+   workflows
+   glossary
 
 .. toctree::
    :maxdepth: 2

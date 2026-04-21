@@ -201,12 +201,17 @@ Procédure
       - Définissez la période (date de début et de fin)
       - Le système génère automatiquement le grand livre
 
-   \b. **Filtres disponibles**
+   \b. **Filtres et Génération**
 
-      - Filtrage par compte spécifique
-      - Filtrage par période
-      - Filtrage par type de transaction
-      - Export des données au format Excel
+      - **Génération Périodique (Mois)** : Sélectionnez une période et cliquez sur **Générer**.
+      - **Génération Annuelle (Exercice)** : Cliquez sur **Générer pour l'année** pour traiter tout l'exercice actif (Traitement Batch).
+      - **Traçabilité** : Affichage systématique du **Journal** (Banque, Caisse, OD) et de la **Référence Pièce** pour chaque écriture.
+
+   \c. **Exportation et Email**
+
+      - **Export Excel** : Exportation immédiate des données filtrées incluant le cumul des soldes.
+      - **Envoi par E-mail** : Envoi automatique du fichier Excel à l'e-mail de l'utilisateur authentifié (pas de saisie requise).
+      - **Interface** : Disposition horizontale optimisée ("Toolbar") pour un accès rapide sans chevauchement.
 
 6. Module Comptable Complet
 ----------------------------

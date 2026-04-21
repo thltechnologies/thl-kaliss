@@ -41,10 +41,10 @@ Fonctionnalités du traitement par lots :
 
 3. Génération du grand livre
 ----------------------------
-- **API REST** : Endpoint `/account/{accountId}/general-ledger`
-- **Filtrage par période** : Du 01/01/2025 au 31/01/2025
-- **Données complètes** : Date, numéro, libellé, débit, crédit
-- **Performance** : Requêtes optimisées avec indexation
+- **Génération Multi-niveaux** : Support pour génération mensuelle et annuelle (Batch)
+- **Traçabilité Totale** : Ajout des colonnes **Journal** et **Référence de pièce**
+- **Exportation Intelligente** : Export Excel direct ou via **E-mail automatique** (Utilisation du profil connecté)
+- **UI Optimisée** : Disposition horizontale des boutons pour une meilleure accessibilité
 
 Exemple d'utilisation :
 - Sélection du compte concerné
@@ -107,9 +107,11 @@ Fonctionnalités principales
 
 **Grand Livre Général**
   - Génération automatique depuis les écritures comptables
+  - Génération par **Mois** ou par **Année** (Traitement Batch)
   - Consultation par compte, période ou plage de dates
-  - Calcul automatique des soldes
-  - Export des données (prêt pour Excel/PDF)
+  - Affichage des colonnes **Journal** et **Référence**
+  - Calcul automatique des soldes cumulés
+  - Export Excel et **Envoi automatique par E-mail** (Profil authentifié)
 
 **Balance de Vérification**
   - Calcul automatique basé sur le grand livre
@@ -169,6 +171,7 @@ Statistiques
 - **Lignes de code** : ~7000+ lignes
 - **Endpoints API** : 50+ endpoints REST
 - **Composants UI** : 6 composants Angular
+- **Dernière Version** : 4.0 - Avril 2026 (Export GL & Email)
 - **Module complet** : 100% opérationnel
 
 Voir la documentation complète : :ref:`accounting-module`

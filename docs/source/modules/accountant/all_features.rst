@@ -41,10 +41,10 @@ la centralisation des opérations, une traçabilité complète, et un système o
 
 5. Génération du grand livre (NOUVEAU)
 ---------------------------------------
-- API REST pour la génération du grand livre
-- Filtrage par compte et période
-- Données complètes : date, numéro, libellé, débit, crédit
-- Export possible des données
+- Génération Multi-niveaux : Mensuelle ou Annuelle (Batch)
+- Traçabilité complète : Date, Journal, Référence, Libellé, Débit, Crédit
+- Export Excel et **Envoi E-mail automatique** (Profil connecté)
+- UI horizontale optimisée pour les actions
 
 6. Historique des transactions
 ------------------------------
@@ -112,7 +112,7 @@ Le module comptable complet est une extension majeure qui fournit un système co
 Fonctionnalités principales :
 - **Plan Comptable** : Structure hiérarchique des comptes avec types (ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE)
 - **Exercices Comptables** : Gestion des exercices fiscaux avec création automatique de 12 périodes mensuelles
-- **Grand Livre Général** : Enregistrement de toutes les transactions comptables avec génération automatique
+- **Grand Livre Général** : Enregistrement de toutes les transactions avec génération par Mois ou par Année (Batch). Colonnes Journal et Référence incluses.
 - **Balance de Vérification** : Calcul automatique avec validation de l'équilibre débit/crédit
 - **États Financiers** : Génération automatique du bilan, compte de résultat et tableau de flux de trésorerie
 - **Réconciliation Bancaire** : Pointage automatique et manuel avec gestion des écarts

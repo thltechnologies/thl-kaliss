@@ -29,6 +29,11 @@ Gestion des flux financiers et enregistrement des mouvements au jour le jour.
 *   **Opérations sur comptes internes** : Gestion des transferts de fonds entre les comptes techniques et opérationnels de l'institution.
 *   **Prélèvement des capitaux** : Administration des mouvements liés aux parts sociales et aux fonds propres.
 
+.. toctree::
+   :maxdepth: 1
+
+   internal_accounts
+
 3. États et Reporting Financier
 -------------------------------
 

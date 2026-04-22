@@ -81,7 +81,7 @@ Fonctionnalités :
 - **Types de journaux** : STANDARD, CAISSE, BANQUE, OD
 - **Gestion des séquences** : Numérotation automatique des pièces comptables
 - **Activation/Désactivation** : Contrôle de l'utilisation des journaux
-- **Génération de références** : Format automatique "{CODE}-{SEQUENCE}" (ex: "BQ-001")
+- **Génération de références** : Format automatique ``CODE/YYYY/MM/NNNN`` (ex: ``BQ/2026/04/0001``)
 
 11. Écritures Comptables Manuelles (NOUVEAU)
 ---------------------------------------------
@@ -100,9 +100,9 @@ Fonctionnalités :
 Système de références uniques pour identifier les écritures comptables.
 
 Fonctionnalités :
-- **Format standardisé** : "{CODE_JOURNAL}-{SEQUENCE}" (ex: "BQ-001", "CS-002")
+- **Format standardisé** : ``CODE/YYYY/MM/NNNN`` (ex: ``BQ/2026/04/0001``)
 - **Génération automatique** : Références créées automatiquement lors de la création d'écritures
-- **Incrémentation automatique** : Séquence du journal incrémentée après chaque écriture
+- **Incrémentation automatique** : Séquence du journal incrémentée après chaque écriture par mois
 - **Traçabilité** : Références visibles dans tous les rapports et exports
 
 13. Module Comptable Complet (NOUVEAU)

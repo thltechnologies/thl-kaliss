@@ -46,7 +46,8 @@ Backend (Java/Spring Boot)
 
 - ✅ ``JournalEntry`` - Entrées de journal comptable
 - ✅ ``JournalLine`` - Lignes de journal (débit/crédit)
-- ✅ ``AccountingClass`` - Classes comptables
+- ✅ ``AccountingJournal`` - Journaux comptables (registres)
+- ✅ ``JournalEntrySequence`` - Séquence de numérotation des pièces
 - ✅ ``InternalAccount`` - Comptes internes (hérite de ``Account``)
 - ✅ ``Account`` - Comptes clients
 - ✅ ``Transaction`` - Transactions bancaires
@@ -55,7 +56,8 @@ Backend (Java/Spring Boot)
 **Services existants :**
 
 - ✅ ``JournalEntryService`` - Service de gestion des écritures
-- ✅ ``AccountingClassService`` - Service des classes comptables
+- ✅ ``AccountingJournalService`` - Service des journaux comptables
+- ✅ ``JournalEntryReferenceService`` - Service de numérotation automatique
 - ✅ ``InternalAccountService`` - Service des comptes internes
 - ✅ ``TransactionService`` - Service des transactions
 - ✅ ``ChartOfAccountService`` - Service du plan comptable
@@ -248,11 +250,62 @@ GeneralLedger (Grand Livre)
         private LocalDate transactionDate;
         private JournalEntry journalEntry;
         private JournalLine journalLine;
-        private double debit;
-        private double credit;
-        private double balance;            // Solde cumulé
-        private String reference;           // Référence transaction
+    }
+
+JournalEntry (Écriture Comptable)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class JournalEntry {
+        private Long id;
+        private LocalDateTime createdAt;
+        private String reference;          // Numéro de pièce (ex: OD/2026/04/0001)
+        private AccountingJournal accountingJournal;
+        private JournalEntryType entryType; // STANDARD, OUVERTURE, REGULARISATION...
+        private JournalEntryStatus validationStatus; // BROUILLON, POSTEE, VALIDEE
+        private String description;
+        private String comments;
+        private Employee createdBy;
+        private Employee validatedBy;
+        private LocalDateTime postedAt;
+        private LocalDateTime validatedAt;
+        private Transaction transaction;
+        private List<JournalLine> journalLines;
         private State state;
+    }
+
+AccountingJournal (Journal Comptable)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class AccountingJournal {
+        private Long id;
+        private String code;               // Ex: "BANQUE", "CAISSE", "OD"
+        private String label;
+        private String description;
+        private boolean useIncludedAccounts;
+        private List<Account> includedAccounts;
+        private String type;
+        private Long sequenceNumber;
+        private State state;
+    }
+
+JournalEntrySequence (Séquence de Numérotation)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    @Entity
+    public class JournalEntrySequence {
+        private Long id;
+        private AccountingJournal accountingJournal;
+        private int year;
+        private int month;
+        private long lastSequence;
     }
 
 TrialBalance (Balance de Vérification)
@@ -358,25 +411,7 @@ FinancialStatementLine (Ligne d'État Financier)
 AccountingEntry (Écriture Comptable - Amélioration)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: java
-
-    // Extension de JournalEntry existant
-    @Entity
-    public class AccountingEntry extends JournalEntry {
-        private String entryNumber;        // Numéro d'écriture unique
-        private EntryType entryType;       // MANUAL, AUTOMATIC, ADJUSTMENT, CLOSING
-        private AccountingPeriod period;
-        private String description;
-        private String reference;          // Référence document
-        private boolean isReversed;        // Écriture contre-passée
-        private AccountingEntry reversedBy;
-        private boolean isAdjusted;
-        private String adjustmentReason;
-        private Employee createdBy;
-        private Employee approvedBy;
-        private LocalDateTime approvedAt;
-        private ApprovalStatus approvalStatus;
-    }
+    // Note: AccountingEntry a été fusionné dans JournalEntry pour simplifier la structure
 
 Services à Créer
 ~~~~~~~~~~~~~~~~

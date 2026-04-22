@@ -49,7 +49,8 @@ Le module comptable comprend les sections suivantes :
 5. **Grand Livre** (``/accountant/general-ledger``)
 6. **Balance de Vérification** (``/accountant/trial-balance``)
 7. **Réconciliation Bancaire** (``/accountant/bank-reconciliation``)
-8. **États Financiers** (``/accountant/financial-statements``)
+8. **Journaux Comptables** (``/accountant/accounting-journals``)
+9. **États Financiers** (``/accountant/financial-statements``)
 9. **Transferts Internes** (``/accountant/accountant``)
 
 📅 Gestion des Exercices Comptables
@@ -439,6 +440,36 @@ Rôles impliqués
 - Marque les demandes d’ouverture de caisse concernées comme **CLOSED**
 - Regroupe les éléments dans un objet de clôture (CloseBox) et notifie les profils concernés
 
+📔 Journaux Comptables
+---------------------
+
+Vue d'ensemble
+~~~~~~~~~~~~~~
+
+Les journaux comptables sont des registres thématiques dans lesquels sont enregistrées les opérations. Chaque écriture comptable **doit** être rattachée à un journal.
+
+Accès
+~~~~~
+
+**Menu** : Comptabilité → Journaux Comptables
+**URL** : ``/accountant/accounting-journals``
+
+Fonctionnalités
+~~~~~~~~~~~~~~~
+
+1. Créer un journal
+^^^^^^^^^^^^^^^^^^^
+
+**Étapes :**
+- Cliquez sur **"Nouveau Journal"** (icône ➕)
+- **Code** : Code court unique (ex: "OD", "BNK")
+- **Libellé** : Nom complet (ex: "Opérations Diverses")
+- **Type** : Catégorie (Caisse, Banque, Divers...)
+- **Comptes Autorisés** : Si activé, seules les écritures sur ces comptes seront acceptées dans ce journal.
+
+**Séquence de numérotation :**
+Chaque journal gère sa propre séquence de numérotation. Le format par défaut est ``CODE/ANNÉE/MOIS/NUMÉRO`` (ex: ``OD/2026/04/0001``).
+
 📝 Écritures Comptables
 -----------------------
 
@@ -494,15 +525,15 @@ Le tableau affiche :
 1. Cliquez sur **"Nouvelle Écriture"** (icône ➕)
 
 2. Remplissez le formulaire :
-   - **Référence** : Numéro de référence (généré automatiquement ou saisi manuellement)
-   - **Date** * : Date de l'écriture
-   - **Description** : Description de l'opération
-   - **Période** * : Période comptable
-   - **Lignes d'écriture** :
-     - **Compte** : Sélectionner un compte du plan comptable
-     - **Débit** : Montant au débit (si applicable)
-     - **Crédit** : Montant au crédit (si applicable)
-     - **Description** : Description de la ligne
+    - **Journal** * : Sélectionner le journal (ex: OD, BANQUE) - **Obligatoire**
+    - **Référence** : Numéro de pièce (Généré automatiquement si laissé vide)
+    - **Date** * : Date de l'écriture (détermine la période fiscale)
+    - **Description** : Libellé global de l'opération
+    - **Lignes d'écriture** :
+      - **Compte** : Sélectionner un compte du plan comptable
+      - **Débit** : Montant au débit (si applicable)
+      - **Crédit** : Montant au crédit (si applicable)
+      - **Description** : Description de la ligne
 
 3. **Règle de la partie double** :
    - ✅ Total des débits = Total des crédits
@@ -515,7 +546,14 @@ Le tableau affiche :
 
 - ✅ Vérification de l'équilibre (Débits = Crédits)
 - ✅ Vérification que tous les comptes sont valides
+- ✅ Vérification que le journal autorise ces comptes (si configuré)
 - ✅ Vérification que la période est ouverte
+
+**Statuts d'une écriture :**
+
+- 🟡 **BROUILLON** : Saisie manuelle en cours, non encore comptabilisée.
+- 🔵 **POSTEE** : Écriture enregistrée (génération automatique ou validation brouillon).
+- 🟢 **VALIDEE** : Écriture contrôlée et verrouillée par un superviseur.
 
 4. Modifier une écriture
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -913,6 +951,32 @@ Fonctionnalités
 
 3. Cliquez sur **"Transférer"** ou **"Enregistrer"**
 
+3. Approvisionnement et Décaissement (Flux de Validation)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Contrairement aux transferts directs, l'approvisionnement des comptes de trésorerie (Banque vers Coffre) suit un flux de validation :
+
+1. **Demande** : L'opérateur saisit la demande d'approvisionnement.
+2. **Autorisation** : Le système vérifie que la source est autorisée pour cette cible (liste *Fourni par*).
+3. **Approbation** : Un responsable valide la demande dans le menu **Opérations → Requêtes de Transaction**.
+4. **Exécution** : Une fois approuvée, l'écriture comptable est générée et les soldes sont mis à jour.
+
+4. Configuration de Sécurité des Comptes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vous pouvez restreindre l'utilisation des comptes internes par rôle :
+
+1. Cliquez sur l'icône **🛡️ (bouclier)** sur la ligne du compte.
+2. Pour chaque rôle (Caissier, Manager, etc.), cochez :
+   - **Peut Débiter** : Autorise le rôle à retirer de l'argent.
+   - **Peut Créditer** : Autorise le rôle à déposer de l'argent.
+3. Cliquez sur **"Enregistrer la configuration"**.
+
+5. Transactions Exclues
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Vous pouvez interdire certains types de transactions pour un compte spécifique afin d'éviter les erreurs de saisie (ex: interdire les retraits d'épargne sur un compte de frais).
+
 2. Visualiser les transferts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -923,6 +987,49 @@ Le tableau affiche :
 - **Compte Cible** : Compte cible
 - **Montant** : Montant transféré
 - **Description** : Description
+
+✅ Bonnes Pratiques
+-------------------
+
+💼 Prélèvement de Capitaux
+--------------------------
+
+Vue d'ensemble
+~~~~~~~~~~~~~~
+
+Le prélèvement de capitaux permet de transférer des fonds depuis un compte de parts sociales (Client) vers un compte de capital interne (Institutional Shares). Cette opération est généralement utilisée lors de la sortie d'un membre ou pour des ajustements de fonds propres.
+
+Accès
+~~~~~
+
+**Menu** : Comptabilité → Prélèvement de Capitaux
+**URL** : ``/accountant/shares``
+
+Fonctionnalités
+~~~~~~~~~~~~~~~
+
+1. Effectuer un prélèvement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Étapes :**
+
+1. Saisissez le **Numéro de compte** du client (Source).
+2. Sélectionnez le **Compte cible** (Compte interne de type SHARES).
+3. Saisissez le **Montant** à prélever.
+4. Ajoutez une **Description** explicative.
+5. Cliquez sur **"Prélever"**.
+
+2. Validation et Sécurité
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- ✅ **Type de compte** : Le compte cible doit impérativement être un compte interne de type ``SHARES``.
+- ✅ **Solde** : Le système vérifie que le compte client dispose d'un solde suffisant.
+- ✅ **Composants** : Contrairement aux dépôts classiques, cette opération ne supporte généralement pas de frais ou de taxes supplémentaires (marge/TAF).
+
+3. Historique des Prélèvements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le tableau en bas de page liste tous les prélèvements effectués, permettant un suivi rigoureux des mouvements de capitaux.
 
 ✅ Bonnes Pratiques
 -------------------

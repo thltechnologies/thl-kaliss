@@ -186,18 +186,16 @@ ChartOfAccount (Plan Comptable)
 .. code-block:: java
 
     @Entity
-    public class ChartOfAccount {
-        private Long id;
-        private String code;              // Code comptable (ex: "1.1.1")
-        private String label;              // Libellé
-        private AccountType accountType;   // ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE
+    public class ChartOfAccount extends Account {
+        private ChartOfAccountType chartOfAccountType;
         private ChartOfAccount parent;     // Compte parent (hiérarchie)
         private List<ChartOfAccount> children;
-        private boolean isActive;
+        private String description;
         private boolean isSystemAccount;   // Compte système (non modifiable)
-        private AccountingClass accountingClass;
         private boolean requiresReconciliation;
-        private LocalDateTime createdAt;
+        private String category;
+        private int level;
+        private int displayOrder;
         private State state;
     }
 

@@ -57,18 +57,18 @@ Le modèle ``ChartOfAccount`` inclut des méthodes pour accéder aux différents
     ChartOfAccountLevelType levelType = account.getLevelType(); // SOUS_COMPTE
 
     // Obtenir les codes à chaque niveau
-    String classe = account.getClasseCode();           // "2"
-    String poste = account.getPosteCode();             // "20"
-    String compteGeneral = account.getCompteGeneralCode(); // "202"
-    String compte = account.getCompteCode();           // "2022"
-    String sousCompte = account.getSousCompteCode();  // "20221"
+    String classe = account.getClassCode();           // "2"
+    String poste = account.getPositionCode();         // "20"
+    String compteGeneral = account.getGeneralAccountCode(); // "202"
+    String compte = account.getAccountCode();         // "2022"
+    String sousCompte = account.getSubAccountCode();  // "20221"
 
     // Vérifier le type
-    boolean isClasse = account.isClasse();             // false
-    boolean isPoste = account.isPoste();               // false
-    boolean isCompteGeneral = account.isCompteGeneral(); // false
-    boolean isCompte = account.isCompte();             // false
-    boolean isSousCompte = account.isSousCompte();     // true
+    boolean isClasse = account.isClass();             // false
+    boolean isPoste = account.isPosition();           // false
+    boolean isCompteGeneral = account.isGeneralAccount(); // false
+    boolean isCompte = account.isAccount();           // false
+    boolean isSousCompte = account.isSubAccount();     // true
 
     // Affichage hiérarchique
     String display = account.getHierarchicalDisplay(); 
@@ -100,11 +100,11 @@ Le DTO inclut toutes les informations de hiérarchie :
       "label": "Sous-compte exemple",
       "level": 4,
       "levelType": "SOUS_COMPTE",
-      "classeCode": "2",
-      "posteCode": "20",
-      "compteGeneralCode": "202",
-      "compteCode": "2022",
-      "sousCompteCode": "20221",
+      "classCode": "2",
+      "positionCode": "20",
+      "generalAccountCode": "202",
+      "accountCode": "2022",
+      "subAccountCode": "20221",
       "hierarchicalDisplay": "2 | 20 | 202 | 2022 | 20221"
     }
 
@@ -127,7 +127,7 @@ Trouver tous les postes d'une classe
     List<ChartOfAccount> postes = chartOfAccountRepository
         .findByLevelAndState(1, State.ACTIVATED)
         .stream()
-        .filter(c -> c.getClasseCode().equals("2"))
+        .filter(c -> c.getClassCode().equals("2"))
         .collect(Collectors.toList());
 
 Construire la hiérarchie complète

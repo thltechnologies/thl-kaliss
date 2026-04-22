@@ -46,8 +46,13 @@ Procédure de création d'un produit
       - Configurez la condition de retrait (withdrawCondition) - max 100%
       - Activez/désactivez l'autorisation de découvert (overdraftAllowed)
       - Activez/désactivez le relevé de compte (accountStatement)
+      - Sélectionnez les transactions exclues (transactionsExcluded)
 
-   d. **Validation et enregistrement**
+   d. **Liaison comptable**
+      - Recherchez et sélectionnez la classe comptable (RCSSD)
+      - Vérifiez la cohérence avec le plan comptable
+
+   e. **Validation et enregistrement**
       - Vérification de l'unicité du code et du nom
       - Validation des paramètres financiers
       - Enregistrement dans la base de données
@@ -89,6 +94,7 @@ Création de catégories
    - Nom de la catégorie
    - Description détaillée
    - Configuration des frais par table (feeFromTable)
+   - Sélection des transactions exclues pour la catégorie
 
 2. **Types de catégories supportées**
    - **Comptes d'épargne** : Épargne classique, épargne logement

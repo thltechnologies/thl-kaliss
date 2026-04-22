@@ -44,6 +44,7 @@ Cette page répertorie toutes les fonctionnalités disponibles dans le module Pr
 - **Nom de catégorie** : Libellé descriptif de la catégorie
 - **Description détaillée** : Documentation de la catégorie
 - **Configuration des frais** : Frais par table (feeFromTable)
+- **Exclusion de transactions** : Définition des types d'opérations non autorisées pour la catégorie
 
 2.2. Types de catégories
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,7 +82,8 @@ Cette page répertorie toutes les fonctionnalités disponibles dans le module Pr
 - **Retrait maximum** : Limite supérieure des retraits
 - **Retrait mensuel** : Limite mensuelle de retrait
 - **Condition de retrait** : Pourcentage maximum (max 100%)
-- **Contrôles de cohérence** : Vérification des conditions
+- **Autorisation de découvert** : Permettre ou non un solde négatif sur le compte
+- **Contrôles de cohérence** : Vérification des conditions et des soldes
 
 3.3. Frais et commissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +92,17 @@ Cette page répertorie toutes les fonctionnalités disponibles dans le module Pr
 - **Frais d'ouverture** : Frais uniques à l'ouverture
 - **Frais par catégorie** : Frais standardisés par type
 - **Calcul automatique** : Déduction automatique des frais
+- **Relevé de compte** : Option de génération périodique des relevés
 - **Personnalisation** : Adaptation des frais par produit
+
+3.4. Paramètres techniques et comptables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Transactions exclues** : Types d'opérations interdites pour un produit spécifique
+- **Classe comptable (RCSSD)** : Liaison avec le plan comptable pour les écritures automatiques
+- **Traçabilité technique** : Suivi des paramètres de configuration
+- **Validation des schémas** : Contrôle de l'intégrité des données techniques
+- **Intégration GL** : Synchronisation avec le Grand Livre (General Ledger)
 
 4. Gestion des comptes associés
 ===============================

@@ -17,7 +17,7 @@ Mises à jour d'octobre 2025 - Corrections critiques
     - **Configuration Globale des Pénalités** : Configuration centralisée de l'activation, du taux journalier et de la conformité Shariah au niveau de l'entreprise.
     - **Garde-fous Métiers (Option A)** : Héritage automatique et strict des valeurs globales en lecture seule sur les financements. Sécurité et validation au niveau backend (`save`/`update`) et frontend (champs désactivés).
     - **Comptabilisation Shariah** : Versement automatique sur compte de charité/Sadakah (`CHARITY_SADAKAH`) ou compte de produits de pénalités (`PENALTY_INCOME`) selon la conformité définie.
-    - **Remboursement Partiel de Prêt** : Autorise le prélèvement automatique ou manuel du solde disponible en cas de solde insuffisant, en adaptant dynamiquement les écritures comptables et en conservant l'échéance ouverte jusqu'à apurement complet.
+    - **Remboursement Partiel de Financement** : Autorise le prélèvement automatique ou manuel du solde disponible en cas de solde insuffisant, en adaptant dynamiquement les écritures comptables et en conservant l'échéance ouverte jusqu'à apurement complet.
 
 
 ✅ **Migration complète vers les composants de transaction**

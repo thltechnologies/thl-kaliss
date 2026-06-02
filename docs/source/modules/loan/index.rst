@@ -225,7 +225,7 @@ Procédure
    - **Murabaha** : Vente avec marge (financement islamique)
    - **Ijara** : Location-vente (leasing islamique)
    - **Musharaka** : Partenariat (participation islamique)
-   - **Qard** : Financement sans intérêt (prêt bienveillant)
+   - **Qard** : Financement sans intérêt (financement bienveillant)
    - **Autres types** : Financements conventionnels
 
 4. **Types d'échéances disponibles**

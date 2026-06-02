@@ -13,6 +13,12 @@ Mises à jour d'octobre 2025 - Corrections critiques
     - **UI Premium** : Barre d'outils horizontale avec split-buttons pour une ergonomie accrue.
     - **Stabilisation Backend** : Utilisation de Fetch Joins pour éliminer les `LazyInitializationException`.
 
+✅ **Mise à jour de Juin 2026 - Pénalités de Retard et Garde-fous**
+    - **Configuration Globale des Pénalités** : Configuration centralisée de l'activation, du taux journalier et de la conformité Shariah au niveau de l'entreprise.
+    - **Garde-fous Métiers (Option A)** : Héritage automatique et strict des valeurs globales en lecture seule sur les financements. Sécurité et validation au niveau backend (`save`/`update`) et frontend (champs désactivés).
+    - **Comptabilisation Shariah** : Versement automatique sur compte de charité/Sadakah (`CHARITY_SADAKAH`) ou compte de produits de pénalités (`PENALTY_INCOME`) selon la conformité définie.
+
+
 ✅ **Migration complète vers les composants de transaction**
    - Suppression de toutes les méthodes dépréciées (``getMarginTransaction()``)
    - Utilisation exclusive du système de composants pour la marge

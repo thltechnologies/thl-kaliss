@@ -271,6 +271,23 @@ Pour chaque pièce du dossier, le système enregistre :
 - Le motif de rejet en cas de refus.
 - La date de validité pour les documents ayant une expiration.
 
+8. Gestion des Pénalités de Retard
+----------------------------------
+
+Le système propose un cadre strict et automatisé pour l'application des pénalités en cas de retard de paiement :
+
+* **Configuration Globale** : Un administrateur définit au niveau de la configuration générale du système si les pénalités sont activées (`penaltyEnabled`), le montant quotidien par jour de retard (`penaltyRate`), ainsi que le statut de conformité Shariah (`shariahCompliant`).
+* **Calcul du Retard** : Le retard (nombre de jours) est calculé sur une base de **jours calendaires complets** (`LocalDate`), en ignorant les heures et minutes d'enregistrement. Par exemple, un remboursement dû le 30/05 et payé le 02/06 compte pour exactement 3 jours de retard.
+* **Ordre de Prélèvement (Prioritaire)** : Les pénalités de retard sont prélevées en priorité absolue sur tout montant versé. Lors d'un remboursement, les fonds disponibles couvrent d'abord la pénalité accumulée due, puis le reliquat est affecté à l'échéance (marge puis principal).
+* **Prévention de Découvert** : Le système ne prélève jamais plus que le solde disponible sur le compte du client pour éviter de le mettre en négatif, à moins qu'un découvert ne soit explicitement autorisé dans les paramètres.
+* **Statut de Complétion** : Une échéance n'est marquée validée (`completed`) que lorsque la totalité de la mensualité due ET de la pénalité calculée ont été entièrement payées.
+* **Garde-fous Métiers (Option A - Stricte)** :
+    - L'activation des pénalités sur un dossier de financement individuel est bloquée si les pénalités sont désactivées globalement.
+    - Lors de la mise en place d'un financement, si les pénalités globales sont actives, l'agent peut choisir d'activer les pénalités sur ce financement. Les champs **Montant par jour de retard** et **Conformité Shariah** sont en lecture seule et héritent automatiquement et strictement des valeurs de la configuration générale pour éviter toute altération.
+* **Traitement Comptable (Conformité Shariah)** :
+    - Si l'option **Conformité Shariah** est active, les pénalités perçues sont considérées comme un don obligatoire et reversées dans un compte de charité/Sadakah (`CHARITY_SADAKAH`).
+    - Dans le cas contraire, elles sont créditées sur le compte de revenus de pénalités de l'institution (`PENALTY_INCOME`).
+
 Démo
 ~~~~
 

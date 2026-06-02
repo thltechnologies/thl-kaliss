@@ -13,10 +13,11 @@ Mises à jour d'octobre 2025 - Corrections critiques
     - **UI Premium** : Barre d'outils horizontale avec split-buttons pour une ergonomie accrue.
     - **Stabilisation Backend** : Utilisation de Fetch Joins pour éliminer les `LazyInitializationException`.
 
-✅ **Mise à jour de Juin 2026 - Pénalités de Retard et Garde-fous**
+✅ **Mise à jour de Juin 2026 - Pénalités de Retard, Remboursement Partiel et Garde-fous**
     - **Configuration Globale des Pénalités** : Configuration centralisée de l'activation, du taux journalier et de la conformité Shariah au niveau de l'entreprise.
     - **Garde-fous Métiers (Option A)** : Héritage automatique et strict des valeurs globales en lecture seule sur les financements. Sécurité et validation au niveau backend (`save`/`update`) et frontend (champs désactivés).
     - **Comptabilisation Shariah** : Versement automatique sur compte de charité/Sadakah (`CHARITY_SADAKAH`) ou compte de produits de pénalités (`PENALTY_INCOME`) selon la conformité définie.
+    - **Remboursement Partiel de Prêt** : Autorise le prélèvement automatique ou manuel du solde disponible en cas de solde insuffisant, en adaptant dynamiquement les écritures comptables et en conservant l'échéance ouverte jusqu'à apurement complet.
 
 
 ✅ **Migration complète vers les composants de transaction**
@@ -149,4 +150,12 @@ Mesures de sécurité :
 - Contrôles d'intégrité des données
 - Validation des montants et des calculs
 - Protection contre les injections SQL
+
+9. Remboursement partiel des financements
+------------------------------------------
+- **Prélèvement du disponible** : Le système peut prélever le solde disponible d'un compte client même s'il ne couvre pas la totalité de l'échéance, ramenant le solde du compte à 0 sans le rendre négatif.
+- **Suivi de l'historique** : Création d'enregistrements enfants de remboursement partiel (`PartialLoanRepayment`) liés à l'échéance principale.
+- **Ajustement comptable automatique** : Les écritures de journal (marge, principal, TAF) sont recalculées et réajustées au prorata du montant effectivement perçu.
+- **Validation progressive** : L'échéance reste marquée comme impayée/non validée tant que le cumul des remboursements partiels n'a pas atteint le montant total dû.
+
 

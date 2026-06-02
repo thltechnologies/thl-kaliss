@@ -120,6 +120,14 @@ Procédure
       - Calcul des pénalités
       - Suivi des remboursements en souffrance
 
+   \e. **Remboursement partiel**
+
+      - Si l'option *Autoriser le prélèvement du montant disponible dans le solde en cas de solde insuffisant* est activée globalement dans la configuration :
+         - En cas de solde insuffisant du compte client pour régler la totalité de l'échéance lors d'un remboursement automatique ou manuel, le système prélève le solde disponible (qui devient alors nul).
+         - Un enregistrement de remboursement partiel (`PartialLoanRepayment`) est créé pour suivre ce versement.
+         - L'échéance principale voit son montant payé incrémenté, mais reste dans l'état non validée (`transactionValidated = false`) jusqu'à ce que la somme des remboursements partiels atteigne le montant total de l'échéance.
+         - Les écritures comptables associées sont automatiquement recalculées et retraitées pour refléter le montant partiel effectivement perçu.
+
 4. Remboursement anticipé
 --------------------------
 

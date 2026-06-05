@@ -3,7 +3,7 @@
 Procédure d'Installation
 ========================
 
-Cette page détaille la procédure pour installer et exécuter **THL Kaliss** (et son lanceur de bureau **THL-KALIX**) sur les différents systèmes d'exploitation (Windows, macOS et Linux).
+Cette page détaille la procédure pour installer et exécuter **THL Kaliss** (et son lanceur de bureau **THL-KALISS**) sur les différents systèmes d'exploitation (Windows, macOS et Linux).
 
 .. contents:: Table des matières
    :local:
@@ -23,7 +23,7 @@ Installation sur Windows
 
 Le déploiement sur Windows s'effectue via un installateur NSIS exécutable :
 
-1. Téléchargez la dernière version de l'installateur : `THL-KALIX Setup 1.0.0.exe`.
+1. Téléchargez la dernière version de l'installateur : `THL-KALISS Setup 1.0.0.exe`.
 2. Double-cliquez sur l'exécutable pour lancer l'assistant d'installation.
 3. Suivez les étapes de l'assistant pour finaliser l'installation.
 4. Lancez l'application depuis le raccourci créé sur votre bureau ou le menu Démarrer.
@@ -51,15 +51,15 @@ C'est la méthode la plus rapide et propre. Ouvrez votre **Terminal** et exécut
 Méthode 2 : Installation Manuelle (.dmg)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Téléchargez le fichier image disque : `THL-KALIX-1.0.0.dmg`.
+1. Téléchargez le fichier image disque : `THL-KALISS-1.0.0.dmg`.
 2. Double-cliquez sur le fichier `.dmg` pour l'ouvrir.
-3. Glissez-déposez l'icône **THL-KALIX.app** dans votre dossier **Applications**.
+3. Glissez-déposez l'icône **THL-KALISS.app** dans votre dossier **Applications**.
 4. **Important (Contournement de la quarantaine macOS / Gatekeeper)** :
    Comme l'application n'est pas signée numériquement auprès d'Apple, macOS affichera un message indiquant que le fichier est "endommagé". Pour résoudre cela, ouvrez votre **Terminal** et exécutez la commande suivante :
 
    .. code-block:: bash
 
-      $ xattr -cr /Applications/THL-KALIX.app
+      $ xattr -cr /Applications/THL-KALISS.app
 
 5. Vous pouvez désormais ouvrir l'application normalement depuis votre Launchpad ou votre dossier Applications.
 
@@ -70,19 +70,19 @@ Installation sur Linux
 
 L'application est distribuée sous forme de package portable **AppImage** :
 
-1. Téléchargez le fichier `THL-KALIX-1.0.0.AppImage`.
+1. Téléchargez le fichier `THL-KALISS-1.0.0.AppImage`.
 2. Ouvrez un terminal dans le dossier contenant le fichier téléchargé.
 3. Rendez le fichier exécutable avec la commande suivante :
 
    .. code-block:: bash
 
-      $ chmod +x THL-KALIX-1.0.0.AppImage
+      $ chmod +x THL-KALISS-1.0.0.AppImage
 
 4. Lancez l'application en double-cliquant sur le fichier ou via le terminal :
 
    .. code-block:: bash
 
-      $ ./THL-KALIX-1.0.0.AppImage
+      $ ./THL-KALISS-1.0.0.AppImage
 
 ---
 

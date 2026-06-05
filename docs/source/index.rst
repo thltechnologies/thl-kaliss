@@ -40,6 +40,7 @@ Bienvenue sur la documentation de THL Core Banking.
    :caption: 🚀 DÉMARRAGE RAPIDE
 
    introduction
+   installation
    workflows
    glossary
 

@@ -26,6 +26,33 @@ Ce diagramme illustre les étapes successives par lesquelles passe un dossier de
         style H fill:#9f9,stroke:#333
         style C fill:#f99,stroke:#333
 
+Processus de Recouvrement et Relance Client
+-------------------------------------------
+
+Ce diagramme décrit la chaîne de surveillance des échéances dans le calendrier de recouvrement et le déclenchement des relances préventives ou curatives.
+
+.. mermaid::
+
+    graph TD
+        E0[Échéance planifiée] --> E1{Calcul de la date limite}
+        E1 -->|Échéance > 7 jours| E2[Échéance Future - Bleu]
+        E1 -->|Échéance dans les 7 jours| E3[Échéance Imminente - Ambre]
+        E1 -->|Date échue non payée| E4[Échéance en Retard - Rouge]
+        
+        E3 --> R1[Relance Préventive de courtoisie]
+        E4 --> R2[Relance Curative / Recouvrement]
+        
+        R1 --> P0{Règlement client ?}
+        R2 --> P0
+        
+        P0 -->|Validé| P1[Statut Payé - Vert]
+        P0 -->|Non payé| E4
+        
+        style E2 fill:#3b82f6,color:#fff
+        style E3 fill:#f59e0b,color:#fff
+        style E4 fill:#ef4444,color:#fff
+        style P1 fill:#22c55e,color:#fff
+
 Workflow d'Ouverture et Approvisionnement de Caisse
 ---------------------------------------------------
 

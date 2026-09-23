@@ -19,6 +19,13 @@ Mises à jour d'octobre 2025 - Corrections critiques
     - **Comptabilisation Shariah** : Versement automatique sur compte de charité/Sadakah (`CHARITY_SADAKAH`) ou compte de produits de pénalités (`PENALTY_INCOME`) selon la conformité définie.
     - **Remboursement Partiel de Financement** : Autorise le prélèvement automatique ou manuel du solde disponible en cas de solde insuffisant, en adaptant dynamiquement les écritures comptables et en conservant l'échéance ouverte jusqu'à apurement complet.
 
+✅ **Mise à jour de Juillet 2026 - Calendrier de Recouvrement et Relance Client**
+    - **Calendrier Interactif FullCalendar** : Suivi global des échéances avec vues mois et multi-mois (`/loans/recovery`).
+    - **Classification Visuelle par Statut** : Détection des retards (rouge), des échéances urgentes sous 7 jours (ambre), des échéances futures (bleu) et réglées (vert).
+    - **Système de Relance Client** : Déclenchement d'actions de relance multicanale (SMS, WhatsApp, notifications) directement depuis le calendrier pour inviter au paiement.
+    - **Accès Direct au Dossier** : Redirection instantanée vers le dossier de financement pour consulter les garanties et l'échéancier détaillé.
+
+
 
 ✅ **Migration complète vers les composants de transaction**
    - Suppression de toutes les méthodes dépréciées (``getMarginTransaction()``)

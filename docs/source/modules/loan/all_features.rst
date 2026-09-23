@@ -97,3 +97,13 @@ Le module **Financements** offre un système complet de gestion des financements
 - **Logs d'audit** : Enregistrement de toutes les opérations
 - **Contrôles d'accès** : Gestion fine des permissions
 - **Conformité réglementaire** : Respect des réglementations bancaires
+
+13. Calendrier de recouvrement et relance client
+------------------------------------------------
+- **Calendrier interactif des échéances** : Visualisation calendaire FullCalendar (vues Mois et Année / Multi-mois)
+- **Identification visuelle par statut** : Code couleur distinct (Retard en rouge, À venir < 7j en orange, Futur en bleu, Payé en vert)
+- **Filtrage temps réel multi-statuts** : Puces filtrantes interactives (Chips) pour segmenter les échéances
+- **Fiche détaillée de remboursement** : Fenêtre modale avec données complètes du client, du prêt, du montant et de la période
+- **Accès direct au dossier** : Bouton de redirection immédiate vers le dossier de financement complet du client
+- **Action de relance client** : Bouton de relance (intégration WhatsApp / SMS / notifications) sur les échéances non acquittées
+- **Chargement temporel optimisé** : Requêtage ciblé par plage de dates (API ``/repayments/calendar``)

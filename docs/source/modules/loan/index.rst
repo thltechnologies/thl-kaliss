@@ -19,6 +19,7 @@ Le module **Financements** est un système complet de gestion des financements q
    - ✅ **Optimisation** : Centralisation du taux TAF au niveau de la configuration globale
    - ✅ **Avril 2026** : Export Excel et **Envoi E-mail automatique** (Profil connecté)
    - ✅ **Avril 2026** : Refonte de l'interface avec barre d'outils horizontale premium
+   - ✅ **Nouveau !** Calendrier de recouvrement interactif et système de relance client
    
    Ces améliorations garantissent une meilleure fiabilité et précision du système.
 
@@ -296,6 +297,61 @@ Le système propose un cadre strict et automatisé pour l'application des pénal
     - Si l'option **Conformité Shariah** est active, les pénalités perçues sont considérées comme un don obligatoire et reversées dans un compte de charité/Sadakah (`CHARITY_SADAKAH`).
     - Dans le cas contraire, elles sont créditées sur le compte de revenus de pénalités de l'institution (`PENALTY_INCOME`).
 
+9. Calendrier de Recouvrement et Relance Client
+-----------------------------------------------
+
+Le **Calendrier de Recouvrement** centralise l'ensemble des échéances de remboursement du portefeuille de financements sur une interface dynamique et ergonomique basée sur FullCalendar. Il permet aux équipes de recouvrement et aux gestionnaires de suivre visuellement les flux financiers attendus, d'anticiper les risques d'impayés et de déclencher les relances nécessaires auprès des clients.
+
+.. note::
+   **Accès et habilitations** :
+   Le calendrier est accessible depuis le menu **Financements** > **Calendrier Recouvrement** (route ``/loans/recovery``).
+   Son accès est réservé aux profils autorisés : **SUPER_ADMIN**, **LOAN_MANAGER** et **LOAN_VALIDATOR**.
+
+Fonctionnalités principales
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. **Vues temporelles flexibles** :
+   - **Vue Mois (par défaut)** : Affiche les échéances planifiées sur le mois en cours.
+   - **Vue Année / Multi-mois** : Permet une vision globale sur l'ensemble de l'exercice ou sur plusieurs mois consécutifs.
+   - **Navigation rapide** : Boutons de navigation (*Aujourd'hui*, *Précédent*, *Suivant*) pour naviguer facilement d'une période à l'autre.
+
+2. **Indicateurs visuels et statuts par couleur** :
+   Chaque événement d'échéance indique le nom du client (ou la raison sociale) ainsi que le montant dû (ex: *Mamadou Diallo - 150 000 F*). Un code couleur intuitif permet d'identifier immédiatement la situation de chaque échéance :
+
+   - 🔴 **En retard (Rouge / #ef4444)** : Échéances non réglées dont la date d'exigibilité est dépassée.
+   - 🟡 **À venir (< 7 jours) (Orange / #f59e0b)** : Échéances exigibles dans les 7 prochains jours calendaires, idéales pour une relance préventive.
+   - 🔵 **Futur (Bleu / #3b82f6)** : Échéances planifiées au-delà de 7 jours.
+   - 🟢 **Payé (Vert / #22c55e)** : Échéances intégralement réglées et validées comptablement.
+
+3. **Filtrage interactif par puces (Chips)** :
+   Quatre puces cliquables en en-tête permettent de masquer ou d'afficher instantanément les statuts selon le besoin opérationnel :
+   
+   - Filtrer uniquement les **Retards** pour une campagne de recouvrement curatif.
+   - Filtrer les échéances **À venir** pour des rappels de courtoisie préventifs.
+   - Masquer les échéances déjà **Payées** pour désencombrer la grille.
+
+4. **Détails de l'échéance (Fenêtre modale)** :
+   Le clic sur un événement ouvre une boîte de dialogue présentant le récapitulatif complet :
+   
+   - **Identité du client** : Nom, prénom ou nom de l'entreprise cliente.
+   - **Financement associé** : Intitulé du contrat de financement.
+   - **Montant dû** : Montant exact formaté en monnaie locale (ex: FCFA / XOF).
+   - **Date d'échéance** : Date contractuelle de paiement.
+   - **Progression** : Numéro de l'échéance par rapport au nombre total de traites (ex: *Période 3 / 12*).
+   - **Statut** : Badge coloré (*Payé*, *En retard*, *En attente*).
+   - **Horodatage du paiement** : Date et heure réelles du prélèvement si l'échéance est validée.
+
+5. **Actions opérationnelles et relance client** :
+   - **Voir le dossier** : Redirige directement vers la fiche détaillée du financement du client (onglet de suivi des échéances et garanties).
+   - **Relancer** : Pour toute échéance non soldée, le bouton **Relancer** permet de déclencher l'envoi d'un rappel ou d'une notification multicanale (WhatsApp / SMS / Notification) au client afin de l'inviter à approvisionner son compte.
+
+Architecture et Intégration API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **API REST Backend** : ``GET /repayments/calendar?start={ISO_DATE}&end={ISO_DATE}``
+- **Composant Frontend** : ``LoanRecoveryComponent`` (Angular, FullCalendar v6, PrimeNG Dialog & Chips)
+- **Chargement optimisé** : Les échéances sont chargées de façon paresseuse (*lazy loading*) en fonction des dates limites de la vue calendaire courante, garantissant fluidité et rapidité d'affichage.
+
 Démo
 ~~~~
 
@@ -306,3 +362,13 @@ Démo
 3. Le gestionnaire veut confirmer un remboursement de 50 000 FCFA pour le financement #12345.
 
 4. Le client veut effectuer un remboursement anticipé de son financement.
+
+5. Le chargé de recouvrement ouvre le **Calendrier de Recouvrement**, filtre les échéances **À venir (< 7j)** et clique sur **Relancer** pour notifier les clients avant l'échéance.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: 📋 Documentation détaillée
+
+   all_features
+   new_features
+

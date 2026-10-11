@@ -57,6 +57,7 @@ THL Core Banking est construit autour d'une architecture modulaire sophistiquée
 - **💰 Module Financements** : Administration du portefeuille de financements
 - **💸 Module Transactions** : Traitement de toutes les opérations bancaires
 - **📊 Module Comptabilité** : Système comptable intégré avec grand livre
+- **🎯 Module Collecte** : Collecte journalière, tontines mobiles, agents de terrain et caisses de collecte
 
 **Modules de Support**
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -71,7 +72,7 @@ THL Core Banking est construit autour d'une architecture modulaire sophistiquée
 **Modules Spécialisés**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-- **🏢 Module Administration** : Configuration et paramétrage
+- **🏢 Module Administration & Configuration** : Paramétrage centralisé (activation des modules dont la Collecte, taux TAF, pénalités)
 - **📋 Module Demandes** : Gestion des demandes et approbations
 - **👤 Module Profil** : Gestion des profils utilisateurs
 - **📊 Module Tableau de Bord** : Vue d'ensemble et métriques

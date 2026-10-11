@@ -23,11 +23,12 @@ Bienvenue sur la documentation de THL Core Banking.
     - **Financements** : Gestion du portefeuille de financements
     - **Transactions** : Traitement de toutes les opérations bancaires
     - **Caissier** : Gestion des opérations de caisse et billetage
+    - **Collecte** : Gestion des collectes journalières, collecteurs mobiles et caisses de collecte
 
 **📈 Statistiques :**
-- ✅ **7 modules complets** avec documentation détaillée
+- ✅ **8 modules complets** avec documentation détaillée
 - 🔄 **7 modules en cours** de finalisation
-- 📚 **80% de couverture** des fonctionnalités principales
+- 📚 **85% de couverture** des fonctionnalités principales
 - 🚀 **Mises à jour régulières** et nouvelles fonctionnalités
 
 **📘 Documentation Comptable :**
@@ -65,6 +66,7 @@ Bienvenue sur la documentation de THL Core Banking.
    :caption: 🏦 EXPLOITATION BANCAIRE
 
    modules/cashier/index
+   modules/collect/index
    modules/transaction/index
    modules/operation_request/index
 

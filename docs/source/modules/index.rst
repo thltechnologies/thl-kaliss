@@ -9,9 +9,9 @@ Cette section présente tous les modules du système THL Core Banking, organisé
 📊 **Statistiques de Documentation**
 ------------------------------------
 
-- ✅ **7 modules complets** : Documentation détaillée avec procédures
+- ✅ **8 modules complets** : Documentation détaillée avec procédures
 - 🔄 **7 modules en cours** : Documentation partielle ou en développement
-- 📈 **80% de couverture** : Modules principaux documentés
+- 📈 **85% de couverture** : Modules principaux documentés
 
 🏆 **Modules Documentés**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,6 +31,7 @@ Ces modules bénéficient d'une documentation complète avec procédures détail
        transaction/index
        loan/index
        cashier/index
+       collect/index
 
 🔄 **Modules en Développement**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

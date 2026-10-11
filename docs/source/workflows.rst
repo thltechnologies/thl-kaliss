@@ -91,3 +91,32 @@ Processus de Clôture d'Exercice Comptable
 
         style Step5 fill:#f66,stroke:#333
         style Step6 fill:#66f,stroke:#333,color:#fff
+
+Workflow de Collecte Journalière et Contrôle d'Activation
+---------------------------------------------------------
+
+Ce flux détaille la chaîne de validation depuis la vérification de l'activation globale du module dans la configuration jusqu'au versement des espèces et au rapprochement de fin de journée.
+
+.. mermaid::
+
+    sequenceDiagram
+        participant SA as Super Admin
+        participant CO as Collecteur (Terrain)
+        participant S as Système (Core Banking)
+        participant RC as Responsable Collecte / Agence
+
+        Note over SA,S: Phase 1 : Configuration & Contrôle d'Activation
+        SA->>S: Activation Module (PUT /configuration/collect-module) & Catégories
+        S->>S: Vérification collect.enabled (YML) & collect_enabled (DB)
+        
+        Note over CO,S: Phase 2 : Opérations de Terrain
+        CO->>S: Demande d'approvisionnement / Dépôt Client
+        S->>S: Contrôle collectService.checkCollectAllowed()
+        alt Module Désactivé
+            S-->>CO: Erreur HTTP 400 (BadRequestException)
+        else Module Activé
+            S->>RC: Notification Requête Collecteur (PENDING)
+            RC->>S: Validation & Approbation
+            S->>S: Crédit Compte Client & Écriture Comptable
+            CO->>S: Clôture Caisse Collecteur & Rapprochement Billetage
+        end

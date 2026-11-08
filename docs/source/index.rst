@@ -24,11 +24,12 @@ Bienvenue sur la documentation de THL Core Banking.
     - **Transactions** : Traitement de toutes les opérations bancaires
     - **Caissier** : Gestion des opérations de caisse et billetage
     - **Collecte** : Gestion des collectes journalières, collecteurs mobiles et caisses de collecte
+    - **Service SMS (SMS Banking)** : Notifications SMS en temps réel avec contrôle d'activation à 3 niveaux (Entreprise, Fonctionnalité, Compte)
 
 **📈 Statistiques :**
-- ✅ **8 modules complets** avec documentation détaillée
+- ✅ **9 modules complets** avec documentation détaillée
 - 🔄 **7 modules en cours** de finalisation
-- 📚 **85% de couverture** des fonctionnalités principales
+- 📚 **90% de couverture** des fonctionnalités principales
 - 🚀 **Mises à jour régulières** et nouvelles fonctionnalités
 
 **📘 Documentation Comptable :**
@@ -60,6 +61,7 @@ Bienvenue sur la documentation de THL Core Banking.
    modules/client/index
    modules/client_account/index
    modules/customer_service/index
+   modules/sms/index
 
 .. toctree::
    :maxdepth: 2

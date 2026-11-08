@@ -145,3 +145,9 @@ Améliorations techniques :
 - Optimisation des requêtes de recherche
 - Amélioration des performances d'export
 - Réduction de la charge sur la base de données
+
+11. Notifications SMS Transactionnelles à 3 Niveaux (SMS Banking)
+-----------------------------------------------------------------
+- **Gouvernance à 3 niveaux** : Contrôle de l'envoi des SMS au niveau **Entreprise** (coupe-circuit global), **Fonctionnalité** (12 opérations paramétrables individuellement dans ``/configuration/sms``) et **Compte Client** (abonnement individuel).
+- **Couverture étendue à 12 fonctionnalités** : Dépôts (``DEPOSIT``), Collecte (``COLLECT``), Retraits (``WITHDRAWAL``), Virements (``TRANSFER``), Approvisionnements (``SUPPLY_ACCOUNT``), Remboursements de financement (``LOAN_REPAYMENT``), Salaires (``SALARY_PAYMENT``), Frais mensuels & TAF (``MONTHLY_FEE``), Frais de dossier de financement & garanties (``LOAN_FEE``), Arriérés de frais (``PREVIOUS_FEES``), Retraits de capital (``CAPITAL_WITHDRAWAL``) et Annulations (``CANCEL``).
+- **Performance garantie (Zéro Latence)** : Vérification en mémoire vive en temps constant $O(1)$ via ``EnumSet<SmsFeature>`` et envoi asynchrone post-commit (``@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)``).

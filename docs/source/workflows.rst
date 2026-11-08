@@ -120,3 +120,35 @@ Ce flux détaille la chaîne de validation depuis la vérification de l'activati
             S->>S: Crédit Compte Client & Écriture Comptable
             CO->>S: Clôture Caisse Collecteur & Rapprochement Billetage
         end
+
+Workflow d'Envoi des Notifications SMS et Contrôle à 3 Niveaux
+--------------------------------------------------------------
+
+Ce flux décrit la gouvernance à 3 niveaux (Entreprise → Fonctionnalité → Compte Client) et le traitement asynchrone post-validation (``AFTER_COMMIT``) garantissant zéro ralentissement lors des opérations en agence.
+
+.. mermaid::
+
+    sequenceDiagram
+        participant SA as Super Admin
+        participant G as Guichetier / Système
+        participant TX as TransactionService
+        participant EV as TransactionSmsService (@Async)
+        participant SMS as SmsService (Cache O(1))
+        participant CL as Téléphone Client
+
+        Note over SA,SMS: Phase 1 : Paramétrage dans /configuration/sms
+        SA->>SMS: Activation Globale + Choix des Fonctionnalités (PUT /configuration/sms-feature/{feature})
+        SMS->>SMS: Invalidation & Mise à jour du Cache Mémoire (EnumSet<SmsFeature>)
+
+        Note over G,CL: Phase 2 : Exécution d'une Opération Bancaire
+        G->>TX: Validation Transaction (Dépôt, Retrait, Frais, Remboursement, etc.)
+        TX->>TX: Enregistrement & Écriture Comptable (COMMIT)
+        TX-->>G: Réponse immédiate (0 latence réseau SMS)
+        TX-)EV: Publication TransactionSmsEvent (AFTER_COMMIT)
+        EV->>SMS: isSmsFeatureAllowed(feature) en O(1)
+        alt Envoi Global Actif ET Fonctionnalité Active ET Compte Client Abonné
+            EV->>SMS: Envoi SMS avec Sender ID Officiel
+            SMS-->>CL: Réception Notification SMS
+        else Un des 3 niveaux est désactivé
+            SMS-->>EV: Envoi ignoré silencieusement
+        end

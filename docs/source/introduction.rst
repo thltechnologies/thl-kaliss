@@ -66,13 +66,13 @@ THL Core Banking est construit autour d'une architecture modulaire sophistiquée
 - **👨‍💼 Module Employés** : Administration du personnel
 - **📋 Module Produits** : Catalogue des produits bancaires
 - **📈 Module Rapports** : Analytics et reporting avancé
-- **🔔 Module Notifications** : Système d'alertes et communications
+- **🔔 Module Notifications & SMS Banking** : Système d'alertes et notifications SMS transactionnelles avec contrôle à 3 niveaux (Entreprise, Fonctionnalité, Compte client)
 - **📝 Module Logs** : Traçabilité et audit complet
 
 **Modules Spécialisés**
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-- **🏢 Module Administration & Configuration** : Paramétrage centralisé (activation des modules dont la Collecte, taux TAF, pénalités)
+- **🏢 Module Administration & Configuration** : Paramétrage centralisé (activation des modules Collecte et Service SMS par fonctionnalité, Sender ID, taux TAF, pénalités)
 - **📋 Module Demandes** : Gestion des demandes et approbations
 - **👤 Module Profil** : Gestion des profils utilisateurs
 - **📊 Module Tableau de Bord** : Vue d'ensemble et métriques
